@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card } from "./types";
+import { CardInter } from "./types";
 
 import Game from "./components/game"
 
@@ -10,7 +10,7 @@ function App() {
   const [gameCount, setGameCount] = useState<number>(0)
   const [winCount, setWinCount] = useState<number>(0)
   // id for deck starts at 1, not 0
-  const [fullDeck, setFullDeck] = useState<Card[]>([])
+  const [fullDeck, setFullDeck] = useState<CardInter[]>([])
   const [isStarted, setIsStarted] = useState<boolean>(false)
 
 
@@ -25,7 +25,7 @@ function App() {
         for (let j = 0; j < 3; j++) {
           for (let k = 0; k < 3; k++) {
             for (let l = 0; l < 3; l++) {
-              let newCard: Card = {
+              let newCard: CardInter = {
                 id: id,
                 shape: i,
                 count: j,

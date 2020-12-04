@@ -2,7 +2,7 @@ import { SSL_OP_PKCS1_CHECK_1 } from "constants"
 
 
 // except for ID, all categories should be 0, 1, or 2.
-export interface Card {
+export interface CardInter {
   id: number;
   shape: number;
   count: number;
@@ -10,4 +10,4 @@ export interface Card {
   color: number;
 }
 export type CardKeys = "shape" | "count" | "shading" | "color"
-export type Match = Card[]
+export type Match = CardInter[]

@@ -1,17 +1,17 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 
-import { Card } from "../types";
+import { CardInter } from "../types";
 
 type BoardProps = {
-  deck:Card[],
+  deck:CardInter[],
   onBoard:number[],
-  selected: Card[],
-  setSelected:Dispatch<SetStateAction<Card[]>>
+  selected: CardInter[],
+  setSelected:Dispatch<SetStateAction<CardInter[]>>
 }
 const Board = ({deck, onBoard, selected, setSelected}: BoardProps) => {
   
   // positions index value of positions indicates grid position.
-  const [positions, setPositions] = useState<Card|null[]>(Array(15).fill(null))
+  const [positions, setPositions] = useState<CardInter|null[]>(Array(15).fill(null))
   
 
 
@@ -20,6 +20,7 @@ const Board = ({deck, onBoard, selected, setSelected}: BoardProps) => {
     <div className="board-wrapper">
 
       <h1>Board</h1>
+      {onBoard.map(card=><)}
       <div className="card-container">
 
       </div>

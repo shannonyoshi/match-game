@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 
 import Board from "./board"
 
-import { Card, Match, CardKeys } from "../types";
+import { CardInter, Match, CardKeys } from "../types";
 
 type GameProps = {
-  deck: Card[],
+  deck: CardInter[],
   endGame: () => void,
 
 }
@@ -16,24 +16,17 @@ const Game = ({ deck, endGame }: GameProps) => {
   const [matches, setMatches] = useState<Match[]>([]);
   // onBoard = array of ids of cards currently on the board
   const [onBoard, setOnBoard] = useState<number[]>([])
-  const [selected, setSelected] = useState<Card[]>([])
+  const [selected, setSelected] = useState<CardInter[]>([])
   const [error, setError] = useState<string | null>(null)
 
+  //this useEffect sets the initial board.
   useEffect(() => {
-    //ids of cards to put on initial set up
     setOnBoard(draw(12))
   }, [])
-
+  // this useEffect checks for matches once there are 3 cards selected by user
   useEffect(() => {
     if (selected.length === 3) {
-      const c1: Card = selected[0]
-      const c2: Card = selected[1]
-      const c3: Card = selected[2]
-      const shapeOk: boolean = (c1.shape !== c2.shape && c1.shape !== c3.shape && c2.shape !== c3.shape) || (c1.shape === c2.shape && c2.shape == c3.shape) ? true : false
-      const countOk: boolean =  (c1.count !== c2.count && c1.count !== c3.count && c2.count !== c3.count) || (c1.count === c2.count && c2.count == c3.count) ? true : false
-      const shadingOk: boolean =  (c1.shading !== c2.shading && c1.shading !== c3.shading && c2.shading !== c3.shading) || (c1.shading === c2.shading && c2.shading == c3.shading) ? true : false
-      const colorOk: boolean =  (c1.color !== c2.color && c1.color !== c3.color && c2.color !== c3.color) || (c1.color === c2.color && c2.color == c3.color) ? true : false
-      if (shapeOk && countOk && shadingOk && colorOk) {
+      if (validateMatch(selected)) {
         setMatches([...matches, [...selected]])
         setSelected([])
         draw(3)
@@ -43,6 +36,26 @@ const Game = ({ deck, endGame }: GameProps) => {
       }
     }
   }, [selected])
+
+  // validateMatch returns true if match is valid
+  const validateMatch = (threeCards: CardInter[]): boolean => {
+    const c1: CardInter = threeCards[0]
+    const c2: CardInter = threeCards[1]
+    const c3: CardInter = threeCards[2]
+    const shapeOk: boolean = singlePropCheck(c1.shape, c2.shape, c3.shape)
+    const countOk: boolean = singlePropCheck(c1.count, c2.count, c3.count)
+    const shadingOk: boolean = singlePropCheck(c1.shading, c2.shading, c3.shading)
+    const colorOk: boolean = singlePropCheck(c1.color, c2.color, c3.color)
+    if (shapeOk && countOk && shadingOk && colorOk) {
+      return true
+    }
+    return false
+  }
+  // singlePropCheck is used to validate individual properties on Card
+  const singlePropCheck = (val1: number, val2: number, val3: number): boolean => {
+    return ((val1 === val2 && val3 === val1) || (val1 !== val2 && val2 !== val3 && val3 !== val1)) ? true : false
+  }
+
 
 
 
