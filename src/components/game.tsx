@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Board from "./board"
 
-import { CardInter, Match, CardKeys } from "../types";
+import { CardInter, Match } from "../types";
 
 type GameProps = {
   deck: CardInter[],
@@ -17,24 +17,26 @@ const Game = ({ deck, endGame }: GameProps) => {
   // onBoard = array of ids of cards currently on the board
   const [onBoard, setOnBoard] = useState<number[]>([])
   const [selected, setSelected] = useState<CardInter[]>([])
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string>("")
 
   //this useEffect sets the initial board.
   useEffect(() => {
     setOnBoard(draw(12))
   }, [])
   // this useEffect checks for matches once there are 3 cards selected by user
+  // also removes error once selection has been updated by user. 
   useEffect(() => {
     if (selected.length === 3) {
       if (validateMatch(selected)) {
         setMatches([...matches, [...selected]])
         setSelected([])
+        setError("")
         draw(3)
       }
       else {
         setError("That's not a match!")
       }
-    }
+    } 
   }, [selected])
 
   // validateMatch returns true if match is valid
@@ -88,10 +90,11 @@ const Game = ({ deck, endGame }: GameProps) => {
     setUsed([...used, ...result])
     return result
   }
+  console.log('error', error)
 
   return (
     <div>
-      <Board onBoard={onBoard} deck={deck} selected={selected} setSelected={setSelected} />
+      <Board onBoard={onBoard} deck={deck} selected={selected} setSelected={setSelected} setError={setError} />
     </div>
   )
 

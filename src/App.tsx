@@ -62,7 +62,7 @@ function App() {
       <h2>Games Played: {gameCount}</h2>
       {isStarted ?
         <Game deck={fullDeck} endGame={endGame} /> :
-        <button onClick={() => setIsStarted(true)}></button>
+        <button onClick={() => setIsStarted(true)}>Start Game</button>
       }
 
     </div>

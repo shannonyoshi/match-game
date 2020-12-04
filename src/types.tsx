@@ -9,5 +9,4 @@ export interface CardInter {
   shading: number;
   color: number;
 }
-export type CardKeys = "shape" | "count" | "shading" | "color"
 export type Match = CardInter[]
