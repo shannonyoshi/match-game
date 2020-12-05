@@ -6,25 +6,20 @@ import { CardInter } from "../types";
 
 type BoardProps = {
   deck: CardInter[],
-  onBoard: number[],
-  selected: CardInter[],
-  setSelected: Dispatch<SetStateAction<CardInter[]>>,
+  onBoard: (CardInter|null)[],
+  selected: number[],
+  setSelected: Dispatch<SetStateAction<number[]>>,
   setError: Dispatch<SetStateAction<string>>
 
 }
 const Board = ({ deck, onBoard, selected, setSelected, setError }: BoardProps) => {
 
-  // positions index value of positions indicates grid position.
-  const [positions, setPositions] = useState<CardInter | null[]>(Array(15).fill(null))
-  
-
-
-  const toggleSelect = (cardId: number) => {
-    const isSelected = checkSelected(cardId)
+  const toggleSelect = (cardId: number) :void=> {
+    const isSelected = selected.includes(cardId)
     switch (isSelected) {
       case true:
         for (let i = 0; i < selected.length; i++) {
-          if (selected[i].id === cardId) {
+          if (selected[i] === cardId) {
             let copy = selected
             copy.splice(i, 1)
             setSelected([...copy])
@@ -33,29 +28,21 @@ const Board = ({ deck, onBoard, selected, setSelected, setError }: BoardProps) =
         }
         break;
       case false:
-        setSelected([...selected, deck[cardId - 1]])
+        if (selected.length===3){
+          setError("cannot select more than three cards")
+          return
+        }
+        setSelected([...selected, cardId])
     }
   }
 
-
-  // checkSelected() returns true if card is in selected list
-  const checkSelected = (cardId: number): boolean => {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i].id === cardId) {
-        return true
-      }
-    }
-    return false
-  }
-
-  console.log('RENDER selected', selected)
   return (
     <div className="board-wrapper">
 
       <h1>Board</h1>
-      {onBoard.map(cardId => <button className={`card-btn ${checkSelected(cardId) ? "selected" : ""}`} onClick={() => toggleSelect(cardId)} key={`cardId-${cardId}`}>{checkSelected(cardId) ? "selected" : "not selected"}<Card card={deck[cardId - 1]} /></button>)}
+      {onBoard.map(card => card===null?"":
+      <button className={`card-btn ${selected.includes(card.id) ? "selected" : ""}`} onClick={() => toggleSelect(card.id)} key={`cardId-${card.id}`}>{selected.includes(card.id) ? "selected" : "not selected"}<Card card={card} /></button>)}
       <div className="card-container">
-
       </div>
     </div>
   )
