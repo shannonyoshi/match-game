@@ -5,14 +5,14 @@ import Card from "./card"
 import { CardInter } from "../types";
 
 type BoardProps = {
-  deck: CardInter[],
   onBoard: (CardInter|null)[],
   selected: number[],
   setSelected: Dispatch<SetStateAction<number[]>>,
-  setError: Dispatch<SetStateAction<string>>
+  setError: Dispatch<SetStateAction<string>>,
+  extendBoard:()=>void
 
 }
-const Board = ({ deck, onBoard, selected, setSelected, setError }: BoardProps) => {
+const Board = ({ onBoard, selected, setSelected, setError, extendBoard }: BoardProps) => {
 
   const toggleSelect = (cardId: number) :void=> {
     const isSelected = selected.includes(cardId)
@@ -42,6 +42,7 @@ const Board = ({ deck, onBoard, selected, setSelected, setError }: BoardProps) =
       <h1>Board</h1>
       {onBoard.map(card => card===null?"":
       <button className={`card-btn ${selected.includes(card.id) ? "selected" : ""}`} onClick={() => toggleSelect(card.id)} key={`cardId-${card.id}`}>{selected.includes(card.id) ? "selected" : "not selected"}<Card card={card} /></button>)}
+      <button onClick={extendBoard}>Add 3 cards</button>
       <div className="card-container">
       </div>
     </div>

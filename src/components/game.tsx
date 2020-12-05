@@ -9,6 +9,18 @@ type GameProps = {
   endGame: () => void,
 
 }
+/* 
+
+Functions:
+  X draw cards,
+  X verify match,
+  X add cards,
+  X check board for match,
+  end game,
+
+
+*/
+
 
 const Game = ({ deck, endGame }: GameProps) => {
   //used = array of ids of cards already played, updated by draw()
@@ -41,12 +53,20 @@ const Game = ({ deck, endGame }: GameProps) => {
       }
     }
   }, [selected])
+// once all cards are used, checks if matches are still present, if not, end the game
+  useEffect(()=> {
+    if (used.length===81){
+      if (!checkMatchesOnBoard()){
+        endGame()
+      }
+    }
+  }, matches)
 
   // validateMatch returns true if match is valid
-  const validateMatch = (threeCards: number[]): boolean => {
-    const c1: CardInter = deck[threeCards[0] - 1]
-    const c2: CardInter = deck[threeCards[1] - 1]
-    const c3: CardInter = deck[threeCards[2] - 1]
+  const validateMatch = (threeCards: number[] | (CardInter)[]): boolean => {
+    const c1: CardInter = typeof (threeCards[0]) === "number" ? deck[threeCards[0] - 1] : threeCards[0]
+    const c2: CardInter = typeof (threeCards[1]) === "number" ? deck[threeCards[1] - 1] : threeCards[1]
+    const c3: CardInter = typeof (threeCards[2]) === "number" ? deck[threeCards[2] - 1] : threeCards[2]
     const shapeOk: boolean = singlePropCheck(c1.shape, c2.shape, c3.shape)
     const countOk: boolean = singlePropCheck(c1.count, c2.count, c3.count)
     const shadingOk: boolean = singlePropCheck(c1.shading, c2.shading, c3.shading)
@@ -77,7 +97,6 @@ const Game = ({ deck, endGame }: GameProps) => {
     // if there are no cardIds, it means cards need to be drawn
     if (cardIds.length === 0) {
       cardIds = draw(3)
-
     }
     let newOnBoard: (CardInter | null)[] = []
     // only goes up to 12 because after matching, the board should not be extended, so above 12===null
@@ -96,11 +115,21 @@ const Game = ({ deck, endGame }: GameProps) => {
     setOnBoard([...newOnBoard, null, null, null])
     setSelected([])
   }
+  const extendBoard = (): void => {
+    let allowAdd = checkMatchesOnBoard()
+    if (allowAdd){
+      
+      let cardIds = draw(3)
+      let newCards = cardIds.map(id => deck[id - 1])
+      let fromOnBoard: (CardInter | null)[] = onBoard
+      fromOnBoard.splice(12, 3)
+      let newOnBoard = fromOnBoard.concat(newCards)
+      setOnBoard([...newOnBoard])
 
-
-  let replaceIndices = []
-
-
+    } else {
+      setError("You can't add more cards, there is a match on the board")
+    }
+  }
 
   // draw() returns ids of random cards to be placed on board, count specifies number of cards drawn
   const draw = (count: number = 3): number[] => {
@@ -130,15 +159,28 @@ const Game = ({ deck, endGame }: GameProps) => {
     }
   }
 
+  const checkMatchesOnBoard = ():boolean => {
+    let inPlay: CardInter[] = onBoard.filter(card => card !== null) as CardInter[]
+    let notFound: boolean = true
+    while (inPlay.length > 2 && notFound) {
+      let card1:CardInter = inPlay[0]
+      for (let i = 1; i < inPlay.length; i++) {
+        let card2 = inPlay[i]
+        for (let j = 1; j < inPlay.length; j++) {
+          let card3 = inPlay[j]
+          notFound = validateMatch([card1, card2, card3])
+        }
+      }
+      inPlay.splice(0,1)
+    }
+    return notFound
+  }
 
   return (
     <div>
-      <Board onBoard={onBoard} deck={deck} selected={selected} setSelected={setSelected} setError={setError} />
+      <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setError={setError} />
     </div>
   )
-
-
-
 }
 
 export default Game;
