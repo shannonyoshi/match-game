@@ -1,0 +1,10 @@
+// @import "themes.scss";
+// @import "variables&mixins.scss";
+
+.card-container {
+  border:1px solid orange;
+  padding:1em;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap:1em;
+}

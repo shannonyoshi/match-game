@@ -1,6 +1,8 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
+import React, {Dispatch, SetStateAction } from "react";
 
-import Card from "./card"
+import "../styling/board.scss";
+
+import Card from "./card";
 
 import { CardInter } from "../types";
 
@@ -38,10 +40,10 @@ const Board = ({ onBoard, selected, setSelected, setError, extendBoard }: BoardP
 
   return (
     <div className="board-wrapper">
-
-      <h1>Board</h1>
+      <div className="card-container">
       {onBoard.map(card => card===null?"":
       <button className={`card-btn ${selected.includes(card.id) ? "selected" : ""}`} onClick={() => toggleSelect(card.id)} key={`cardId-${card.id}`}>{selected.includes(card.id) ? "selected" : "not selected"}<Card card={card} /></button>)}
+      </div>
       <button onClick={extendBoard}>Add 3 cards</button>
       <div className="card-container">
       </div>

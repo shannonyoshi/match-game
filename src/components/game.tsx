@@ -25,15 +25,15 @@ Functions:
 const Game = ({ deck, endGame }: GameProps) => {
   //used = array of ids of cards already played, updated by draw()
   const [used, setUsed] = useState<number[]>([]);
-  // updated by useEffect below
+  //matches=matches found by user and validated, updated by useEffect below
   const [matches, setMatches] = useState<Match[]>([]);
-  // onBoard handles position of cards on board, updated by replaceMatch()
+  // onBoard handles position of cards on board, updated by replaceMatch(), extendBoard()
   const [onBoard, setOnBoard] = useState<(CardInter | null)[]>(Array(15).fill(null))
   // updated by replaceMatch() & onClick for Card in board.tsx
   const [selected, setSelected] = useState<number[]>([])
   const [error, setError] = useState<string>("")
 
-  //this useEffect sets the initial board.
+  //initial board setup.
   useEffect(() => {
     let cardIds = draw(12)
     let newCards = cardIds.map(id => deck[id - 1])
@@ -55,6 +55,7 @@ const Game = ({ deck, endGame }: GameProps) => {
   }, [selected])
 // once all cards are used, checks if matches are still present, if not, end the game
   useEffect(()=> {
+    // 81=number of cards in deck
     if (used.length===81){
       if (!checkMatchesOnBoard()){
         endGame()

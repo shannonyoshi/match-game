@@ -1,0 +1,89 @@
+$themes: (
+  default: (
+    primary-light: #69bab0,
+    primary: #2a9d8f,
+    primary-dark: #1d6d64,
+    accent-light: #ee9a85,
+    accent: #e76f51,
+    accent-dark: #a14d38,
+    highlight-light: #efd596,
+    highlight: #e9c46a,
+    highlight-dark: #a3894a,
+    contrast: #264653,
+    background: #fcf9f0,
+  ),
+  dark:
+  (
+    primary-light: #765b75,
+    primary: #3c153b,
+    primary-dark: #2a0e29,
+    accent-light: #ad6178,
+    accent: #8b1e3f,
+    accent-dark: #61152c,
+    highlight-light: #acd0bb,
+    highlight: #89bd9e,
+    highlight-dark: #5f846e,
+    contrast: #DB4C40,
+    background: #FAEEDB,
+  ),
+  mono:
+  (
+    primary-light: #252525,
+    primary: #191919,
+    primary-dark: #0c0c0c,
+    accent-light: #5d5d5d,
+    accent: #4c4c4c,
+    accent-dark: #444444,
+    highlight-light: #b9b9b9,
+    highlight: #b2b2b2,
+    highlight-dark: #a0a0a0,
+    contrast: #191919,
+    background: #ffffff,
+  ),
+  mono-dark:
+  (
+    primary-light: #b9b9b9,
+    primary: #b2b2b2,
+    primary-dark: #a0a0a0,
+    accent-light: #5d5d5d,
+    accent: #4c4c4c,
+    accent-dark: #444444,
+    highlight-light: #252525,
+    highlight: #191919,
+    highlight-dark: #0c0c0c,
+    contrast: #ffffff,
+    background: #191919,
+  ),
+);
+
+
+// from https://www.sitepoint.com/sass-theming-neverending-story/
+
+// Themify mixin
+// @access private
+// @author Hugo Giraudel
+// @param {String} $property - Property to themify
+// @param {String} $key - Key color to use from theme
+// @param {Map} $themes [$themes] - Map of themes to use
+@mixin themify($property, $key, $themes: $themes) {
+  // Iterate over the themes
+  @each $theme, $colors in $themes {
+    // Create a selector (e.g. `.media.theme-unicorn, .theme-unicorn .media`)
+    &.theme-#{$theme},
+    .theme-#{$theme} & {
+      // Output the declaration
+      #{$property}: map-get($colors, $key);
+    }
+  }
+}
+
+
+@mixin color($arguments...){
+  @include themify('color', $arguments...);
+}
+
+@mixin background-color($arguments...){
+  @include themify('background-color', $arguments...)
+}
+
+

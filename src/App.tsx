@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { CardInter } from "./types";
+import { CardInter, ThemeOpts } from "./types";
+
+import "./styling/app.scss"
 
 import Game from "./components/game"
 
@@ -12,7 +14,7 @@ function App() {
   // id for deck starts at 1, not 0
   const [fullDeck, setFullDeck] = useState<CardInter[]>([])
   const [isStarted, setIsStarted] = useState<boolean>(false)
-
+  const [theme, setTheme] = useState<ThemeOpts>("default")
 
 
   // creates 81 cards for the deck
@@ -53,18 +55,21 @@ function App() {
     setGameCount(gameCount + 1)
   }
   return (
-    <div className="App">
-      <header className="App-header">
+    <div id="app" className={`theme-${theme}`}>
 
-        <h1>Match Game</h1>
+      <div className="app-container">
+        <header className="header">
 
-      </header>
-      <h2>Games Played: {gameCount}</h2>
-      {isStarted ?
-        <Game deck={fullDeck} endGame={endGame} /> :
-        <button onClick={() => setIsStarted(true)}>Start Game</button>
-      }
+          <h1>Match Game</h1>
 
+        </header>
+        <h2>Games Played: {gameCount}</h2>
+        {isStarted ?
+          <Game deck={fullDeck} endGame={endGame} /> :
+          <button onClick={() => setIsStarted(true)}>Start Game</button>
+        }
+
+      </div>
     </div>
   );
 }

@@ -10,3 +10,5 @@ export interface CardInter {
   color: number;
 }
 export type Match = CardInter[]
+
+export type ThemeOpts = "default" | "dark" | "mono" | "mono-dark"
