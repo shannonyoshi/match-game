@@ -2,21 +2,21 @@
 @import "variables&mixins.scss";
 
 .app-container {
-  height:100%;
-  @include color("primary");
-  @include background-color("background");
-  // color:orange;
-  // background-color:yellow;
-  // @include addTheme($themes) {
-  //   color: themed('primary');
-  //   background-color: themed('background');
-  // }
+  height: 100%;
+  @include themify {
+    background-color: $background;
+  }
+
   // button{
   //   @include button
   // }
-  .header{
-    @include heading;
-    border:1px solid green;
-    height:100px;
+  .header {
+    border: 1px solid green;
+    height: 100px;
+    @include themify {
+      background-color: $primary;
+      color: $background;
+      @include heading;
+    }
   }
 }

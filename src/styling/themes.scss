@@ -11,6 +11,7 @@ $themes: (
     highlight-dark: #a3894a,
     contrast: #264653,
     background: #fcf9f0,
+    card-bg:white,
   ),
   dark:
   (
@@ -24,7 +25,8 @@ $themes: (
     highlight: #89bd9e,
     highlight-dark: #5f846e,
     contrast: #DB4C40,
-    background: #FAEEDB,
+    background: #191919,
+    card-bg:black,
   ),
   mono:
   (
@@ -39,6 +41,7 @@ $themes: (
     highlight-dark: #a0a0a0,
     contrast: #191919,
     background: #ffffff,
+    card-bg:white
   ),
   mono-dark:
   (
@@ -53,6 +56,7 @@ $themes: (
     highlight-dark: #0c0c0c,
     contrast: #ffffff,
     background: #191919,
+    card-bg:black
   ),
 );
 
@@ -65,25 +69,65 @@ $themes: (
 // @param {String} $property - Property to themify
 // @param {String} $key - Key color to use from theme
 // @param {Map} $themes [$themes] - Map of themes to use
-@mixin themify($property, $key, $themes: $themes) {
+// @mixin themify($property, $key, $themes: $themes) {
+//   // Iterate over the themes
+//   @each $theme, $colors in $themes {
+//     // Create a selector (e.g. `.media.theme-unicorn, .theme-unicorn .media`)
+//     &.theme-#{$theme},
+//     .theme-#{$theme} & {
+//       // Output the declaration
+//       #{$property}: map-get($colors, $key);
+//     }
+//   }
+// }
+
+
+
+
+    $primary-light: null;
+    $primary:null;
+    $primary-dark: null;
+    $accent-light:null;
+    $accent: null;
+    $accent-dark: null;
+    $highlight-light:null;
+    $highlight: null;
+    $highlight-dark:null; 
+    $contrast: null;
+    $background: null;
+    $card-bg:null;
+
+// Themify mixin
+// @author Hugo Giraudel
+// @param {Map} $themes [$themes] - Map of themes to use
+@mixin themify($themes: $themes) {
   // Iterate over the themes
   @each $theme, $colors in $themes {
     // Create a selector (e.g. `.media.theme-unicorn, .theme-unicorn .media`)
     &.theme-#{$theme},
     .theme-#{$theme} & {
-      // Output the declaration
-      #{$property}: map-get($colors, $key);
+      // Set the theme variables with `!global`
+      $primary-light: map-get($colors, 'primary-light') !global;
+      $primary:map-get($colors, 'primary') !global;
+      $primary-dark: map-get($colors, 'primary-dark') !global;
+      $accent-light:map-get($colors, 'accent-light') !global;
+      $accent: map-get($colors, 'accent') !global;
+      $accent-dark: map-get($colors, 'accent-dark') !global;
+      $highlight-light:map-get($colors, 'highlight-light') !global;
+      $highlight: map-get($colors, 'highlight') !global;
+      $highlight-dark:map-get($colors, 'highlight-dark') !global; 
+      $contrast: map-get($colors, 'contrast') !global;
+      $background: map-get($colors, 'background') !global;
+      $card-bg:map-get($colors, 'card-bg') !global;
+
+      // Output user content
+      @content;
+
+      // Unset the theme variables with `!global`
+      $color-primary: null !global;
+      $color-secondary: null !global;
     }
   }
-}
-
-
-@mixin color($arguments...){
-  @include themify('color', $arguments...);
-}
-
-@mixin background-color($arguments...){
-  @include themify('background-color', $arguments...)
 }
 
 

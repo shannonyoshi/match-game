@@ -1,0 +1,20 @@
+@import "themes.scss";
+@import "variables&mixins.scss";
+
+.card-btn{
+  border:none;
+}
+// card shading:
+// shading-0: solid
+// shading-1:1/2 color
+// shading-1:border only
+
+
+
+
+
+
+.card-wrapper{
+  @include card;
+
+}

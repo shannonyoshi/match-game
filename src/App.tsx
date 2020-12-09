@@ -5,7 +5,7 @@ import "./styling/app.scss"
 
 import Game from "./components/game"
 
-
+import Card from "./components/card"
 
 function App() {
   // gameCount=# games played this session
@@ -63,11 +63,15 @@ function App() {
           <h1>Match Game</h1>
 
         </header>
-        <h2>Games Played: {gameCount}</h2>
+        <div className="card-container">
+
+        {fullDeck.map(card=><div className="card-wrapper"><Card card={card}/></div>)}
+        </div>
+        {/* <h2>Games Played: {gameCount}</h2>
         {isStarted ?
           <Game deck={fullDeck} endGame={endGame} /> :
           <button onClick={() => setIsStarted(true)}>Start Game</button>
-        }
+        } */}
 
       </div>
     </div>

@@ -1,13 +1,221 @@
 @import "themes.scss";
 
-
-@mixin heading{
-  font-size:2em;
-  padding:1em;
-  font-weight:bold;
+@mixin heading {
+  font-size: 2em;
+  padding: 1em;
+  font-weight: bold;
 }
 
-// @mixin card{
+@mixin card {
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  justify-content: space-around;
+  .shape-0 {
+    @include diamond;
+  }
+  .shape-1 {
+    @include oval;
+  }
+  .shape-2 {
+    @include another-shape;
+  }
+}
+@mixin diamond {
+  width: 0;
+  height: 0;
+  border: 35px solid transparent;
+  position: relative;
+  top: -75px;
 
-// }
+  &:after {
+    content: "";
+    position: absolute;
+    left: -35px;
+    top: 75px;
+    width: 0;
+    height: 0;
+    border: 35px solid transparent;
+  }
+  &.color-0 {
+    @include themify {
+      border-bottom: 75px solid $primary;
+      &:after {
+        border-top: 75px solid $primary;
+      }
+    }
+  }
+  &.color-1 {
+    @include themify {
+      border-bottom: 75px solid $accent;
+      &:after {
+        border-top: 75px solid $accent;
+      }
+    }
+  }
+  &.color-2 {
+    @include themify {
+      border-bottom: 75px solid $highlight;
+      &:after {
+        border-top: 75px solid $highlight;
+      }
+    }
+  }
+  &.shading-2 {
+    .inner {
+      @include small-diamond;
+      @include themify {
+        border-bottom: 71px solid $card-bg;
+        &:after {
+          border-top: 71px solid $card-bg;
+        }
+      }
+    }
+  }
+  &.shading-1 {
+    .inner {
+      @include small-diamond;
+      @include themify {
+      border-bottom: 71px solid $card-bg;
+    }
+        &:after {
+          border-top: 71px solid transparent;
+        }
+    }
+  }
+}
 
+@mixin small-diamond {
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: 33px solid transparent;
+  position: relative;
+  top: -29px;
+  left: -33px;
+  &:after {
+    content: "";
+    z-index: 11;
+    position: absolute;
+    left: -33px;
+    top: 71px;
+    width: 0;
+    height: 0;
+    border: 33px solid transparent;
+  }
+}
+
+@mixin oval {
+  width: 70px;
+  height: 150px;
+  border-radius: 35px/40px;
+  &.color-0 {
+    @include themify {
+      border: 2px solid $primary;
+      background: $primary;
+    }
+    &.shading-1 {
+      @include themify {
+        background-image: linear-gradient(
+          0deg,
+          $primary 50%,
+          $card-bg 50%
+        );
+      }
+    }
+  }
+  &.color-1 {
+    @include themify {
+      border: 2px solid $accent;
+      background: $accent;
+    }
+    &.shading-1 {
+      @include themify {
+        background-image: linear-gradient(
+          0deg,
+          $accent 50%,
+          $card-bg 50%
+        );
+      }
+    }
+  }
+  &.color-2 {
+    @include themify {
+      border: 2px solid $highlight;
+      background: $highlight;
+    }
+    &.shading-1 {
+      @include themify {
+        background-image: linear-gradient(
+          0deg,
+          $highlight 50%,
+          $card-bg 50%
+        );
+      }
+    }
+  }
+  &.shading-2 {
+    @include themify {
+      background: $card-bg;
+    }
+  }
+}
+
+@mixin another-shape {
+  z-index:9;
+  width:70px;
+  height:150px;
+  border-radius:0 50%;
+  position:relative;
+  &.color-0{
+    @include themify{
+      background:$primary;
+      border:2px solid $primary 
+    }
+    &.shading-1 {
+      @include themify {
+        background-image: linear-gradient(
+          0deg,
+          $primary 50%,
+          $card-bg 50%
+        );
+      }
+    }
+   
+  }
+  &.color-1 {
+    @include themify{
+      background:$accent;
+      border:2px solid $accent 
+    }
+    &.shading-1 {
+      @include themify {
+        background-image: linear-gradient(
+          0deg,
+          $accent 50%,
+          $card-bg 50%
+        );
+      }
+    }
+  }
+  &.color-2 {
+    @include themify{
+      background:$highlight;
+      border:2px solid $highlight 
+    }
+    &.shading-1 {
+      @include themify {
+        background-image: linear-gradient(
+          0deg,
+          $highlight 50%,
+          $card-bg 50%
+        );
+      }
+    }
+  }
+  &.shading-2 {
+    @include themify{
+      background: $card-bg;
+    }
+  }
+}

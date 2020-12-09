@@ -1,10 +1,21 @@
-// @import "themes.scss";
-// @import "variables&mixins.scss";
+@import "themes.scss";
+@import "variables&mixins.scss";
 
 .card-container {
-  border:1px solid orange;
-  padding:1em;
+  border: 1px solid orange;
+  padding: 1em;
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap:1em;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: auto auto auto auto auto;
+  grid-gap: 1em;
+  width: 80vw;
+}
+
+.card-btn {
+  min-height: 200px;
+  border: 5px solid red;
+  border: none;
+   @include themify{
+    background-color: $card-bg;
+  }
 }
