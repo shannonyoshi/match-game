@@ -10,11 +10,7 @@
 // shading-1:border only
 
 
-
-
-
-
 .card-wrapper{
-  @include card;
+  @include large-card;
 
 }

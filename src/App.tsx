@@ -63,15 +63,11 @@ function App() {
           <h1>Match Game</h1>
 
         </header>
-        <div className="card-container">
-
-        {fullDeck.map(card=><div className="card-wrapper"><Card card={card}/></div>)}
-        </div>
-        {/* <h2>Games Played: {gameCount}</h2>
+        <h2>Games Played: {gameCount}</h2>
         {isStarted ?
           <Game deck={fullDeck} endGame={endGame} /> :
           <button onClick={() => setIsStarted(true)}>Start Game</button>
-        } */}
+        }
 
       </div>
     </div>
