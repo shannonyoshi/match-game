@@ -7,27 +7,32 @@
 }
 
 @mixin large-card {
-  @include card($padding:1em, $margin:.5em,$width:70px, $height:150px, )
+  @include card($margin: 0.5em, $height: 150px);
 }
-@mixin medium-card{
-  @include card($padding:1em, $margin:.3em,$width:55px, $height:110px, )
+@mixin medium-card {
+  @include card($margin: 0.3em, $height: 110px);
 }
-@mixin small-card{
-  @include card($padding:.5em, $margin:.2em,$width:35px, $height:70px, )
-}
-
-@mixin tiny-card{
-  @include card($padding:2px, $margin:1px,$width:10px, $height:20px, )
+@mixin small-card {
+  @include card($margin: 0.2em, $height: 70px);
 }
 
-// $padding= card padding, $margin= around each shape, $width=width of shape in px, $height = height of shape in px
-@mixin card($padding,$margin, $width, $height) {
+@mixin tiny-card {
+  @include card($margin: 1px, $height: 20px);
+}
+
+//$margin= around each shape, $width=width of shape in px, $height = height of shape in px
+@mixin card($margin, $height) {
+  $width: $height/2;
   display: flex;
   flex-direction: row;
-  padding: $padding;
-  justify-content: space-around;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  min-height:$height;
+
   .shape-0 {
-    margin: $margin;
+    margin: 0 $margin;
+    align-self: flex-end;
     @include diamond($width / 2, $height / 2);
   }
   .shape-1 {
@@ -35,7 +40,7 @@
     @include oval($width, $height);
   }
   .shape-2 {
-      margin: $margin;
+    margin: $margin/2;
     @include another-shape($width, $height);
   }
 }
@@ -94,16 +99,16 @@
     .inner {
       @include small-diamond($half-width, $half-height);
       @include themify {
-      border-bottom: $half-height - 4px solid $card-bg;
-    }
-        &:after {
-          border-top: $half-height - 4px solid transparent;
-        }
+        border-bottom: $half-height - 4px solid $card-bg;
+      }
+      &:after {
+        border-top: $half-height - 4px solid transparent;
+      }
     }
   }
 }
-
-@mixin small-diamond ($half-width, $half-height) {
+// used to create smaller triangle on top of larger triangle for shading-2 where only the border is colored
+@mixin small-diamond($half-width, $half-height) {
   z-index: 10;
   width: 0;
   height: 0;
@@ -134,11 +139,7 @@
     }
     &.shading-1 {
       @include themify {
-        background-image: linear-gradient(
-          0deg,
-          $primary 50%,
-          $card-bg 50%
-        );
+        background-image: linear-gradient(0deg, $primary 50%, $card-bg 50%);
       }
     }
   }
@@ -149,11 +150,7 @@
     }
     &.shading-1 {
       @include themify {
-        background-image: linear-gradient(
-          0deg,
-          $accent 50%,
-          $card-bg 50%
-        );
+        background-image: linear-gradient(0deg, $accent 50%, $card-bg 50%);
       }
     }
   }
@@ -164,11 +161,7 @@
     }
     &.shading-1 {
       @include themify {
-        background-image: linear-gradient(
-          0deg,
-          $highlight 50%,
-          $card-bg 50%
-        );
+        background-image: linear-gradient(0deg, $highlight 50%, $card-bg 50%);
       }
     }
   }
@@ -180,57 +173,44 @@
 }
 
 @mixin another-shape($width, $height) {
-  width:$width,;
-  height:$height;
-  border-radius:0 90%;
-  &.color-0{
-    @include themify{
-      background:$primary;
-      border:2px solid $primary 
+  width: $width;
+  height: $height;
+  border-radius: 0 90%;
+  &.color-0 {
+    @include themify {
+      background: $primary;
+      border: 2px solid $primary;
     }
     &.shading-1 {
       @include themify {
-        background-image: linear-gradient(
-          0deg,
-          $primary 50%,
-          $card-bg 50%
-        );
+        background-image: linear-gradient(0deg, $primary 50%, $card-bg 50%);
       }
     }
-   
   }
   &.color-1 {
-    @include themify{
-      background:$accent;
-      border:2px solid $accent 
+    @include themify {
+      background: $accent;
+      border: 2px solid $accent;
     }
     &.shading-1 {
       @include themify {
-        background-image: linear-gradient(
-          0deg,
-          $accent 50%,
-          $card-bg 50%
-        );
+        background-image: linear-gradient(0deg, $accent 50%, $card-bg 50%);
       }
     }
   }
   &.color-2 {
-    @include themify{
-      background:$highlight;
-      border:2px solid $highlight 
+    @include themify {
+      background: $highlight;
+      border: 2px solid $highlight;
     }
     &.shading-1 {
       @include themify {
-        background-image: linear-gradient(
-          0deg,
-          $highlight 50%,
-          $card-bg 50%
-        );
+        background-image: linear-gradient(0deg, $highlight 50%, $card-bg 50%);
       }
     }
   }
   &.shading-2 {
-    @include themify{
+    @include themify {
       background: $card-bg;
     }
   }

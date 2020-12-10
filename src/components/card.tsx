@@ -11,17 +11,15 @@ type cardProps = {
 const Card = ({ card }: cardProps) => {
   const classString = `shape-${card.shape} shading-${card.shading} color-${card.color}`
 
-    return (
-      <div>
-        <p>{classString}</p>
-      <div className="card-wrapper">
-        <div className={`item1 ${classString}`}><div className="inner"></div></div>
-        {card.count>0?<div className={`item2 ${classString}`}><div className="inner"></div></div>:""}
-        {card.count>1?<div className={`item3 ${classString}`}><div className="inner"></div></div>:""}
-      </div>
-      </div>
-    )
-  }
+  return (
+    <div className="card-wrapper">
+      <div className={`item1 ${classString}`}><div className="inner"></div></div>
+      {card.count > 0 ? <div className={`item2 ${classString}`}><div className="inner"></div></div> : ""}
+      {card.count > 1 ? <div className={`item3 ${classString}`}><div className="inner"></div></div> : ""}
+    </div>
+
+  )
+}
 
 
 

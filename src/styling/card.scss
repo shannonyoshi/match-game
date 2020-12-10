@@ -3,14 +3,25 @@
 
 .card-btn{
   border:none;
+  outline:none;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  border-radius:10px;
+  padding:38px;
+  // min-
+
 }
 // card shading:
 // shading-0: solid
 // shading-1:1/2 color
 // shading-1:border only
+.selected{
+  @include themify{
+    // box-shadow: inset 0px 0px 15px $contrast;
+    border:2px solid $contrast;
 
+  }
+}
 
 .card-wrapper{
   @include large-card;
-
 }
