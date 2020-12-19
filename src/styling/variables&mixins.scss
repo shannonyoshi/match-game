@@ -6,107 +6,147 @@
   font-weight: bold;
 }
 
-@mixin large-card {
-  @include card($margin: 0.5em, $height: 150px);
-}
-@mixin medium-card {
-  @include card($margin: 0.3em, $height: 110px);
-}
-@mixin small-card {
-  @include card($margin: 0.2em, $height: 70px);
+@mixin box-shadow {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
-@mixin tiny-card {
-  @include card($margin: 1px, $height: 20px);
+@mixin xxl-card($rotate: false) {
+  @include card($margin: 0.5em, $height: 150px, $rotate: $rotate);
 }
 
-//$margin= around each shape, $width=width of shape in px, $height = height of shape in px
-@mixin card($margin, $height) {
+@mixin xl-card($rotate: false) {
+  @include card($margin: 0.4em, $height: 130px, $rotate: $rotate);
+}
+
+@mixin large-card($rotate: false) {
+  @include card($margin: 0.3em, $height: 110px, $rotate: $rotate);
+}
+@mixin medium-card($rotate: false) {
+  @include card($margin: 0.2em, $height: 70px, $rotate: $rotate);
+}
+@mixin small-card($rotate: false) {
+  @include card($margin: 3px, $height: 50px, $rotate: $rotate);
+}
+
+@mixin tiny-card($rotate: false) {
+  @include card($margin: 1px, $height: 30px, $rotate: $rotate);
+}
+
+//$margin= around each shape, $height = long side of shape in px, $width refers to short side
+@mixin card($margin, $height, $rotate) {
   $width: $height/2;
-  display: flex;
-  flex-direction: row;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
-  min-height:$height;
+  @if $rotate {
+    height: $height * 1.75;
+    width: $height;
+  } @else {
+    width: $height * 1.75;
+    height: $height;
+  }
+  .shape-wrapper {
+    min-height: $height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @if $rotate {
+      flex-direction: column;
+    } @else {
+      flex-direction: row;
+    }
+  }
+  .shape-0,
+  .shape-1 {
+    @if $rotate {
+      margin: $margin 0;
+    } @else {
+      margin: 0 $margin;
+    }
+  }
 
   .shape-0 {
-    margin: 0 $margin;
-    align-self: flex-end;
-    @include diamond($width / 2, $height / 2);
+    @if $rotate{
+      @include rotate-diamond($height, $width);
+    } @else {
+      align-self: flex-end;
+      @include diamond($width, $height);
+    }
   }
+
   .shape-1 {
-    margin: $margin;
-    @include oval($width, $height);
+    @if $rotate{
+      @include oval($height, $width, #{30%/50%}, 90deg);
+    } @else {
+      @include oval($width, $height);
+    }
   }
+
   .shape-2 {
-    margin: $margin/2;
-    @include another-shape($width, $height);
+    @if $rotate{
+      margin: $margin/2 0;
+      @include another-shape($height, $width, 90% 0, 90deg);
+    } @else {
+      margin: 0 $margin/2;
+      @include another-shape($width, $height);
+
+    }
   }
 }
-@mixin diamond($half-width, $half-height) {
+
+//$border-rad should be %50%/30% or 30%/50% for rotate
+@mixin oval($width, $height, $border-rad: #{50%/30%}, $bg-degs: 0deg) {
+  width: $width;
+  height: $height;
+  border-radius: $border-rad;
+  @include color-helper($bg-degs);
+}
+
+@mixin another-shape($width, $height, $border-rad: 0 90%, $bg-degs: 0deg) {
+  width: $width;
+  height: $height;
+  border-radius: $border-rad;
+  @include color-helper($bg-degs);
+}
+
+@mixin rotate-diamond($double-width, $double-height) {
+  $width: $double-width/2;
+  $height: $double-height/2;
   width: 0;
   height: 0;
-  border: $half-width solid transparent;
+  border: $height solid transparent;
   position: relative;
-  top: -$half-height;
-
+  left: $width * 0.75;
+  // top:
   &:after {
     content: "";
     position: absolute;
-    left: -$half-width;
-    top: $half-height;
+    right: $height * 2;
+    top: -$height;
     width: 0;
     height: 0;
-    border: $half-width solid transparent;
+    border: $height solid transparent;
   }
-  &.color-0 {
-    @include themify {
-      border-bottom: $half-height solid $primary;
-      &:after {
-        border-top: $half-height solid $primary;
-      }
-    }
-  }
-  &.color-1 {
-    @include themify {
-      border-bottom: $half-height solid $accent;
-      &:after {
-        border-top: $half-height solid $accent;
-      }
-    }
-  }
-  &.color-2 {
-    @include themify {
-      border-bottom: $half-height solid $highlight;
-      &:after {
-        border-top: $half-height solid $highlight;
-      }
-    }
-  }
-  &.shading-2 {
-    .inner {
-      @include small-diamond($half-width, $half-height);
-      @include themify {
-        border-bottom: $half-height - 4px solid $card-bg;
-        &:after {
-          border-top: $half-height - 4px solid $card-bg;
-        }
-      }
-    }
-  }
-  &.shading-1 {
-    .inner {
-      @include small-diamond($half-width, $half-height);
-      @include themify {
-        border-bottom: $half-height - 4px solid $card-bg;
-      }
-      &:after {
-        border-top: $half-height - 4px solid transparent;
-      }
-    }
-  }
+  @include diamond-color-helper($height, $width, true);
 }
+
+@mixin diamond($double-width, $double-height) {
+  $width: $double-width/2;
+  $height: $double-height/2;
+  width: 0;
+  height: 0;
+  border: $width solid transparent;
+  position: relative;
+  top: -$double-height/2;
+  &:after {
+    content: "";
+    position: absolute;
+    left: -$width;
+    top: $height;
+    width: 0;
+    height: 0;
+    border: $width solid transparent;
+  }
+  @include diamond-color-helper($width, $height);
+}
+
 // used to create smaller triangle on top of larger triangle for shading-2 where only the border is colored
 @mixin small-diamond($half-width, $half-height) {
   z-index: 10;
@@ -128,84 +168,128 @@
   }
 }
 
-@mixin oval($width, $height) {
-  width: $width;
-  height: $height;
-  border-radius: 50%/30%;
+// used to create shading on rotated diamonds
+@mixin rotate-small-diamond($half-width, $half-height) {
+  z-index: 10;
+  width: 0;
+  height: 0;
+  position: relative;
+  border: $half-height - 2px solid transparent;
+  top: -$half-height + 2px;
+  left: -$half-width;
+  &:after {
+    content: "";
+    z-index: 11;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: $half-height - 2px solid transparent;
+    right: $half-width - 4px;
+    top: -($half-height - 2px);
+  }
+}
+// arguments are for border names. For rotated diamond, values should be $name-1=left, $name-2=right
+@mixin diamond-color-helper($width, $height, $rotate: false) {
+  $name-1: bottom;
+  $name-2: top;
+  $mixin-name: small-diamond;
+  @if $rotate {
+    $name-1: left;
+    $name-2: right;
+    $mixin-name: rotate-small-diamond;
+  }
+
   &.color-0 {
     @include themify {
-      border: 2px solid $primary;
-      background: $primary;
-    }
-    &.shading-1 {
-      @include themify {
-        background-image: linear-gradient(0deg, $primary 50%, $card-bg 50%);
+      border-#{$name-1}: $height solid $primary;
+      &:after {
+        border-#{$name-2}: $height solid $primary;
       }
     }
   }
   &.color-1 {
     @include themify {
-      border: 2px solid $accent;
-      background: $accent;
-    }
-    &.shading-1 {
-      @include themify {
-        background-image: linear-gradient(0deg, $accent 50%, $card-bg 50%);
+      border-#{$name-1}: $height solid $accent;
+      &:after {
+        border-#{$name-2}: $height solid $accent;
       }
     }
   }
   &.color-2 {
     @include themify {
-      border: 2px solid $highlight;
-      background: $highlight;
-    }
-    &.shading-1 {
-      @include themify {
-        background-image: linear-gradient(0deg, $highlight 50%, $card-bg 50%);
+      border-#{$name-1}: $height solid $highlight;
+      &:after {
+        border-#{$name-2}: $height solid $highlight;
       }
     }
   }
   &.shading-2 {
-    @include themify {
-      background: $card-bg;
+    .inner {
+      @if not $rotate {
+        @include small-diamond($width, $height);
+      } @else {
+        @include rotate-small-diamond($height, $width);
+      }
+      @include themify {
+        border-#{$name-1}: $height - 4px solid $card-bg;
+        &:after {
+          border-#{$name-2}: $height - 4px solid $card-bg;
+        }
+      }
+    }
+  }
+  &.shading-1 {
+    .inner {
+      @if not $rotate {
+        @include small-diamond($width, $height);
+      } @else {
+        @include rotate-small-diamond($height, $width);
+      }
+      @include themify {
+        border-#{$name-1}: $height - 4px solid $card-bg;
+      }
+      &:after {
+        border-#{$name-2}: $height - 4px solid transparent;
+      }
     }
   }
 }
 
-@mixin another-shape($width, $height) {
-  width: $width;
-  height: $height;
-  border-radius: 0 90%;
+@mixin color-helper($bg-degs) {
   &.color-0 {
     @include themify {
-      background: $primary;
       border: 2px solid $primary;
+      background: $primary;
     }
     &.shading-1 {
       @include themify {
-        background-image: linear-gradient(0deg, $primary 50%, $card-bg 50%);
+        background-image: linear-gradient($bg-degs, $primary 50%, $card-bg 50%);
       }
     }
   }
   &.color-1 {
     @include themify {
-      background: $accent;
       border: 2px solid $accent;
+      background: $accent;
     }
     &.shading-1 {
       @include themify {
-        background-image: linear-gradient(0deg, $accent 50%, $card-bg 50%);
+        background-image: linear-gradient($bg-degs, $accent 50%, $card-bg 50%);
       }
     }
   }
   &.color-2 {
     @include themify {
-      background: $highlight;
       border: 2px solid $highlight;
+      background: $highlight;
     }
     &.shading-1 {
       @include themify {
-        background-image: linear-gradient(0deg, $highlight 50%, $card-bg 50%);
+        background-image: linear-gradient(
+          $bg-degs,
+          $highlight 50%,
+          $card-bg 50%
+        );
       }
     }
   }

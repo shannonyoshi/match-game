@@ -16,6 +16,7 @@ function App() {
   const [isStarted, setIsStarted] = useState<boolean>(false)
   const [theme, setTheme] = useState<ThemeOpts>("default")
 
+  const allThemes:ThemeOpts[] = ["default", "dark", "mono", "mono-dark"]
 
   // creates 81 cards for the deck
   useEffect(() => {
@@ -63,7 +64,11 @@ function App() {
           <h1>Match Game</h1>
 
         </header>
-        <h2>Games Played: {gameCount}</h2>
+          <div className="theme-setter">
+            <p className="title">Themes:</p>
+            {allThemes.map(themeName=><button className={`theme-btn ${themeName===theme?"selected": ""}`} onClick={()=>setTheme(themeName)}>{themeName.charAt(0).toUpperCase() + themeName.slice(1)}</button>)}
+          </div>
+        <h2>Games Won: {gameCount}</h2>
         {isStarted ?
           <Game deck={fullDeck} endGame={endGame} /> :
           <button onClick={() => setIsStarted(true)}>Start Game</button>

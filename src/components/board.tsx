@@ -37,12 +37,14 @@ const Board = ({ onBoard, selected, setSelected, setError, extendBoard }: BoardP
         setSelected([...selected, cardId])
     }
   }
+  let extended:boolean = onBoard.length>12?true:false
+  let twice:boolean = onBoard.length>15? true:false
 
   return (
     <div className="board-wrapper">
-      <div className="card-container">
+      <div className={`card-container ${extended? twice? "extended-twice":"extended": ""}`}>
       {onBoard.map(card => card===null?"":
-      <button className={`card-btn ${selected.includes(card.id) ? "selected" : ""}`} onClick={() => toggleSelect(card.id)} key={`cardId-${card.id}`}><Card card={card} /></button>)}
+      <button className={`card-btn ${selected.includes(card.id) ? "selected" : ""} ${extended? twice? "extended-twice":"extended": ""}`} onClick={() => toggleSelect(card.id)} key={`cardId-${card.id}`}><Card card={card} rotate={extended} shrink={twice}/></button>)}
       </div>
       <button onClick={extendBoard}>Add 3 cards</button>
       <div className="card-container">

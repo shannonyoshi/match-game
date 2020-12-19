@@ -7,16 +7,44 @@
     background-color: $background;
   }
 
-  // button{
-  //   @include button
-  // }
   .header {
-    border: 1px solid green;
     height: 100px;
     @include themify {
-      background-color: $primary;
-      color: $background;
+      background:linear-gradient($primary-dark, $primary);
+      color: $highlight-light;
+      
+     
       @include heading;
+    }
+  }
+  .theme-setter{
+    padding:.25em;
+    font-size:1em;
+    display:flex;
+    align-items:flex-end;
+    justify-content: center;
+    .title{
+      border:1px solid transparent;
+      padding-right:.5em;
+    }
+    @include themify{
+      border-bottom: 1px solid $highlight;
+      background-color:$highlight-light;
+      background:linear-gradient( $background, $highlight-light );
+      color:$primary;
+    }
+    .theme-btn{
+      border:1px solid transparent;
+      font-size:inherit;
+      color:inherit;
+      background:transparent;
+      outline:none;
+      border:none;
+    }
+    .selected {
+      @include themify {
+        border:1px solid $primary
+      }
     }
   }
 }

@@ -1,27 +1,53 @@
 @import "themes.scss";
 @import "variables&mixins.scss";
 
-.card-btn{
-  border:none;
-  outline:none;
-  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
-  border-radius:10px;
-  padding:38px;
-  // min-
-
-}
-// card shading:
-// shading-0: solid
-// shading-1:1/2 color
-// shading-1:border only
-.selected{
-  @include themify{
-    // box-shadow: inset 0px 0px 15px $contrast;
-    border:2px solid $contrast;
-
+.card-btn {
+  border: none;
+  outline: none;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 2em;
+  border: 2px solid transparent;
+  &.selected {
+    @include themify {
+      border: 2px solid $contrast;
+    }
   }
-}
+  @include themify {
+    background-color: $card-bg;
+  }
 
-.card-wrapper{
-  @include large-card;
+  .card-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:auto;
+    &.no-rotate {
+      @include xxl-card;
+      @media (max-width: 1500px) {
+        @include large-card;
+      }
+      @media (max-width: 1000px) {
+        @include medium-card;
+      }
+      @media (max-width: 800px) {
+        @include small-card;
+      }
+      @media (max-width: 600px) {
+        @include tiny-card;
+      }
+    }
+    &.rotate {
+      @include large-card(true);
+      @media (max-width: 1500px) {
+        @include medium-card(true);
+      }
+      @media (max-width: 1000px) {
+        @include small-card(true);
+      }
+      @media (max-width: 800px) {
+        @include tiny-card(true);
+      }
+    }
+  }
 }

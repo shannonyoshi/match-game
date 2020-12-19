@@ -5,17 +5,22 @@ import { CardInter } from "../types"
 import "../styling/card.scss"
 
 type cardProps = {
-  card: CardInter
+  card: CardInter,
+  rotate?: boolean,
+  shrink?: boolean
 }
 
-const Card = ({ card }: cardProps) => {
+const Card = ({ card, rotate=false, shrink=false }: cardProps) => {
   const classString = `shape-${card.shape} shading-${card.shading} color-${card.color}`
 
   return (
-    <div className="card-wrapper">
-      <div className={`item1 ${classString}`}><div className="inner"></div></div>
-      {card.count > 0 ? <div className={`item2 ${classString}`}><div className="inner"></div></div> : ""}
-      {card.count > 1 ? <div className={`item3 ${classString}`}><div className="inner"></div></div> : ""}
+    <div className={`card-wrapper ${rotate ? "rotate" : "no-rotate"} ${shrink ? "shrink" : ""}`}>
+      <div className={`shape-wrapper`} >
+
+        <div className={`${classString}`}><div className={`inner ${rotate ? "rotate" : "regular"}`}></div></div>
+        {card.count > 0 ? <div className={`${classString}`}><div className={`inner ${rotate ? "rotate" : "regular"}`}></div></div> : ""}
+        {card.count > 1 ? <div className={`${classString}`}><div className={`inner ${rotate ? "rotate" : "regular"}`}></div></div> : ""}
+      </div>
     </div>
 
   )

@@ -1,0 +1,33 @@
+@import "themes.scss";
+@import "variables&mixins.scss";
+
+.matches {
+  // border: 1px solid orange;
+  display: flex;
+  flex-wrap:wrap;
+  padding: 5em;
+  .match {
+    // border: 1px solid yellow;
+    margin-top:5em;
+    min-height:150px;
+    // min-width:350px;  
+    // display: flex;
+    // justify-content: center;
+    .card-wrapper {
+      
+      padding:25px;
+      transform: rotate(90deg);
+      border-radius: 5px;
+      box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+      // border: 1px solid green;
+      height:100px;
+      width: 150px;
+
+      @include themify{
+        background-color:$card-bg;
+      }
+      @include small-card;
+      margin:5px;
+    }
+  }
+}
