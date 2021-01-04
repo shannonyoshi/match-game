@@ -111,11 +111,9 @@ const Game = ({ deck, endGame }: GameProps) => {
   // replaceMatch() updates the board after a match is found by adding new cards or moving cards into position 
   const replaceMatch = (): void => {
     console.log('replaceMatch()')
-    //  fist, check if there are cards that need to be repositioned
+    //  first, check if there are cards that need to be repositioned
     let cardIds: number[] | null = checkReposition()
-    let removeCount:number = cardIds? cardIds.length: 0
-    // let removeCards: boolean = true
-    // console.log('cardIds', cardIds)
+    let removeCount: number = cardIds ? cardIds.length : 0
     // if there are no cardIds, it means cards need to be drawn
     if (cardIds === null) {
       cardIds = draw(3)
@@ -132,7 +130,7 @@ const Game = ({ deck, endGame }: GameProps) => {
         newOnBoard.push(onBoard[i])
       }
     }
-    if (removeCount>0) {
+    if (removeCount > 0) {
       newOnBoard.splice(-removeCount, removeCount)
     }
     setOnBoard([...newOnBoard])
@@ -142,15 +140,20 @@ const Game = ({ deck, endGame }: GameProps) => {
     // TODO: uncomment below line after debugging
     // let allowAdd = checkMatchesOnBoard()
     let allowAdd = true
-    // console.log('allowAdd', allowAdd)
+
     if (allowAdd) {
-
-      let cardIds = draw(3)
-      let newCards = cardIds.map(id => deck[id - 1])
-      // let fromOnBoard: (CardInter | null)[] = onBoard
-      // let newOnBoard = fromOnBoard.concat(newCards)
-      setOnBoard([...onBoard, ...newCards])
-
+      let cardIds: number[] = draw(3)
+      let newCards: CardInter[] = cardIds.map(id => deck[id - 1])
+      let newRowLength: number = (onBoard.length / 3) + 1
+      let newOnBoard = onBoard
+      for (let i = 0; i < newCards.length; i++) {
+        let addAtIndex: number =  (newRowLength * (i+1)) - 1
+        console.log('addAtIndex', addAtIndex)
+        newOnBoard.splice(addAtIndex, 0, newCards[i])
+        console.log('newOnBoard', newOnBoard)
+      }
+      // console.log('newOnBoard after extension', newOnBoard)
+      setOnBoard([...newOnBoard])
     } else {
       setError("You can't add more cards, there is a match on the board")
     }
@@ -202,10 +205,12 @@ const Game = ({ deck, endGame }: GameProps) => {
     }
     return true
   }
+  console.log('onBoard', onBoard)
 
   return (
     <div>
       <p>Used: {used.length}/81</p>
+      {error.length > 0 ? <p>Error: {error}</p> : ""}
       <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setError={setError} />
       <Matches matches={matches} />
     </div>
