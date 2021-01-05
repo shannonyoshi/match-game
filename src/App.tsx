@@ -5,8 +5,6 @@ import "./styling/app.scss"
 
 import Game from "./components/game"
 
-import Card from "./components/card"
-
 function App() {
   // gameCount=# games played this session
   const [gameCount, setGameCount] = useState<number>(0)
@@ -48,7 +46,7 @@ function App() {
     makeCards()
   }, []);
 
-  const endGame = (win?: boolean) => {
+  const endGame = (win: boolean) => {
     if (win) {
       setWinCount(winCount + 1)
     }
@@ -68,7 +66,7 @@ function App() {
             <p className="title">Themes:</p>
             {allThemes.map(themeName=><button className={`theme-btn ${themeName===theme?"selected": ""}`} onClick={()=>setTheme(themeName)}>{themeName.charAt(0).toUpperCase() + themeName.slice(1)}</button>)}
           </div>
-        <h2>Games Won: {gameCount}</h2>
+        <h2>Games Won: {winCount}/{gameCount}</h2>
         {isStarted ?
           <Game deck={fullDeck} endGame={endGame} /> :
           <button onClick={() => setIsStarted(true)}>Start Game</button>

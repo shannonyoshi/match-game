@@ -21,3 +21,7 @@
   }
   grid-gap: 1em;
 }
+
+.add-cards,.end-game{
+  @include action-button;
+}

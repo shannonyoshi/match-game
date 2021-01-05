@@ -17,8 +17,8 @@ const Matches = ({ matches }: MatchesProps) => {
       <div className="matches-container">
         <h1>Matches Found:</h1>
     <div className="matches">
-      {matches.map(match => <div className="match">
-        {match.map(card => <Card card={card}/>)}
+      {matches.map((match,index) => <div className="match" id={`match-${index}`}>
+        {match.map(card => <div className="match-card-container"><Card card={card} /></div>)}
       </div>)}
     </div>
 

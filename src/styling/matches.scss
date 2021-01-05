@@ -2,32 +2,45 @@
 @import "variables&mixins.scss";
 
 .matches {
-  // border: 1px solid orange;
+  border: 1px solid orange;
   display: flex;
+  align-items: center;
+  margin: auto;
   flex-wrap:wrap;
-  padding: 5em;
+  padding: 1em;
   .match {
     // border: 1px solid yellow;
-    margin-top:5em;
-    min-height:150px;
-    // min-width:350px;  
+    padding:10px 5px;
+    // margin-top:5em;
+    // min-height:150px;
+    // min-width:350px;
     // display: flex;
     // justify-content: center;
-    .card-wrapper {
-      
-      padding:25px;
-      transform: rotate(90deg);
+    .match-card-container {
+      margin:5px;
+      width: auto;
       border-radius: 5px;
       box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
-      // border: 1px solid green;
-      height:100px;
-      width: 150px;
+      // border: 1px solid red;
 
-      @include themify{
-        background-color:$card-bg;
+      padding: 1em;
+      @include themify {
+        background-color: $card-bg;
       }
-      @include small-card;
-      margin:5px;
+      .card-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        // border: 1px solid green;
+        // height:100px;
+
+        // @include themify {
+        //   background-color: $card-bg;
+        // }
+        @include tiny-card($rotate: true);
+        // margin:5px;
+      }
     }
   }
 }

@@ -32,6 +32,10 @@
   @include card($margin: 1px, $height: 30px, $rotate: $rotate);
 }
 
+@mixin action-button{
+  font-size:2em;
+}
+
 //$margin= around each shape, $height = long side of shape in px, $width refers to short side
 @mixin card($margin, $height, $rotate) {
   $width: $height/2;
