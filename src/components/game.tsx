@@ -29,7 +29,7 @@ const Game = ({ deck, endGame }: GameProps) => {
   //matches=matches found by user and validated, updated by useEffect below
   const [matches, setMatches] = useState<Match[]>([]);
   // onBoard handles position of cards on board, updated by replaceMatch(), extendBoard()
-  const [onBoard, setOnBoard] = useState<(CardInter | null)[]>(Array(12).fill(null))
+  const [onBoard, setOnBoard] = useState<(CardInter | null)[]>([])
   // updated by replaceMatch() & onClick for Card in board.tsx
   const [selected, setSelected] = useState<number[]>([])
   const [error, setError] = useState<string>("")
@@ -94,65 +94,94 @@ const Game = ({ deck, endGame }: GameProps) => {
       return null
     }
     let extendedCardIds: number[] = []
+    let rowLength = onBoard.length / 3
     console.log('onBoard', onBoard)
-    let i: number = onBoard.length - 1
-    while (onBoard[11]!.id !== onBoard[i]!.id && extendedCardIds.length <= 3) {
-      let curr = onBoard[i]
-      console.log('i, curr', i, curr)
-      if (curr !== null && !selected.includes(onBoard[i]!.id)) {
-        extendedCardIds.push(onBoard[i]!.id)
-        console.log('added Id to extendedCardIds', extendedCardIds)
+    // i = current row
+    for (let i = 0; i < 3; i++) {
+      let rowEndIndex: number = (i + 1) * rowLength - 1
+      let rowEndCard: CardInter | null = onBoard[rowEndIndex]
+      if (rowEndCard != null && !selected.includes(rowEndCard.id)) {
+        extendedCardIds.push(rowEndCard.id)
       }
-      i -= 1
     }
-    console.log('after while loop extendedCardIds', extendedCardIds)
     return extendedCardIds.length > 0 ? extendedCardIds : null;
   }
   // replaceMatch() updates the board after a match is found by adding new cards or moving cards into position 
   const replaceMatch = (): void => {
-    console.log('replaceMatch()')
-    //  first, check if there are cards that need to be repositioned
-    let cardIds: number[] | null = checkReposition()
-    let removeCount: number = cardIds ? cardIds.length : 0
-    // if there are no cardIds, it means cards need to be drawn
-    if (cardIds === null) {
-      cardIds = draw(3)
-    }
-    let newOnBoard: (CardInter | null)[] = []
-    for (let i = 0; i < onBoard.length; i++) {
-      // if item should be replaced
-      if (selected.includes(onBoard[i]!.id)) {
-        let newId = cardIds.pop()
-        if (newId !== undefined) {
-          newOnBoard.push(deck[newId - 1])
+    let newOnBoard:(CardInter|null)[] = []
+    if (onBoard.length>12) {
+      newOnBoard = removeExtension()
+    } else {
+      // when new cards are added
+      const newCardIds:number[] = draw(3)
+      for (let i=0; i< onBoard.length; i++) {
+        let curr = onBoard[i]
+        if (curr && selected.includes(curr.id)) {
+          const newCardId = newCardIds.pop()
+          if (newCardId==undefined) {
+            newOnBoard.push(null)
+          }else {
+            const newCard = deck[newCardId-1]
+            newOnBoard.push(newCard)
+          }
+        } else {
+          newOnBoard.push(curr)
         }
-      } else {
-        newOnBoard.push(onBoard[i])
       }
-    }
-    if (removeCount > 0) {
-      newOnBoard.splice(-removeCount, removeCount)
     }
     setOnBoard([...newOnBoard])
     setSelected([])
   }
+  // removeExtension() maintains position of cards on main board while replacing match with cards from extension
+  const removeExtension = (): (CardInter|null)[] => {
+    console.log('removeExtension()' )
+    console.log('selected', selected)
+    console.log('onBoard', onBoard)
+    const rowLength: number = onBoard.length / 3
+    const newOnBoard: (CardInter | null)[] = []
+    // cards from last column that are not selected--use to replace selected cards
+    //  FIX REPLACEMENT CARD FILTER FUNCTION
+    
+    const replacementCards: (CardInter | null)[] = onBoard.filter((card, index) => card && (index + 1 % rowLength === 0) && !selected.includes(card.id))
+    console.log('replacementCards', replacementCards)
+    for (let i = 0; i < onBoard.length; i++) {
+      // if i is for last card in the row, skip (removing this row)
+      if ((i + 1) % rowLength === 0) {
+        console.log('skip this i:', i)
+        continue
+      }
+      const curr = onBoard[i]
+      if (selected.includes(curr!.id)) {
+        console.log('selected includes curr.id:', curr!.id)
+        const replacement = replacementCards.pop()
+        console.log('replace with replacement: ', replacement)
+        // .pop() should not be called on an empty replacement array, but added just in case
+        if (replacement != undefined) {
+          console.log('replacement is not undefined')
+          newOnBoard.push(replacement)
+        }
+      } else {
+        console.log('selected does not include the current card: ', curr)
+        newOnBoard.push(curr)
+      }
+    }
+    return newOnBoard
+  }
+
   const extendBoard = (): void => {
-    // TODO: uncomment below line after debugging
+    // TODO: uncomment below line after debugging board extension
     // let allowAdd = checkMatchesOnBoard()
     let allowAdd = true
 
     if (allowAdd) {
-      let cardIds: number[] = draw(3)
-      let newCards: CardInter[] = cardIds.map(id => deck[id - 1])
-      let newRowLength: number = (onBoard.length / 3) + 1
-      let newOnBoard = onBoard
+      const cardIds: number[] = draw(3)
+      const newCards: CardInter[] = cardIds.map(id => deck[id - 1])
+      const newRowLength: number = (onBoard.length / 3) + 1
+      const newOnBoard = onBoard
       for (let i = 0; i < newCards.length; i++) {
-        let addAtIndex: number =  (newRowLength * (i+1)) - 1
-        console.log('addAtIndex', addAtIndex)
+        let addAtIndex: number = (newRowLength * (i + 1)) - 1
         newOnBoard.splice(addAtIndex, 0, newCards[i])
-        console.log('newOnBoard', newOnBoard)
       }
-      // console.log('newOnBoard after extension', newOnBoard)
       setOnBoard([...newOnBoard])
     } else {
       setError("You can't add more cards, there is a match on the board")
