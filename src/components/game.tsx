@@ -142,7 +142,7 @@ const Game = ({ deck, endGame }: GameProps) => {
     // cards from last column that are not selected--use to replace selected cards
     //  FIX REPLACEMENT CARD FILTER FUNCTION
     
-    const replacementCards: (CardInter | null)[] = onBoard.filter((card, index) => card && (index + 1 % rowLength === 0) && !selected.includes(card.id))
+    const replacementCards: (CardInter | null)[] = onBoard.filter((card, index) => (index + 1) % rowLength === 0 && card && !selected.includes(card.id))
     console.log('replacementCards', replacementCards)
     for (let i = 0; i < onBoard.length; i++) {
       // if i is for last card in the row, skip (removing this row)
