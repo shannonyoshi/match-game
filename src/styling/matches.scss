@@ -8,6 +8,8 @@
   margin: auto;
   flex-wrap:wrap;
   padding: 1em;
+  // padding bottom to account for footer
+  padding-bottom:150px;
   .match {
     // border: 1px solid yellow;
     padding:10px 5px;

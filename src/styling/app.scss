@@ -2,7 +2,8 @@
 @import "variables&mixins.scss";
 
 .app-container {
-  height: 100%;
+  min-height: 100vh;
+  position:relative;
   @include themify {
     background-color: $background;
   }
@@ -45,6 +46,36 @@
       @include themify {
         border:1px solid $primary
       }
+    }
+  }
+  .info-wrapper{
+    display:flex;
+    .game-stats {
+      font-size:1.25em;
+      padding:1em;
+      @include themify {
+        color: $primary;
+      }
+      .label{
+        font-weight:bold;
+  
+      }
+    }
+  }
+  .not-started{
+    height:85%;
+    button{
+      @include action-button;
+    }
+  }
+  footer{
+    height:150px;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    @include themify {
+      background:linear-gradient($primary-dark, $primary);
+      color: $highlight-light;
     }
   }
 }

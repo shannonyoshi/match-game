@@ -7,12 +7,14 @@ import { CardInter, Match } from "../types";
 
 type GameProps = {
   deck: CardInter[],
+  gameCount: number,
+  winCount: number,
   endGame: (win: boolean) => void,
 
 }
 /* 
 TODO: 
- - create component for showing error messages and game info--cards left/# of wins, etc. 
+ - create component for showing message messages and game info--cards left/# of wins, etc. 
  - create win screen
  - style add card button
  - fix styling for match component
@@ -23,7 +25,7 @@ TODO:
 */
 
 
-const Game = ({ deck, endGame }: GameProps) => {
+const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
   //used = array of ids of cards already played, updated by draw()
   const [used, setUsed] = useState<number[]>([]);
   //matches=matches found by user and validated, updated by useEffect below
@@ -32,7 +34,7 @@ const Game = ({ deck, endGame }: GameProps) => {
   const [onBoard, setOnBoard] = useState<(CardInter | null)[]>([])
   // updated by replaceMatch() & onClick for Card in board.tsx
   const [selected, setSelected] = useState<number[]>([])
-  const [error, setError] = useState<string>("")
+  const [message, setMessage] = useState<string>("")
 
   //initial board setup.
   useEffect(() => {
@@ -41,17 +43,17 @@ const Game = ({ deck, endGame }: GameProps) => {
     setOnBoard([...newCards])
   }, [])
   // this useEffect checks for matches once there are 3 cards selected by user
-  // also removes error once selection has been updated by user. 
+  // also removes message once selection has been updated by user. 
   useEffect(() => {
     console.log('second useEffect start')
     if (selected.length === 3) {
       if (validateMatch(selected)) {
         setMatches([...matches, [deck[selected[0] - 1], deck[selected[1] - 1], deck[selected[2] - 1]]])
-        setError("")
+        setMessage("")
         replaceMatch()
       }
       else {
-        setError("That's not a match!")
+        setMessage("That's not a match!")
       }
     }
   }, [selected])
@@ -90,7 +92,7 @@ const Game = ({ deck, endGame }: GameProps) => {
   const singlePropCheck = (val1: number, val2: number, val3: number): boolean => {
     return ((val1 === val2 && val3 === val1) || (val1 !== val2 && val2 !== val3 && val3 !== val1)) ? true : false
   }
-  
+
   // replaceMatch() updates the board after a match is found by adding new cards or moving cards into position 
   const replaceMatch = (): void => {
     let newOnBoard: (CardInter | null)[] = []
@@ -162,7 +164,7 @@ const Game = ({ deck, endGame }: GameProps) => {
       }
       setOnBoard([...newOnBoard])
     } else {
-      setError("You can't add more cards, there is a match on the board")
+      setMessage("You can't add more cards, there is a match on the board")
     }
   }
 
@@ -216,9 +218,13 @@ const Game = ({ deck, endGame }: GameProps) => {
 
   return (
     <div>
-      <p>Used: {used.length}/81</p>
-      {error.length > 0 ? <p>Error: {error}</p> : ""}
-      <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setError={setError} />
+      <div className="info-wrapper">
+        <h2 className="game-stats"><span className="label">Games Won:</span> {winCount}/{gameCount}</h2>
+        <p className="game-stats"><span className="label">Cards Used:</span> {used.length}/81</p>
+        {message.length > 0 ? <p className="message">{message}</p> : ""}
+
+      </div>
+      <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} />
       <button onClick={extendBoard} className="add-cards">Add 3 cards</button>
       <button className="end-game" onClick={resetGame}>End Game</button>
       <Matches matches={matches} />

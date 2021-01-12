@@ -66,12 +66,16 @@ function App() {
             <p className="title">Themes:</p>
             {allThemes.map(themeName=><button className={`theme-btn ${themeName===theme?"selected": ""}`} onClick={()=>setTheme(themeName)}>{themeName.charAt(0).toUpperCase() + themeName.slice(1)}</button>)}
           </div>
-        <h2>Games Won: {winCount}/{gameCount}</h2>
+        
         {isStarted ?
-          <Game deck={fullDeck} endGame={endGame} /> :
-          <button onClick={() => setIsStarted(true)}>Start Game</button>
+          <Game deck={fullDeck} gameCount={gameCount} winCount={winCount}endGame={endGame} /> :
+          <div className="not-started">
+            <button onClick={() => setIsStarted(true)} className="start-button">Start Game</button>
+          </div>
         }
-
+      <footer>
+        <h1>footer</h1>
+      </footer>
       </div>
     </div>
   );

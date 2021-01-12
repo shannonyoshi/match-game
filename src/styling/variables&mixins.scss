@@ -33,7 +33,13 @@
 }
 
 @mixin action-button{
+  border:none;
+  outline:none;
+  
   font-size:2em;
+  @include themify {
+    color:$primary
+  }
 }
 
 //$margin= around each shape, $height = long side of shape in px, $width refers to short side

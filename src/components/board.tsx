@@ -10,11 +10,11 @@ type BoardProps = {
   onBoard: (CardInter|null)[],
   selected: number[],
   setSelected: Dispatch<SetStateAction<number[]>>,
-  setError: Dispatch<SetStateAction<string>>,
+  setMessage: Dispatch<SetStateAction<string>>,
   extendBoard:()=>void
 
 }
-const Board = ({ onBoard, selected, setSelected, setError, extendBoard }: BoardProps) => {
+const Board = ({ onBoard, selected, setSelected, setMessage, extendBoard }: BoardProps) => {
 
   const toggleSelect = (cardId: number) :void=> {
     const isSelected = selected.includes(cardId)
@@ -31,7 +31,7 @@ const Board = ({ onBoard, selected, setSelected, setError, extendBoard }: BoardP
         break;
       case false:
         if (selected.length===3){
-          setError("cannot select more than three cards")
+          setMessage("cannot select more than three cards")
           return
         }
         setSelected([...selected, cardId])
