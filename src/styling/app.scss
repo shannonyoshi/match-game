@@ -3,7 +3,7 @@
 
 .app-container {
   min-height: 100vh;
-  position:relative;
+  position: relative;
   @include themify {
     background-color: $background;
   }
@@ -11,70 +11,81 @@
   .header {
     height: 100px;
     @include themify {
-      background:linear-gradient($primary-dark, $primary);
+      background: linear-gradient($primary-dark, $primary);
       color: $highlight-light;
-      
-     
+
       @include heading;
     }
   }
-  .theme-setter{
-    padding:.25em;
-    font-size:1em;
-    display:flex;
-    align-items:flex-end;
+  .theme-setter {
+    padding: 0.25em;
+    font-size: 1em;
+    display: flex;
+    align-items: flex-end;
     justify-content: center;
-    .title{
-      border:1px solid transparent;
-      padding-right:.5em;
+    .title {
+      border: 1px solid transparent;
+      padding-right: 0.5em;
     }
-    @include themify{
+    @include themify {
       border-bottom: 1px solid $highlight;
-      background-color:$highlight-light;
-      background:linear-gradient( $background, $highlight-light );
-      color:$primary;
+      background-color: $highlight-light;
+      background: linear-gradient($background, $highlight-light);
+      color: $primary;
     }
-    .theme-btn{
-      border:1px solid transparent;
-      font-size:inherit;
-      color:inherit;
-      background:transparent;
-      outline:none;
-      border:none;
+    .theme-btn {
+      border: 1px solid transparent;
+      font-size: inherit;
+      color: inherit;
+      background: transparent;
+      outline: none;
+      border: none;
     }
     .selected {
       @include themify {
-        border:1px solid $primary
+        border: 1px solid $primary;
       }
     }
   }
-  .info-wrapper{
-    display:flex;
+  .info-wrapper {
+    display: flex;
+    align-items: center;
+    @media(max-width:500px){
+      flex-direction:column;
+    }
     .game-stats {
-      font-size:1.25em;
-      padding:1em;
+      font-size: 1.25em;
+      padding: 1em;
       @include themify {
         color: $primary;
       }
-      .label{
-        font-weight:bold;
-  
+      @media(max-width:1024px){
+        font-size:1em;
       }
+      @media(max-width:500px){
+        padding:.1em;;
+      }
+      .label {
+        font-weight: bold;
+        white-space:nowrap;
+      }
+
+
     }
   }
-  .not-started{
-    height:85%;
-    button{
+  .not-started {
+    height: 85%;
+    button {
       @include action-button;
     }
   }
-  footer{
-    height:150px;
-    position:absolute;
-    bottom:0;
-    width:100%;
+  footer {
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     @include themify {
-      background:linear-gradient($primary-dark, $primary);
+      background: linear-gradient($primary-dark, $primary);
       color: $highlight-light;
     }
   }

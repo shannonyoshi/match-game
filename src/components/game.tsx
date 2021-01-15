@@ -45,7 +45,9 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
   // this useEffect checks for matches once there are 3 cards selected by user
   // also removes message once selection has been updated by user. 
   useEffect(() => {
-    console.log('second useEffect start')
+    // resets message when user changes selection
+    setMessage("")
+
     if (selected.length === 3) {
       if (validateMatch(selected)) {
         setMatches([...matches, [deck[selected[0] - 1], deck[selected[1] - 1], deck[selected[2] - 1]]])
@@ -149,9 +151,7 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
   }
 
   const extendBoard = (): void => {
-    // TODO: uncomment below line after debugging board extension
-    // let allowAdd = checkMatchesOnBoard()
-    let allowAdd = true
+    let allowAdd = checkMatchesOnBoard()
 
     if (allowAdd) {
       const cardIds: number[] = draw(3)
@@ -164,7 +164,7 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
       }
       setOnBoard([...newOnBoard])
     } else {
-      setMessage("You can't add more cards, there is a match on the board")
+      setMessage("You can't add cards while there is still a match on the board!")
     }
   }
 
@@ -225,8 +225,10 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
 
       </div>
       <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} />
-      <button onClick={extendBoard} className="add-cards">Add 3 cards</button>
-      <button className="end-game" onClick={resetGame}>End Game</button>
+      <div className="action-buttons">
+        <button onClick={extendBoard} className="add-cards">Add 3 cards</button>
+        <button className="end-game" onClick={resetGame}>End Game</button>
+      </div>
       <Matches matches={matches} />
     </div>
   )

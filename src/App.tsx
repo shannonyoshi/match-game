@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { CardInter, ThemeOpts } from "./types";
 
 import "./styling/app.scss"
+import "./styling/card.scss"
 
 import Game from "./components/game"
+import Card from "./components/card"
 
 function App() {
   // gameCount=# games played this session
@@ -46,6 +48,10 @@ function App() {
     makeCards()
   }, []);
 
+  useEffect(()=> {
+console.log('fullDeck changed')
+  },[fullDeck])
+
   const endGame = (win: boolean) => {
     if (win) {
       setWinCount(winCount + 1)
@@ -71,6 +77,7 @@ function App() {
           <Game deck={fullDeck} gameCount={gameCount} winCount={winCount}endGame={endGame} /> :
           <div className="not-started">
             <button onClick={() => setIsStarted(true)} className="start-button">Start Game</button>
+            {fullDeck.map(card=> <Card card={card}/>)}
           </div>
         }
       <footer>

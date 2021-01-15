@@ -31,7 +31,7 @@ const Board = ({ onBoard, selected, setSelected, setMessage, extendBoard }: Boar
         break;
       case false:
         if (selected.length===3){
-          setMessage("cannot select more than three cards")
+          setMessage("You can only select three cards at a time")
           return
         }
         setSelected([...selected, cardId])
@@ -45,8 +45,6 @@ const Board = ({ onBoard, selected, setSelected, setMessage, extendBoard }: Boar
       <div className={`card-container ${extended? twice? "extended-twice":"extended": ""}`}>
       {onBoard.map(card => card===null?"":
       <button className={`card-btn ${selected.includes(card.id) ? "selected" : ""} ${extended? twice? "extended-twice":"extended": ""}`} onClick={() => toggleSelect(card.id)} key={`cardId-${card.id}`}><Card card={card} rotate={extended} shrink={twice}/></button>)}
-      </div>
-      <div className="card-container">
       </div>
     </div>
   )

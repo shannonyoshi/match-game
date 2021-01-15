@@ -5,8 +5,8 @@
   overflow:hidden;
   padding: 1em;
   display: inline-grid;
-  margin: auto ;
-  max-width:90vw;
+  // margin: 0 auto ;
+  max-width:100vw;
   grid-template-columns: repeat(4,1fr);
   grid-auto-rows: 1fr;
   &.extended{
@@ -16,12 +16,46 @@
     grid-template-columns: repeat(6, min-content);
 
   }
-  @media (max-width: 600px) {
-    width: 95vw;
-  }
   grid-gap: 1em;
+  // @media(max-width:1024px){
+  //   grid-gap:.75em;
+  //   padding: .75em;
+  // }
+  @media(max-width:800px){
+    grid-gap:.5em;
+  }
+  @media(max-width:600px){
+    grid-gap:.5em;
+    padding: .5em; 
+  }
 }
 
-.add-cards,.end-game{
-  @include action-button;
+.board-wrapper{
+  width:100vw;
+  display:flex;
+  justify-content: center;
+}
+
+.action-buttons{
+  display:flex;
+  justify-content:center;
+  .add-cards,
+  .end-game {
+    @include action-button;
+  }
+}
+.message {
+  font-weight: bold;
+  font-size: 1.25em;
+  padding:1em;
+  @include themify {
+    color: $accent;
+  }
+  @media(max-width:1024px){
+    font-size:1em;
+  }
+  @media(max-width:500px){
+    padding:.1em;;
+  } 
+
 }
