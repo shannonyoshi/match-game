@@ -68,7 +68,7 @@ console.log('fullDeck changed')
           <h1>Match Game</h1>
 
         </header>
-          <div className="theme-setter">
+          <div className={`theme-setter ${theme.includes("dark")?"dark": "light"}`}>
             <p className="title">Themes:</p>
             {allThemes.map(themeName=><button className={`theme-btn ${themeName===theme?"selected": ""}`} onClick={()=>setTheme(themeName)}>{themeName.charAt(0).toUpperCase() + themeName.slice(1)}</button>)}
           </div>

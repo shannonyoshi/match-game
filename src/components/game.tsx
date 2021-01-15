@@ -221,7 +221,7 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
       <div className="info-wrapper">
         <h2 className="game-stats"><span className="label">Games Won:</span> {winCount}/{gameCount}</h2>
         <p className="game-stats"><span className="label">Cards Used:</span> {used.length}/81</p>
-        {message.length > 0 ? <p className="message">{message}</p> : ""}
+        {message.length > 0 ? <p className="message">{message}</p> : <div className="no-message"/>}
 
       </div>
       <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} />

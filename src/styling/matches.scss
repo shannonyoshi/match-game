@@ -1,15 +1,28 @@
 @import "themes.scss";
 @import "variables&mixins.scss";
 
+
+.matches-container{
+  // padding bottom to account for footer
+  padding-bottom:150px;
+
+}
+
+.matches-title{
+  font-weight:bold;
+  padding-top:1em;
+  padding-left:1em;
+  @include themify{
+    color:$primary;
+  }
+}
+
 .matches {
-  border: 1px solid orange;
   display: flex;
   align-items: center;
   margin: auto;
   flex-wrap:wrap;
   padding: 1em;
-  // padding bottom to account for footer
-  padding-bottom:150px;
   justify-content: space-evenly;
   .match {
     padding:10px 5px;

@@ -23,15 +23,26 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    &.light {
+      @include themify {
+        border-bottom: 1px solid $highlight;
+        background-color: $highlight-light;
+        background: linear-gradient($background, $highlight-light);
+        color: $primary;
+      }
+    }
+    &.dark {
+      border: 1px solid rex;
+      @include themify {
+        background: linear-gradient($highlight-light, $background);
+      }
+    }
     .title {
       border: 1px solid transparent;
       padding-right: 0.5em;
-    }
-    @include themify {
-      border-bottom: 1px solid $highlight;
-      background-color: $highlight-light;
-      background: linear-gradient($background, $highlight-light);
-      color: $primary;
+      @media (max-width: 400px) {
+        display: none;
+      }
     }
     .theme-btn {
       border: 1px solid transparent;
@@ -50,8 +61,10 @@
   .info-wrapper {
     display: flex;
     align-items: center;
-    @media(max-width:500px){
-      flex-direction:column;
+    @media (max-width: 500px) {
+      flex-direction: column;
+      padding: 1em;
+      min-height: 115px;
     }
     .game-stats {
       font-size: 1.25em;
@@ -59,18 +72,16 @@
       @include themify {
         color: $primary;
       }
-      @media(max-width:1024px){
-        font-size:1em;
+      @media (max-width: 1024px) {
+        font-size: 1em;
       }
-      @media(max-width:500px){
-        padding:.1em;;
+      @media (max-width: 500px) {
+        padding: 0.1em;
       }
       .label {
         font-weight: bold;
-        white-space:nowrap;
+        white-space: nowrap;
       }
-
-
     }
   }
   .not-started {
