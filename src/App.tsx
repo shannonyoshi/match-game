@@ -5,7 +5,7 @@ import "./styling/app.scss"
 import "./styling/card.scss"
 
 import Game from "./components/game"
-import Card from "./components/card"
+import Instructions from "./components/instructions"
 
 function App() {
   // gameCount=# games played this session
@@ -16,7 +16,7 @@ function App() {
   const [isStarted, setIsStarted] = useState<boolean>(false)
   const [theme, setTheme] = useState<ThemeOpts>("default")
 
-  const allThemes:ThemeOpts[] = ["default", "dark", "mono", "mono-dark"]
+  const allThemes: ThemeOpts[] = ["default", "dark", "mono", "mono-dark"]
 
   // creates 81 cards for the deck
   useEffect(() => {
@@ -48,9 +48,9 @@ function App() {
     makeCards()
   }, []);
 
-  useEffect(()=> {
-console.log('fullDeck changed')
-  },[fullDeck])
+  useEffect(() => {
+    console.log('fullDeck changed')
+  }, [fullDeck])
 
   const endGame = (win: boolean) => {
     if (win) {
@@ -68,21 +68,22 @@ console.log('fullDeck changed')
           <h1>Match Game</h1>
 
         </header>
-          <div className={`theme-setter ${theme.includes("dark")?"dark": "light"}`}>
-            <p className="title">Themes:</p>
-            {allThemes.map(themeName=><button className={`theme-btn ${themeName===theme?"selected": ""}`} onClick={()=>setTheme(themeName)}>{themeName.charAt(0).toUpperCase() + themeName.slice(1)}</button>)}
-          </div>
         
+        <div className={`theme-setter ${theme.includes("dark") ? "dark" : "light"}`}>
+          <p className="title">Themes:</p>
+          {allThemes.map(themeName => <button className={`theme-btn ${themeName === theme ? "selected" : ""}`} onClick={() => setTheme(themeName)}>{themeName.charAt(0).toUpperCase() + themeName.slice(1)}</button>)}
+        </div>
+
         {isStarted ?
-          <Game deck={fullDeck} gameCount={gameCount} winCount={winCount}endGame={endGame} /> :
+          <Game deck={fullDeck} gameCount={gameCount} winCount={winCount} endGame={endGame} /> :
           <div className="not-started">
+            <Instructions deck={fullDeck} />
             <button onClick={() => setIsStarted(true)} className="start-button">Start Game</button>
-            {fullDeck.map(card=> <Card card={card}/>)}
           </div>
         }
-      <footer>
-        <h1>footer</h1>
-      </footer>
+        <footer>
+          <h1>footer</h1>
+        </footer>
       </div>
     </div>
   );

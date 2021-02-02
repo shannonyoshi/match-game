@@ -85,9 +85,9 @@
     }
   }
   .not-started {
-    height: 85%;
-    button {
-      @include action-button;
+    padding-bottom:150px;
+    .start-button{
+      @include large-button; 
     }
   }
   footer {

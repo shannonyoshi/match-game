@@ -11,6 +11,9 @@ type cardProps = {
 }
 
 const Card = ({ card, rotate=false, shrink=false }: cardProps) => {
+  if (!card){
+    return<div className="missing-card"></div>
+  }
   const classString = `shape-${card.shape} shading-${card.shading} color-${card.color}`
 
   return (
