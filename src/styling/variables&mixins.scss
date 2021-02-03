@@ -55,42 +55,46 @@
   }
 }
 @mixin small-button {
-  border: none;
-  outline: none;
-  border-radius: 0.5em;
+  @include button-base;
   font-size: 1em;
-  padding: 0.5em;
-  font-weight: bold;
-  @include themify {
-    color: $primary;
-    background: linear-gradient($background 10%, $highlight);
-    border: 2px solid $primary-light;
-  }
-  @media (max-width: 800px) {
-    font-size: 1em;
-    border-radius: 0.25em;
+  // @media (max-width: 800px) {
+  //   font-size: 1em;
+  //   border-radius: 0.25em;
    
-  }
-
+  // }
 }
 
 @mixin action-button {
-  border: none;
-  outline: none;
-  border-radius: 0.5em;
+  @include button-base;
+  @include raise;
   font-size: 2em;
-  font-weight: bold;
-  padding: 0.5em;
-  cursor: pointer;
   margin: 0.25em;
-  @include themify {
-    color: $primary;
-    background: linear-gradient($background 10%, $highlight);
-    border: 2px solid $primary-light;
-  }
   @media (max-width: 1500px) {
     font-size: 1.5em;
-    border-radius: 0.25em;
+    // border-radius: 0.25em;
+  }
+}
+
+@mixin raise{
+  transition: transform .2s ease-in;
+  &:hover, &:focus{
+    transform: translateY(-4px);
+  }
+}
+
+@mixin button-base{
+  @include raise;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  @include themify {
+    box-shadow: inset 0 0 3px $primary; 
+    color: $primary;
+    background-color: $highlight-lighter;
+    border: 2px solid $primary;
   }
 }
 

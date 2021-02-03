@@ -1,7 +1,23 @@
 @import "themes.scss";
 @import "variables&mixins.scss";
 
+.theme-default,
+.theme-mono,
+.theme-mono-dark {
+  @include themify {
+    color: $primary;
+  }
+}
+.theme-dark {
+  @include themify {
+    color: $highlight;
+  }
+}
+
 .app-container {
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  transition-property: color, background, background-color;
   min-height: 100vh;
   position: relative;
   @include themify {
@@ -13,9 +29,8 @@
     @include themify {
       background: linear-gradient($primary-dark, $primary);
       color: $highlight-light;
-
-      @include heading;
     }
+    @include heading;
   }
   .theme-setter {
     padding: 0.25em;
@@ -26,20 +41,21 @@
     &.light {
       @include themify {
         border-bottom: 1px solid $highlight;
-        background-color: $highlight-light;
         background: linear-gradient($background, $highlight-light);
-        color: $primary;
+        // color: $primary;
       }
     }
     &.dark {
-      border: 1px solid rex;
       @include themify {
-        background: linear-gradient($highlight-light, $background);
+        color: $primary;
+        border-bottom: 1px solid $card-bg;
+        background: linear-gradient($highlight-light 50%, $background);
       }
     }
     .title {
       border: 1px solid transparent;
       padding-right: 0.5em;
+      font-weight: bolder;
       @media (max-width: 400px) {
         display: none;
       }
@@ -69,9 +85,9 @@
     .game-stats {
       font-size: 1.25em;
       padding: 1em;
-      @include themify {
-        color: $primary;
-      }
+      // @include themify {
+      //   color: $primary;
+      // }
       @media (max-width: 1024px) {
         font-size: 1em;
       }
@@ -85,9 +101,9 @@
     }
   }
   .not-started {
-    padding-bottom:150px;
-    .start-button{
-      @include large-button; 
+    padding-bottom: 150px;
+    .start-button {
+      @include large-button;
     }
   }
   footer {

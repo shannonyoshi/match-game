@@ -6,60 +6,61 @@ $themes: (
     accent-light: #ee9a85,
     accent: #e76f51,
     accent-dark: #a14d38,
+    highlight-lighter: #f2deac,
     highlight-light: #efd596,
     highlight: #e9c46a,
     highlight-dark: #a3894a,
     contrast: #264653,
     background: #fcf9f0,
-    card-bg:white,
+    card-bg: white,
   ),
-  dark:
-  (
+  dark: (
     primary-light: #765b75,
-    primary: #3c153b,
+    primary: #4b1a49,
     primary-dark: #2a0e29,
     accent-light: #ad6178,
     accent: #8b1e3f,
     accent-dark: #61152c,
+    highlight-lighter: #bcd9c8,
     highlight-light: #acd0bb,
     highlight: #89bd9e,
     highlight-dark: #5f846e,
-    contrast: #DB4C40,
-    background:#262626,
-    card-bg:black,
+    contrast: #db4c40,
+    background: #333333,
+    card-bg: black,
   ),
-  mono:
-  (
+  mono: (
     primary-light: #252525,
     primary: #191919,
     primary-dark: #0c0c0c,
     accent-light: #5d5d5d,
     accent: #4c4c4c,
     accent-dark: #444444,
+    highlight-lighter: #c6c6c6,
     highlight-light: #b9b9b9,
     highlight: #b2b2b2,
     highlight-dark: #a0a0a0,
     contrast: #191919,
     background: #ffffff,
-    card-bg:white
+    card-bg: white,
   ),
   mono-dark:
-  (
-    primary-light: #b9b9b9,
-    primary: #b2b2b2,
-    primary-dark: #a0a0a0,
-    accent-light: #5d5d5d,
-    accent: #6A6C6E,
-    accent-dark: #444444,
-    highlight-light: #252525,
-    highlight: #191919,
-    highlight-dark: #0c0c0c,
-    contrast: #ffffff,
-    background: #191919,
-    card-bg:black
-  ),
+    (
+      primary-light: #f3f3f3,
+      primary: #e6e6e6,
+      primary-dark: #cccccc,
+      accent-light: #5d5d5d,
+      accent: #6a6c6e,
+      accent-dark: #444444,
+      highlight-lighter: #656565,
+      highlight-light: #777777,
+      highlight: #444444,
+      highlight-dark: #323232,
+      contrast: #ffffff,
+      background: #333333,
+      card-bg: black,
+    ),
 );
-
 
 // from https://www.sitepoint.com/sass-theming-neverending-story/
 
@@ -81,21 +82,19 @@ $themes: (
 //   }
 // }
 
-
-
-
-    $primary-light: null;
-    $primary:null;
-    $primary-dark: null;
-    $accent-light:null;
-    $accent: null;
-    $accent-dark: null;
-    $highlight-light:null;
-    $highlight: null;
-    $highlight-dark:null; 
-    $contrast: null;
-    $background: null;
-    $card-bg:null;
+$primary-light: null;
+$primary: null;
+$primary-dark: null;
+$accent-light: null;
+$accent: null;
+$accent-dark: null;
+$highlight-lighter: null;
+$highlight-light: null;
+$highlight: null;
+$highlight-dark: null;
+$contrast: null;
+$background: null;
+$card-bg: null;
 
 // Themify mixin
 // @author Hugo Giraudel
@@ -107,27 +106,37 @@ $themes: (
     &.theme-#{$theme},
     .theme-#{$theme} & {
       // Set the theme variables with `!global`
-      $primary-light: map-get($colors, 'primary-light') !global;
-      $primary:map-get($colors, 'primary') !global;
-      $primary-dark: map-get($colors, 'primary-dark') !global;
-      $accent-light:map-get($colors, 'accent-light') !global;
-      $accent: map-get($colors, 'accent') !global;
-      $accent-dark: map-get($colors, 'accent-dark') !global;
-      $highlight-light:map-get($colors, 'highlight-light') !global;
-      $highlight: map-get($colors, 'highlight') !global;
-      $highlight-dark:map-get($colors, 'highlight-dark') !global; 
-      $contrast: map-get($colors, 'contrast') !global;
-      $background: map-get($colors, 'background') !global;
-      $card-bg:map-get($colors, 'card-bg') !global;
+      $primary-light: map-get($colors, "primary-light") !global;
+      $primary: map-get($colors, "primary") !global;
+      $primary-dark: map-get($colors, "primary-dark") !global;
+      $accent-light: map-get($colors, "accent-light") !global;
+      $accent: map-get($colors, "accent") !global;
+      $accent-dark: map-get($colors, "accent-dark") !global;
+      $highlight-lighter: map-get($colors, "highlight-lighter") !global;
+      $highlight-light: map-get($colors, "highlight-light") !global;
+      $highlight: map-get($colors, "highlight") !global;
+      $highlight-dark: map-get($colors, "highlight-dark") !global;
+      $contrast: map-get($colors, "contrast") !global;
+      $background: map-get($colors, "background") !global;
+      $card-bg: map-get($colors, "card-bg") !global;
 
       // Output user content
       @content;
 
       // Unset the theme variables with `!global`
-      $color-primary: null !global;
-      $color-secondary: null !global;
+      $primary-light: null !global;
+      $primary: null !global;
+      $primary-dark: null !global;
+      $accent-light: null !global;
+      $accent: null !global;
+      $accent-dark: null !global;
+      $highlight-lighter: null !global;
+      $highlight-light: null !global;
+      $highlight: null !global;
+      $highlight-dark: null -dark !global;
+      $contrast: null !global;
+      $background: null !global;
+      $card-bg: null !global;
     }
   }
 }
-
-

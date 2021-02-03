@@ -16,18 +16,18 @@
     text-align:justify;
   }
   
-  @include themify{
-    color:$primary-dark;
-  }
+  // @include themify{
+  //   color:$primary-dark;
+  // }
   .title{
     font-size:1.5em;
     padding:.5em;
   }
   .title,.example,.label{
     font-weight:bold;
-    @include themify{
-      color:$primary;
-    }
+    // @include themify{
+    //   color:$primary;
+    // }
   }
   .example{
     text-align: left;

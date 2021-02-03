@@ -12,14 +12,13 @@ type GameProps = {
   gameCount: number,
   winCount: number,
   endGame: (win: boolean) => void,
-
 }
 /* 
 TODO: 
  - create win screen
  - fix styling for match component
  - create footer
-
+ - fix dark theme colors
 */
 
 
@@ -219,10 +218,10 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
     <div>
       <div className="info-wrapper">
         <h2 className="game-stats"><span className="label">Games Won:</span> {winCount}/{gameCount}</h2>
-        <p className="game-stats"><span className="label">Cards Used:</span> {used.length}/81</p>
+        <h2 className="game-stats"><span className="label">Cards Used:</span> {used.length}/81</h2>
         {message.length > 0 ? <p className="message">{message}</p> : <div className="no-message" />}
-
       </div>
+
       {isStarted ? <>
         <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} />
         <div className="action-buttons">
