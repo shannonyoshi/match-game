@@ -71,7 +71,9 @@ function App() {
         </div>
         <Game deck={fullDeck} gameCount={gameCount} winCount={winCount} endGame={endGame} />:
         <footer>
-          <h1>footer</h1>
+          <a href="https://github.com/shannonyoshi/match-game" target="_blank">
+            <i className="fab fa-github fa-4x"></i>
+          </a>
         </footer>
       </div>
     </div>
