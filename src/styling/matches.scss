@@ -5,10 +5,16 @@
 .matches-container{
   // padding bottom to account for footer
   padding-bottom:150px;
-
+  width:100%;
+  text-align:center;
 }
 
+.matches-btn{
+  @include small-button;
+  margin:auto;
+}
 .matches-title{
+  text-align:left;
   font-weight:bold;
   padding-top:1em;
   padding-left:1em;
@@ -16,6 +22,8 @@
     color:$primary;
   }
 }
+
+
 
 .matches {
   display: flex;
@@ -48,14 +56,7 @@
         align-items: center;
         justify-content: center;
         margin: auto;
-        // border: 1px solid green;
-        // height:100px;
-
-        // @include themify {
-        //   background-color: $card-bg;
-        // }
         @include tiny-card($rotate: true);
-        // margin:5px;
       }
     }
   }

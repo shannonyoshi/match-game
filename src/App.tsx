@@ -5,7 +5,6 @@ import "./styling/app.scss"
 import "./styling/card.scss"
 
 import Game from "./components/game"
-import Instructions from "./components/instructions"
 
 function App() {
   // gameCount=# games played this session
@@ -13,9 +12,7 @@ function App() {
   const [winCount, setWinCount] = useState<number>(0)
   // id for deck starts at 1, not 0
   const [fullDeck, setFullDeck] = useState<CardInter[]>([])
-  const [isStarted, setIsStarted] = useState<boolean>(false)
   const [theme, setTheme] = useState<ThemeOpts>("default")
-
   const allThemes: ThemeOpts[] = ["default", "dark", "mono", "mono-dark"]
 
   // creates 81 cards for the deck
@@ -56,7 +53,6 @@ function App() {
     if (win) {
       setWinCount(winCount + 1)
     }
-    setIsStarted(false)
     setGameCount(gameCount + 1)
   }
   return (
@@ -68,19 +64,12 @@ function App() {
           <h1>Match Game</h1>
 
         </header>
-        
+
         <div className={`theme-setter ${theme.includes("dark") ? "dark" : "light"}`}>
           <p className="title">Themes:</p>
           {allThemes.map(themeName => <button className={`theme-btn ${themeName === theme ? "selected" : ""}`} onClick={() => setTheme(themeName)}>{themeName.charAt(0).toUpperCase() + themeName.slice(1)}</button>)}
         </div>
-
-        {isStarted ?
-          <Game deck={fullDeck} gameCount={gameCount} winCount={winCount} endGame={endGame} /> :
-          <div className="not-started">
-            <Instructions deck={fullDeck} />
-            <button onClick={() => setIsStarted(true)} className="start-button">Start Game</button>
-          </div>
-        }
+        <Game deck={fullDeck} gameCount={gameCount} winCount={winCount} endGame={endGame} />:
         <footer>
           <h1>footer</h1>
         </footer>

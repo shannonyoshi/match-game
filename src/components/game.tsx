@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 
+import Instructions from "./instructions"
 import Board from "./board"
 import Matches from "./matches"
+
 
 import { CardInter, Match } from "../types";
 
@@ -14,18 +16,15 @@ type GameProps = {
 }
 /* 
 TODO: 
- - create component for showing message messages and game info--cards left/# of wins, etc. 
  - create win screen
- - style add card button
  - fix styling for match component
  - create footer
-
-
 
 */
 
 
 const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
+  const [isStarted, setIsStarted] = useState<boolean>(false)
   //used = array of ids of cards already played, updated by draw()
   const [used, setUsed] = useState<number[]>([]);
   //matches=matches found by user and validated, updated by useEffect below
@@ -38,10 +37,13 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
 
   //initial board setup.
   useEffect(() => {
-    let cardIds = draw(12)
-    let newCards = cardIds.map(id => deck[id - 1])
-    setOnBoard([...newCards])
-  }, [])
+    if(isStarted===true){
+      let cardIds = draw(12)
+      let newCards = cardIds.map(id => deck[id - 1])
+      console.log('newCards', newCards)
+      setOnBoard([...newCards])
+    }
+  }, [isStarted])
   // this useEffect checks for matches once there are 3 cards selected by user
   // also removes message once selection has been updated by user. 
   useEffect(() => {
@@ -123,9 +125,6 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
   }
   // removeExtension() maintains position of cards on main board while replacing match with cards from extension
   const removeExtension = (): (CardInter | null)[] => {
-    console.log('removeExtension()')
-    console.log('selected', selected)
-    console.log('onBoard', onBoard)
     const rowLength: number = onBoard.length / 3
     const newOnBoard: (CardInter | null)[] = []
     // cards from last column that are not selected--use to replace selected cards
@@ -221,15 +220,20 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
       <div className="info-wrapper">
         <h2 className="game-stats"><span className="label">Games Won:</span> {winCount}/{gameCount}</h2>
         <p className="game-stats"><span className="label">Cards Used:</span> {used.length}/81</p>
-        {message.length > 0 ? <p className="message">{message}</p> : <div className="no-message"/>}
+        {message.length > 0 ? <p className="message">{message}</p> : <div className="no-message" />}
 
       </div>
-      <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} />
-      <div className="action-buttons">
-        <button onClick={extendBoard} className="add-cards">Add 3 cards</button>
-        <button className="end-game" onClick={resetGame}>End Game</button>
-      </div>
-      <Matches matches={matches} />
+      {isStarted ? <>
+        <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} />
+        <div className="action-buttons">
+          <button onClick={extendBoard} className="add-cards">Add 3 cards</button>
+          <button className="end-game" onClick={resetGame}>End Game</button>
+        </div>
+        <Matches matches={matches} /></>
+        : <div className="not-started">
+          <Instructions deck={deck} />
+          <button onClick={() => setIsStarted(true)} className="start-button">Start Game</button>
+        </div>}
     </div>
   )
 }
