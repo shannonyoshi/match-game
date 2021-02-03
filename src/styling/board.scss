@@ -36,26 +36,3 @@
   justify-content: center;
 }
 
-.action-buttons{
-  display:flex;
-  justify-content:center;
-  .add-cards,
-  .end-game {
-    @include two-button;
-  }
-}
-.message {
-  font-weight: bold;
-  font-size: 1.25em;
-  padding:1em;
-  @include themify {
-    color: $accent;
-  }
-  @media(max-width:1024px){
-    font-size:1em;
-  }
-  @media(max-width:500px){
-    padding:.1em;;
-  } 
-
-}

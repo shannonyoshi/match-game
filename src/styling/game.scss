@@ -1,0 +1,60 @@
+@import "themes.scss";
+@import "variables&mixins.scss";
+
+// padding bottom so footer won't cut bottom off
+.game-wrapper {
+  padding-bottom: 150px;
+}
+.info-wrapper {
+  display: flex;
+  align-items: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    padding: 1em;
+    min-height: 115px;
+  }
+
+  .game-stats {
+    font-size: 1.25em;
+    padding: 1em;
+    @media (max-width: 1024px) {
+      font-size: 1em;
+    }
+    @media (max-width: 500px) {
+      padding: 0.1em;
+    }
+    .label {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+  }
+  .message {
+    font-weight: bold;
+    font-size: 1.25em;
+    padding: 1em;
+    @include themify {
+      color: $accent;
+    }
+    @media (max-width: 1024px) {
+      font-size: 1em;
+    }
+    @media (max-width: 500px) {
+      padding: 0.1em;
+    }
+  }
+}
+.action-buttons,
+.info-buttons {
+  text-align: center;
+  .add-cards,
+  .end-game {
+    @include two-button;
+  }
+  .instr-btn,
+  .matches-btn {
+    @include small-button;
+  }
+}
+.start-button {
+  @include large-button;
+}

@@ -3,16 +3,10 @@
 
 
 .matches-container{
-  // padding bottom to account for footer
-  padding-bottom:150px;
   width:100%;
   text-align:center;
 }
 
-.matches-btn{
-  @include small-button;
-  margin:.5em;
-}
 .matches-title{
   text-align:left;
   font-weight:bold;

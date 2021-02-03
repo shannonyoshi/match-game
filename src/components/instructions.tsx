@@ -11,10 +11,7 @@ type BoardProps = {
 }
 
 const Instructions = ({ deck }: BoardProps) => {
-  console.log('deck', deck)
-  useEffect(() => {
-    console.log('useEffect in instructions')
-  }, [deck])
+
   // cards to use for examples
   const colorCards: CardInter[] = [deck[0], deck[1], deck[2]]
   const shapeCards: CardInter[] = [deck[0], deck[27], deck[54]]
@@ -28,19 +25,19 @@ const Instructions = ({ deck }: BoardProps) => {
       <section className="examples">
         {/* <div className="ex-cards"> */}
           <h3 className="example">Colors:</h3>
-          {colorCards.map(card => <div className="card"> <Card card={card} /></div>)}
+          {colorCards.map(card => <div className="card"> <Card card={card} rotate={false} /></div>)}
         {/* </div> */}
         {/* <div className="ex-cards"> */}
           <h3 className="example">Shapes:</h3>
-          {shapeCards.map(card => <div className="card"> <Card card={card} /></div>)}
+          {shapeCards.map(card => <div className="card"> <Card card={card} rotate={false} /></div>)}
         {/* </div> */}
         {/* <div className="ex-cards"> */}
           <h3 className="example">Shading:</h3>
-          {shadeCards.map(card => <div className="card"> <Card card={card} /></div>)}
+          {shadeCards.map(card => <div className="card"> <Card card={card} rotate={false} /></div>)}
         {/* </div> */}
         {/* <div className="ex-cards"> */}
           <h3 className="example">Amounts:</h3>
-          {numberCards.map(card => <div className="card"> <Card card={card} /></div>)}
+          {numberCards.map(card => <div className="card"> <Card card={card} rotate={false} /></div>)}
         {/* </div> */}
       </section>
     </div>

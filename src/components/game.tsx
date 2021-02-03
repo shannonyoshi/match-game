@@ -4,30 +4,31 @@ import Instructions from "./instructions"
 import Board from "./board"
 import Matches from "./matches"
 
-
 import { CardInter, Match } from "../types";
+
+import "../styling/game.scss"
 
 type GameProps = {
   deck: CardInter[],
   gameCount: number,
   winCount: number,
-  endGame: (win: boolean) => void,
+  updateGCount: (win: boolean) => void,
 }
 /* 
 TODO: 
- - create win screen
- - fix styling for match component
- - create footer
- - fix dark theme colors
+ - create end game screen
 */
 
-
-const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
+const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps) => {
   const [isStarted, setIsStarted] = useState<boolean>(false)
+  const [showInstr, setShowInstr] = useState<boolean>(true)
+  const [isEnded, setIsEnded] = useState<boolean>(false)
   //used = array of ids of cards already played, updated by draw()
   const [used, setUsed] = useState<number[]>([]);
   //matches=matches found by user and validated, updated by useEffect below
   const [matches, setMatches] = useState<Match[]>([]);
+  // user can toggle viewing matches
+  const [showMatches, setShowMatches] = useState<boolean>(false)
   // onBoard handles position of cards on board, updated by replaceMatch(), extendBoard()
   const [onBoard, setOnBoard] = useState<(CardInter | null)[]>([])
   // updated by replaceMatch() & onClick for Card in board.tsx
@@ -36,10 +37,10 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
 
   //initial board setup.
   useEffect(() => {
-    if(isStarted===true){
+    if (isStarted === true) {
+      setIsEnded(false)
       let cardIds = draw(12)
       let newCards = cardIds.map(id => deck[id - 1])
-      console.log('newCards', newCards)
       setOnBoard([...newCards])
     }
   }, [isStarted])
@@ -60,18 +61,32 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
       }
     }
   }, [selected])
-  // once all cards are used, checks if matches are still present, if not, end the game
+  // once all cards are used, checks if matches are still present, if not, WIN the game
+  // if you win, instructions will not be shown
   useEffect(() => {
     // 81=number of cards in deck
     if (used.length === 81) {
       if (!checkMatchesOnBoard()) {
-        endGame(true)
+        updateGCount(true)
+        setIsEnded(true)
+        setIsStarted(false)
+        setShowInstr(false)
       }
     }
   }, [onBoard])
 
+  //if user resets the game, instructions are shown again
   const resetGame = (): void => {
-    endGame(false)
+    updateGCount(false)
+    setShowInstr(true)
+    setIsEnded(false)
+    setIsStarted(false)
+  }
+
+  const startGame = (): void => {
+    setIsStarted(true)
+    setShowInstr(false)
+    setIsEnded(false)
   }
 
   // validateMatch returns true if match is valid
@@ -83,12 +98,9 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
     const countOk: boolean = singlePropCheck(c1.count, c2.count, c3.count)
     const shadingOk: boolean = singlePropCheck(c1.shading, c2.shading, c3.shading)
     const colorOk: boolean = singlePropCheck(c1.color, c2.color, c3.color)
-    console.log('c1,c2,c3', c1, c2, c3)
     if (shapeOk && countOk && shadingOk && colorOk) {
-      console.log('true')
       return true
     }
-    console.log('false', false)
     return false
   }
   // singlePropCheck is used to validate individual properties on Card
@@ -149,9 +161,7 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
   }
 
   const extendBoard = (): void => {
-    // TODO: change this later
-    let allowAdd=true
-    // let allowAdd = checkMatchesOnBoard()
+    let allowAdd = checkMatchesOnBoard()
 
     if (allowAdd) {
       const cardIds: number[] = draw(3)
@@ -214,10 +224,9 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
     }
     return true
   }
-  console.log('onBoard', onBoard)
 
   return (
-    <div>
+    <div className="game-wrapper">
       <div className="info-wrapper">
         <h2 className="game-stats"><span className="label">Games Won:</span> {winCount}/{gameCount}</h2>
         <h2 className="game-stats"><span className="label">Cards Used:</span> {used.length}/81</h2>
@@ -225,15 +234,20 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
       </div>
 
       {isStarted ? <>
-        <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} />
-        <div className="action-buttons">
-          <button onClick={extendBoard} className="add-cards">Add 3 cards</button>
-          <button className="end-game" onClick={resetGame}>End Game</button>
+        {showInstr ? <Instructions deck={deck} /> :
+          <><Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} />
+            <div className="action-buttons">
+              <button onClick={extendBoard} className="add-cards">Add 3 cards</button>
+              <button className="end-game" onClick={resetGame}>End Game</button>
+            </div></>}
+        <div className="info-buttons">
+          <button onClick={() => setShowInstr(!showInstr)} className="instr-btn">{showInstr ? "Return to Game" : "View Instructions"}</button>
+          <button onClick={() => setShowMatches(!showMatches)} className="matches-btn">{`${showMatches ? "Hide" : "Show"} Matches`}</button>
         </div>
-        <Matches matches={matches} /></>
+        {showMatches ? <Matches matches={matches} /> : ""}</>
         : <div className="not-started">
           <Instructions deck={deck} />
-          <button onClick={() => setIsStarted(true)} className="start-button">Start Game</button>
+          <button onClick={startGame} className="start-button">Start Game</button>
         </div>}
     </div>
   )

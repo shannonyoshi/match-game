@@ -6,7 +6,7 @@ import "../styling/card.scss"
 
 type cardProps = {
   card: CardInter,
-  rotate?: boolean,
+  rotate: boolean,
   shrink?: boolean
 }
 

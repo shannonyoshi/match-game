@@ -45,11 +45,7 @@ function App() {
     makeCards()
   }, []);
 
-  useEffect(() => {
-    console.log('fullDeck changed')
-  }, [fullDeck])
-
-  const endGame = (win: boolean) => {
+  const updateGCount = (win: boolean) => {
     if (win) {
       setWinCount(winCount + 1)
     }
@@ -69,7 +65,7 @@ function App() {
           <p className="title">Themes:</p>
           {allThemes.map(themeName => <button className={`theme-btn ${themeName === theme ? "selected" : ""}`} onClick={() => setTheme(themeName)}>{themeName.charAt(0).toUpperCase() + themeName.slice(1)}</button>)}
         </div>
-        <Game deck={fullDeck} gameCount={gameCount} winCount={winCount} endGame={endGame} />:
+        <Game deck={fullDeck} gameCount={gameCount} winCount={winCount} updateGCount={updateGCount} />:
         <footer>
           <a href="https://github.com/shannonyoshi/match-game" target="_blank">
             <i className="fab fa-github fa-4x"></i>
