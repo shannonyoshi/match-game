@@ -11,27 +11,22 @@
 
 .matches-btn{
   @include small-button;
-  margin:auto;
+  margin:.5em;
 }
 .matches-title{
   text-align:left;
   font-weight:bold;
   padding-top:1em;
   padding-left:1em;
-  @include themify{
-    color:$primary;
-  }
 }
-
-
 
 .matches {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin: auto;
   flex-wrap:wrap;
   padding: 1em;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
   .match {
     padding:10px 5px;
  
@@ -43,20 +38,19 @@
       width: auto;
       border-radius: 5px;
       box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
-      padding: 1em;
+      padding: .75em;
       
       @include themify {
         background-color: $card-bg;
       }
-      @media(max-width:600px) {
-        padding:.25em;
-      }
+      // @media(max-width:600px) {
+      //   padding:.25em;
+      // }
       .card-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: auto;
-        @include tiny-card($rotate: true);
+        @include small-card(true);
+        @media(max-width:800px){
+          @include tiny-card(true);
+        }
       }
     }
   }

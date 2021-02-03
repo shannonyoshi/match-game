@@ -149,7 +149,9 @@ const Game = ({ deck, endGame, gameCount, winCount }: GameProps) => {
   }
 
   const extendBoard = (): void => {
-    let allowAdd = checkMatchesOnBoard()
+    // TODO: change this later
+    let allowAdd=true
+    // let allowAdd = checkMatchesOnBoard()
 
     if (allowAdd) {
       const cardIds: number[] = draw(3)

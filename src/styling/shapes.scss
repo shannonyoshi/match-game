@@ -5,14 +5,14 @@
   border-radius: $border-rad;
   @include color-helper($bg-degs);
 }
-
+// the curved shape
 @mixin another-shape($width, $height, $border-rad: 0 90%, $bg-degs: 0deg) {
   width: $width;
   height: $height;
   border-radius: $border-rad;
   @include color-helper($bg-degs);
 }
-
+// wide diamond
 @mixin rotate-diamond($double-width, $double-height) {
   $width: $double-width/2;
   $height: $double-height/2;
@@ -33,7 +33,7 @@
   }
   @include diamond-color-helper($height, $width, true);
 }
-
+// tall diamond
 @mixin diamond($double-width, $double-height) {
   $width: $double-width/2;
   $height: $double-height/2;
@@ -54,7 +54,7 @@
   @include diamond-color-helper($width, $height);
 }
 
-// used to create smaller triangle on top of larger triangle for shading-2 where only the border is colored
+// used to create smaller triangle for tall diamond on top of larger triangle for shading-2 where only the border is colored
 @mixin small-diamond($half-width, $half-height) {
   z-index: 10;
   width: 0;
@@ -75,7 +75,7 @@
   }
 }
 
-// used to create shading on rotated diamonds
+// used to create shading on rotated(wide) diamonds
 @mixin rotate-small-diamond($half-width, $half-height) {
   z-index: 10;
   width: 0;
