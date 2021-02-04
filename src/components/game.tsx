@@ -14,15 +14,14 @@ type GameProps = {
   winCount: number,
   updateGCount: (win: boolean) => void,
 }
-/* 
-TODO: 
- - create end game screen
-*/
 
-const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps) => {
+const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps):JSX.Element => {
+  // tracks if game is in play
   const [isStarted, setIsStarted] = useState<boolean>(false)
-  const [showInstr, setShowInstr] = useState<boolean>(true)
-  const [isEnded, setIsEnded] = useState<boolean>(false)
+  // user can toggle to view instructions during game play
+  const [showInstr, setShowInstr] = useState<boolean>(false)
+  // tracks whether to show win screen
+  const [won, setWon] = useState<boolean>(false)
   //used = array of ids of cards already played, updated by draw()
   const [used, setUsed] = useState<number[]>([]);
   //matches=matches found by user and validated, updated by useEffect below
@@ -33,27 +32,15 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps) => {
   const [onBoard, setOnBoard] = useState<(CardInter | null)[]>([])
   // updated by replaceMatch() & onClick for Card in board.tsx
   const [selected, setSelected] = useState<number[]>([])
+  // resets when user does any action, shows errors
   const [message, setMessage] = useState<string>("")
 
-  //initial board setup.
-  useEffect(() => {
-    if (isStarted === true) {
-      setIsEnded(false)
-      let cardIds = draw(12)
-      let newCards = cardIds.map(id => deck[id - 1])
-      setOnBoard([...newCards])
-    }
-  }, [isStarted])
-  // this useEffect checks for matches once there are 3 cards selected by user
-  // also removes message once selection has been updated by user. 
-  useEffect(() => {
-    // resets message when user changes selection
-    setMessage("")
-
+  // checks for matches once 3 cards are selected by user
+  useEffect((): void => {
     if (selected.length === 3) {
       if (validateMatch(selected)) {
         setMatches([...matches, [deck[selected[0] - 1], deck[selected[1] - 1], deck[selected[2] - 1]]])
-        setMessage("")
+        setMessage("Match found!")
         replaceMatch()
       }
       else {
@@ -61,32 +48,48 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps) => {
       }
     }
   }, [selected])
+
+  // resets message any time user does an action, or game starts/ends
+  useEffect((): void => {
+    if (message.length > 0) {
+      setMessage("")
+    }
+  }, [selected, showInstr, showMatches, isStarted])
+
   // once all cards are used, checks if matches are still present, if not, WIN the game
-  // if you win, instructions will not be shown
-  useEffect(() => {
+  useEffect((): void => {
     // 81=number of cards in deck
     if (used.length === 81) {
       if (!checkMatchesOnBoard()) {
+        resetGameState()
         updateGCount(true)
-        setIsEnded(true)
-        setIsStarted(false)
-        setShowInstr(false)
+        setWon(true)
       }
     }
   }, [onBoard])
-
-  //if user resets the game, instructions are shown again
-  const resetGame = (): void => {
-    updateGCount(false)
-    setShowInstr(true)
-    setIsEnded(false)
+  // helper function to reset initial state of game
+  const resetGameState = (): void => {
     setIsStarted(false)
+    setUsed([])
+    setMatches([])
+    setShowMatches(false)
+    setOnBoard([])
+    setSelected([])
+    setMessage("")
+  }
+  //if user resets the game, instructions are shown again
+  const userResetGame = (): void => {
+    resetGameState()
+    updateGCount(false)
   }
 
+  // onClick for start buttons
   const startGame = (): void => {
     setIsStarted(true)
-    setShowInstr(false)
-    setIsEnded(false)
+    setWon(false)
+    let cardIds = draw(12)
+    let newCards = cardIds.map(id => deck[id - 1])
+    setOnBoard([...newCards])
   }
 
   // validateMatch returns true if match is valid
@@ -120,7 +123,7 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps) => {
         let curr = onBoard[i]
         if (curr && selected.includes(curr.id)) {
           const newCardId = newCardIds.pop()
-          if (newCardId == undefined) {
+          if (newCardId === undefined) {
             newOnBoard.push(null)
           } else {
             const newCard = deck[newCardId - 1]
@@ -150,7 +153,7 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps) => {
       if (selected.includes(curr!.id)) {
         const replacement = replacementCards.pop()
         // .pop() should not be called on an empty replacement array, but added just in case
-        if (replacement != undefined) {
+        if (replacement !== undefined) {
           newOnBoard.push(replacement)
         }
       } else {
@@ -234,21 +237,34 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps) => {
       </div>
 
       {isStarted ? <>
-        {showInstr ? <Instructions deck={deck} /> :
-          <><Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} />
-            <div className="action-buttons">
-              <button onClick={extendBoard} className="add-cards">Add 3 cards</button>
-              <button className="end-game" onClick={resetGame}>End Game</button>
-            </div></>}
+        {/* once started, can view instructions or the board */}
+        {showInstr ?
+          <Instructions deck={deck} />
+          :
+          <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} userResetGame={userResetGame} />}
         <div className="info-buttons">
           <button onClick={() => setShowInstr(!showInstr)} className="instr-btn">{showInstr ? "Return to Game" : "View Instructions"}</button>
           <button onClick={() => setShowMatches(!showMatches)} className="matches-btn">{`${showMatches ? "Hide" : "Show"} Matches`}</button>
         </div>
-        {showMatches ? <Matches matches={matches} /> : ""}</>
-        : <div className="not-started">
-          <Instructions deck={deck} />
+        {showMatches ?
+          <Matches matches={matches} /> : ""}</>
+        :
+        <div className="not-started">
+          {won ?
+            <WinScreen />
+            :
+            <Instructions deck={deck} />}
           <button onClick={startGame} className="start-button">Start Game</button>
         </div>}
+    </div>
+  )
+}
+
+const WinScreen = (): JSX.Element => {
+  return (
+    <div className="win-wrapper">
+      <h1>Congratulations, you won!</h1>
+      <h1>Play Again?</h1>
     </div>
   )
 }

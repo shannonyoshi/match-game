@@ -10,9 +10,10 @@ type cardProps = {
   shrink?: boolean
 }
 
-const Card = ({ card, rotate=false, shrink=false }: cardProps) => {
-  if (!card){
-    return<div className="missing-card"></div>
+const Card = ({ card, rotate = false, shrink = false }: cardProps): JSX.Element => {
+  // this ensures no errors from undefined card args
+  if (!card) {
+    return <div className="missing-card"></div>
   }
   const classString = `shape-${card.shape} shading-${card.shading} color-${card.color}`
 

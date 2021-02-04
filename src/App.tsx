@@ -6,17 +6,17 @@ import "./styling/card.scss"
 
 import Game from "./components/game"
 
-function App() {
+function App(): JSX.Element {
   // gameCount=# games played this session
   const [gameCount, setGameCount] = useState<number>(0)
   const [winCount, setWinCount] = useState<number>(0)
   // id for deck starts at 1, not 0
-  const [fullDeck, setFullDeck] = useState<CardInter[]>([])
+  const [deck, setDeck] = useState<CardInter[]>([])
   const [theme, setTheme] = useState<ThemeOpts>("default")
   const allThemes: ThemeOpts[] = ["default", "dark", "mono", "mono-dark"]
 
   // creates 81 cards for the deck
-  useEffect(() => {
+  useEffect((): void => {
     const makeCards = () => {
       let cardArray = []
       //i=shape, j=count, k=shading, l=color
@@ -39,13 +39,13 @@ function App() {
 
         }
       }
-      setFullDeck(cardArray)
+      setDeck(cardArray)
 
     }
     makeCards()
   }, []);
 
-  const updateGCount = (win: boolean) => {
+  const updateGCount = (win: boolean): void => {
     if (win) {
       setWinCount(winCount + 1)
     }
@@ -53,24 +53,25 @@ function App() {
   }
   return (
     <div id="app" className={`theme-${theme}`}>
-
       <div className="app-container">
+
         <header className="header">
-
           <h1>Match Game</h1>
-
         </header>
 
         <div className={`theme-setter ${theme.includes("dark") ? "dark" : "light"}`}>
           <p className="title">Themes:</p>
-          {allThemes.map(themeName => <button className={`theme-btn ${themeName === theme ? "selected" : ""}`} onClick={() => setTheme(themeName)}>{themeName.charAt(0).toUpperCase() + themeName.slice(1)}</button>)}
+          {allThemes.map(themeName => <button  key={themeName} className={`theme-btn ${themeName === theme ? "selected" : ""}`} onClick={() => setTheme(themeName)}>{themeName.charAt(0).toUpperCase() + themeName.slice(1)}</button>)}
         </div>
-        <Game deck={fullDeck} gameCount={gameCount} winCount={winCount} updateGCount={updateGCount} />:
+
+        <Game deck={deck} gameCount={gameCount} winCount={winCount} updateGCount={updateGCount} />:
+
         <footer>
-          <a href="https://github.com/shannonyoshi/match-game" target="_blank">
+          <a href="https://github.com/shannonyoshi/match-game" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-github fa-4x"></i>
           </a>
         </footer>
+
       </div>
     </div>
   );

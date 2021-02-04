@@ -58,3 +58,13 @@
 .start-button {
   @include large-button;
 }
+
+.win-wrapper {
+  text-align:center;
+  margin-top:2em;
+  font-size: 3em;
+  line-height: 1.5em;
+  @media(max-width: 600px){
+    font-size: 2em;
+  }
+}

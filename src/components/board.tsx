@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import "../styling/board.scss";
 
@@ -7,16 +7,17 @@ import Card from "./card";
 import { CardInter } from "../types";
 
 type BoardProps = {
-  onBoard: (CardInter|null)[],
+  onBoard: (CardInter | null)[],
   selected: number[],
   setSelected: Dispatch<SetStateAction<number[]>>,
   setMessage: Dispatch<SetStateAction<string>>,
-  extendBoard:()=>void
+  extendBoard: () => void
+  userResetGame: () => void
 
 }
-const Board = ({ onBoard, selected, setSelected, setMessage, extendBoard }: BoardProps) => {
+const Board = ({ onBoard, selected, setSelected, setMessage, extendBoard, userResetGame }: BoardProps): JSX.Element => {
 
-  const toggleSelect = (cardId: number) :void=> {
+  const toggleSelect = (cardId: number): void => {
     const isSelected = selected.includes(cardId)
     switch (isSelected) {
       case true:
@@ -30,23 +31,29 @@ const Board = ({ onBoard, selected, setSelected, setMessage, extendBoard }: Boar
         }
         break;
       case false:
-        if (selected.length===3){
+        if (selected.length === 3) {
           setMessage("You can only select three cards at a time")
           return
         }
         setSelected([...selected, cardId])
     }
   }
-  let extended:boolean = onBoard.length>12?true:false
-  let twice:boolean = onBoard.length>15? true:false
+  let extended: boolean = onBoard.length > 12 ? true : false
+  let twice: boolean = onBoard.length > 15 ? true : false
 
   return (
-    <div className="board-wrapper">
-      <div className={`card-container ${extended? twice? "extended-twice":"extended": ""}`}>
-      {onBoard.map(card => card===null||card===undefined?"":
-      <button className={`card-btn ${selected.includes(card!.id) ? "selected" : ""} ${extended? twice? "extended-twice":"extended": ""}`} onClick={() => toggleSelect(card.id)} key={`cardId-${card.id}`}><Card card={card} rotate={extended} shrink={twice}/></button>)}
+    <>
+      <div className="board-wrapper">
+        <div className={`card-container ${extended ? twice ? "extended-twice" : "extended" : ""}`}>
+          {onBoard.map(card => card === null || card === undefined ? "" :
+            <button className={`card-btn ${selected.includes(card!.id) ? "selected" : ""} ${extended ? twice ? "extended-twice" : "extended" : ""}`} onClick={() => toggleSelect(card.id)} key={`cardId-${card.id}`}><Card card={card} rotate={extended} shrink={twice} /></button>)}
+        </div>
       </div>
-    </div>
+      <div className="action-buttons">
+        <button onClick={extendBoard} className="add-cards">Add 3 cards</button>
+        <button className="end-game" onClick={userResetGame}>End Game</button>
+      </div>
+    </>
   )
 
 }
