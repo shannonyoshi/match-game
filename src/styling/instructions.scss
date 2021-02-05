@@ -45,9 +45,9 @@
     grid-gap:.25em;
   }
   .card {
+    @include box-shadow;
     border: none;
     outline: none;
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 0.5em;
     height: auto;

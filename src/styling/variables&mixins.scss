@@ -8,7 +8,9 @@
 }
 
 @mixin box-shadow {
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  @include themify {
+    box-shadow: 0px 3px 15px $shadow;
+  }
 }
 
 @mixin xxl-card($rotate: false) {
@@ -48,53 +50,47 @@
 // when there are 2 action buttons
 @mixin two-button {
   @include action-button;
-  min-width:150px;
-  width:20%;
-  @media (max-width: 1024px) {
-  width:30%
-  }
+  min-width: 150px;
+  width: 49%;
+  // @media (max-width: 1024px) {
+  // width:30%
+  // }
   @media (max-width: 800px) {
     font-size: 1.25em;
-    width: 40%;
+  }
+  @media(max-width:500px){
+    width:46%;
   }
 }
 @mixin small-button {
   @include button-base;
   font-size: 1em;
-  margin: 0.5em;
-  width: 15%;
-  @media (max-width: 1024px) {
-    width: 20%;
-  }
-
-  @media (max-width: 800px) {
-    width:50%;
-  }
-
-  @media (max-width: 600px) {
-    
-  }
-
+  width: 30%;
+  min-width: 155px;
+  // @media(max-width: 1024px){
+  //   width:40%
+  // }
 }
 
 @mixin action-button {
   @include button-base;
   @include raise;
   font-size: 2em;
-  margin: 0.25em;
   @media (max-width: 1500px) {
     font-size: 1.5em;
   }
 }
 
-@mixin raise{
-  transition: transform .2s ease-in;
-  &:hover{
-    transform: translateY(-5px);
+@mixin raise {
+  transition: transform 0.2s ease-in;
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-5px);
+    }
   }
 }
 
-@mixin button-base{
+@mixin button-base {
   @include raise;
   border: none;
   outline: none;
@@ -103,7 +99,7 @@
   border-radius: 0.5em;
   padding: 0.5em;
   @include themify {
-    box-shadow: inset 0 0 3px $primary; 
+    box-shadow: inset 0 0 3px $primary;
     color: $primary;
     background-color: $highlight-lighter;
     border: 2px solid $primary;
@@ -167,4 +163,3 @@
     }
   }
 }
-

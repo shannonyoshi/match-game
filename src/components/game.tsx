@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Instructions from "./instructions"
 import Board from "./board"
 import Matches from "./matches"
+import Card from "./card"
 
 import { CardInter, Match } from "../types";
 
@@ -15,7 +16,7 @@ type GameProps = {
   updateGCount: (win: boolean) => void,
 }
 
-const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps):JSX.Element => {
+const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps): JSX.Element => {
   // tracks if game is in play
   const [isStarted, setIsStarted] = useState<boolean>(false)
   // user can toggle to view instructions during game play
@@ -34,6 +35,8 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps):JSX.Elemen
   const [selected, setSelected] = useState<number[]>([])
   // resets when user does any action, shows errors
   const [message, setMessage] = useState<string>("")
+  const [hint, setHint] = useState<CardInter | null>()
+  const [showHint, setShowHint] = useState<boolean>(false)
 
   // checks for matches once 3 cards are selected by user
   useEffect((): void => {
@@ -58,9 +61,14 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps):JSX.Elemen
 
   // once all cards are used, checks if matches are still present, if not, WIN the game
   useEffect((): void => {
+    if (hint !== null) {
+      setHint(null)
+      setShowHint(false)
+    }
     // 81=number of cards in deck
     if (used.length === 81) {
-      if (!checkMatchesOnBoard()) {
+      const matchOnBoard = findMatch()
+      if (!matchOnBoard) {
         resetGameState()
         updateGCount(true)
         setWon(true)
@@ -164,9 +172,9 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps):JSX.Elemen
   }
 
   const extendBoard = (): void => {
-    let allowAdd = checkMatchesOnBoard()
+    const matchOnBoard: Match | null = findMatch()
 
-    if (allowAdd) {
+    if (!matchOnBoard) {
       const cardIds: number[] = draw(3)
       const newCards: CardInter[] = cardIds.map(id => deck[id - 1])
       const newRowLength: number = (onBoard.length / 3) + 1
@@ -209,7 +217,7 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps):JSX.Elemen
     }
   }
 
-  const checkMatchesOnBoard = (): boolean => {
+  const findMatch = (): Match | null => {
     let inPlay: CardInter[] = onBoard.filter(card => card !== null) as CardInter[]
     while (inPlay.length > 2) {
       let card1: CardInter = inPlay[0]
@@ -219,13 +227,28 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps):JSX.Elemen
           let card3 = inPlay[j]
           let found: boolean = validateMatch([card1, card2, card3])
           if (found === true) {
-            return false
+            console.log('foundMatch: ', card1, card2, card3)
+            return [card1, card2, card3]
           }
         }
       }
       inPlay.splice(0, 1)
     }
-    return true
+    return null
+  }
+
+  const hintHandler = (): void => {
+    if (!hint) {
+      const hintMatch: Match | null = findMatch()
+      if (hintMatch) {
+        // randomly selects card from match found
+        setHint(hintMatch[Math.floor(Math.random() * 3)])
+      }
+      else {
+        setMessage("No matches found. Add 3 cards.")
+      }
+    }
+    setShowHint(!showHint)
   }
 
   return (
@@ -233,7 +256,10 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps):JSX.Elemen
       <div className="info-wrapper">
         <h2 className="game-stats"><span className="label">Games Won:</span> {winCount}/{gameCount}</h2>
         <h2 className="game-stats"><span className="label">Cards Used:</span> {used.length}/81</h2>
-        {message.length > 0 ? <p className="message">{message}</p> : <div className="no-message" />}
+        {showHint && hint ? <Hint card={hint} /> :
+          <>{message.length > 0 ? <p className="message">{message}</p> : <div className="no-message" />}</>
+        }
+
       </div>
 
       {isStarted ? <>
@@ -241,10 +267,11 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps):JSX.Elemen
         {showInstr ?
           <Instructions deck={deck} />
           :
-          <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} userResetGame={userResetGame} />}
-        <div className="info-buttons">
-          <button onClick={() => setShowInstr(!showInstr)} className="instr-btn">{showInstr ? "Return to Game" : "View Instructions"}</button>
+          <Board onBoard={onBoard} extendBoard={extendBoard} selected={selected} setSelected={setSelected} setMessage={setMessage} hintHandler={hintHandler} showHint={showHint} />}
+        <div className="info-buttons 3">
           <button onClick={() => setShowMatches(!showMatches)} className="matches-btn">{`${showMatches ? "Hide" : "Show"} Matches`}</button>
+          <button className="end-game" onClick={userResetGame}>End Game</button>
+          <button onClick={() => setShowInstr(!showInstr)} className="instr-btn">{showInstr ? "Return to Game" : "View Instructions"}</button>
         </div>
         {showMatches ?
           <Matches matches={matches} /> : ""}</>
@@ -265,6 +292,19 @@ const WinScreen = (): JSX.Element => {
     <div className="win-wrapper">
       <h1>Congratulations, you won!</h1>
       <h1>Play Again?</h1>
+    </div>
+  )
+}
+
+type hintProps = { card: CardInter }
+
+const Hint = ({ card }: hintProps): JSX.Element => {
+  return (
+    <div className="hint-wrapper">
+      <p className="hint-text">Start with this card:</p>
+      <div className="hint-card" >
+        <Card card={card} rotate={false} />
+      </div>
     </div>
   )
 }

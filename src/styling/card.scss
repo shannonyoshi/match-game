@@ -34,7 +34,7 @@
   // margin:auto;
   &.no-rotate {
     @include xxl-card;
-    @media (max-width: 1500px) {
+    @media (max-width: 1600px) {
       @include large-card;
     }
     @media (max-width: 1024px) {

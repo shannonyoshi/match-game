@@ -14,10 +14,12 @@
     min-height: 115px;
   }
 
-  .game-stats {
+  .game-stats,
+  .message,
+  .hint-text {
     font-size: 1.25em;
     padding: 1em;
-    @media (max-width: 1024px) {
+    @media (max-width: 800px) {
       font-size: 1em;
     }
     @media (max-width: 500px) {
@@ -28,43 +30,88 @@
       white-space: nowrap;
     }
   }
-  .message {
+  .message,
+  .hint-text {
     font-weight: bold;
-    font-size: 1.25em;
-    padding: 1em;
+  }
+  .message {
     @include themify {
       color: $accent;
-    }
-    @media (max-width: 1024px) {
-      font-size: 1em;
-    }
-    @media (max-width: 500px) {
-      padding: 0.1em;
     }
   }
 }
 .action-buttons,
 .info-buttons {
-  text-align: center;
+  margin-left: 25%;
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 50%;
+
+  @media(max-width:800px){
+    width:66%;
+    margin-left:17%;
+  }
+  @media(max-width:600px){
+    width:80%;
+    margin-left:10%;
+  }
+  @media(max-width:500px){
+    width: 100%;
+    margin-left:0;
+  }
   .add-cards,
-  .end-game {
+  .hint-btn {
+    margin-top:.5em;
     @include two-button;
   }
   .instr-btn,
-  .matches-btn {
+  .matches-btn,
+  .end-game {
+    margin-top:.5em;
     @include small-button;
   }
+  .instr-btn{
+    min-width:155px;
+  }
+}
+.info-buttons {
+  flex-wrap: wrap;
 }
 .start-button {
   @include large-button;
 }
 
 .win-wrapper {
-  text-align:center;
-  margin-top:2em;
+  text-align: center;
+  margin-top: 2em;
   font-size: 3em;
   line-height: 1.5em;
-  @media(max-width: 600px){
+  @media (max-width: 600px) {
     font-size: 2em;
+  }
+}
+
+.hint-wrapper {
+  display: flex;
+  align-items: center;
+  .hint-card {
+    @include box-shadow;
+    margin: 5px;
+    width: auto;
+    border-radius: 5px;
+    // border:1px solid orange;
+    padding: 0.5em;
+    @include themify {
+      background-color: $card-bg;
+    }
+    .card-wrapper {
+      @include small-card;
+      @media (max-width: 800px) {
+        @include tiny-card;
+      }
+    }
   }
 }

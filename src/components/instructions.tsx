@@ -27,16 +27,16 @@ const Instructions = ({ deck }: BoardProps): JSX.Element => {
       <section className="examples">
 
         <h3 className="example">Colors:</h3>
-        {colorCards.map((card, index )=> <div className="card" key={`color-example-${index}`}> <Card card={card} rotate={false} /></div>)}
+        {colorCards.map((card, index) => <div className="card" key={`color-example-${index}`}> <Card card={card} rotate={false} /></div>)}
 
         <h3 className="example">Shapes:</h3>
-        {shapeCards.map((card, index ) => <div className="card" key={`shape-example-${index}`}> <Card card={card} rotate={false} /></div>)}
+        {shapeCards.map((card, index) => <div className="card" key={`shape-example-${index}`}> <Card card={card} rotate={false} /></div>)}
 
         <h3 className="example">Shading:</h3>
-        {shadeCards.map((card, index ) => <div className="card" key={`shading-example-${index}`}> <Card card={card} rotate={false} /></div>)}
+        {shadeCards.map((card, index) => <div className="card" key={`shading-example-${index}`}> <Card card={card} rotate={false} /></div>)}
 
         <h3 className="example">Amounts:</h3>
-        {numberCards.map((card, index ) => <div className="card" key={`amount-example-${index}`}> <Card card={card} rotate={false} /></div>)}
+        {numberCards.map((card, index) => <div className="card" key={`amount-example-${index}`}> <Card card={card} rotate={false} /></div>)}
       </section>
     </div>
   )

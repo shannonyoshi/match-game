@@ -11,11 +11,12 @@ type BoardProps = {
   selected: number[],
   setSelected: Dispatch<SetStateAction<number[]>>,
   setMessage: Dispatch<SetStateAction<string>>,
-  extendBoard: () => void
-  userResetGame: () => void
+  extendBoard: () => void,
+  hintHandler: () => void,
+  showHint: boolean,
 
 }
-const Board = ({ onBoard, selected, setSelected, setMessage, extendBoard, userResetGame }: BoardProps): JSX.Element => {
+const Board = ({ onBoard, selected, setSelected, setMessage, extendBoard, hintHandler, showHint }: BoardProps): JSX.Element => {
 
   const toggleSelect = (cardId: number): void => {
     const isSelected = selected.includes(cardId)
@@ -51,7 +52,7 @@ const Board = ({ onBoard, selected, setSelected, setMessage, extendBoard, userRe
       </div>
       <div className="action-buttons">
         <button onClick={extendBoard} className="add-cards">Add 3 cards</button>
-        <button className="end-game" onClick={userResetGame}>End Game</button>
+        <button onClick={hintHandler} className="hint-btn">{`${showHint ? "Hide" : "Show"} Hint`}</button>
       </div>
     </>
   )
