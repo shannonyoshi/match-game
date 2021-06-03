@@ -67,8 +67,9 @@ function App(): JSX.Element {
         <Game deck={deck} gameCount={gameCount} winCount={winCount} updateGCount={updateGCount} />:
 
         <footer>
+          <a href="https://syoshi.dev/" target="_blank" className="portfolio-link"><h3>Portfolio</h3></a>
           <a href="https://github.com/shannonyoshi/match-game" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-github fa-4x"></i>
+            <i className="fab fa-github fa-3x"></i>
           </a>
         </footer>
 
