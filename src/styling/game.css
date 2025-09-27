@@ -1,0 +1,207 @@
+/* Game CSS with button styles compiled from SCSS */
+.game-wrapper {
+  padding-bottom: 150px;
+}
+
+.info-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 500px) {
+  .info-wrapper {
+    flex-direction: column;
+    padding: 1em;
+    min-height: 115px;
+  }
+}
+
+.info-wrapper .game-stats,
+.info-wrapper .message,
+.info-wrapper .hint-text {
+  font-size: 1.25em;
+  padding: 1em;
+}
+
+@media (max-width: 800px) {
+  .info-wrapper .game-stats,
+  .info-wrapper .message,
+  .info-wrapper .hint-text {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 500px) {
+  .info-wrapper .game-stats,
+  .info-wrapper .message,
+  .info-wrapper .hint-text {
+    padding: 0.1em;
+  }
+}
+
+.info-wrapper .message,
+.info-wrapper .hint-text {
+  font-weight: bold;
+}
+
+.info-wrapper .message {
+  color: #e76f51;
+}
+
+.action-buttons,
+.info-buttons {
+  margin-left: 25%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+@media (max-width: 800px) {
+  .action-buttons,
+  .info-buttons {
+    width: 66%;
+    margin-left: 17%;
+  }
+}
+
+@media (max-width: 600px) {
+  .action-buttons,
+  .info-buttons {
+    width: 80%;
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 500px) {
+  .action-buttons,
+  .info-buttons {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Button base styles */
+.add-cards,
+.hint-btn,
+.instr-btn,
+.matches-btn,
+.end-game,
+.start-button {
+  transition: transform 0.2s ease-in;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0.5em;
+  padding: 0.4em;
+  box-shadow: inset 0 0 3px #2a9d8f;
+  color: #2a9d8f;
+  background-color: #f2deac;
+  border: 2px solid #2a9d8f;
+}
+
+@media (hover: hover) {
+  .add-cards:hover,
+  .hint-btn:hover,
+  .instr-btn:hover,
+  .matches-btn:hover,
+  .end-game:hover,
+  .start-button:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* Two button style */
+.add-cards,
+.hint-btn {
+  margin-top: 0.5em;
+  min-width: 150px;
+  width: 40%;
+}
+
+@media (max-width: 800px) {
+  .add-cards,
+  .hint-btn {
+    font-size: 1.25em;
+  }
+}
+
+@media (max-width: 500px) {
+  .add-cards,
+  .hint-btn {
+    width: 45%;
+  }
+}
+
+/* Small button style */
+.instr-btn,
+.matches-btn,
+.end-game {
+  margin-top: 0.5em;
+  font-size: 1em;
+  width: 30%;
+  min-width: 155px;
+}
+
+.instr-btn {
+  min-width: 155px;
+}
+
+/* Large button style */
+.start-button {
+  font-size: 1.5em;
+  width: 40%;
+  display: block;
+  margin: 1em auto;
+}
+
+@media (max-width: 1500px) {
+  .start-button {
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 800px) {
+  .start-button {
+    width: 60%;
+  }
+}
+
+@media (max-width: 600px) {
+  .start-button {
+    width: 75%;
+  }
+}
+
+.info-buttons {
+  flex-wrap: wrap;
+}
+
+.win-wrapper {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 3em;
+  line-height: 1.5em;
+}
+
+@media (max-width: 600px) {
+  .win-wrapper {
+    font-size: 2em;
+  }
+}
+
+.hint-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.hint-wrapper .hint-card {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  margin: 5px;
+  width: auto;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: white;
+}
