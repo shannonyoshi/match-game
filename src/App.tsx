@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { CardInter, ThemeOpts } from "./types";
 
-import "./styling/app.scss"
-import "./styling/card.scss"
+import "./styling/app.css"
+import "./styling/card.css"
 
 import Game from "./components/game"
 

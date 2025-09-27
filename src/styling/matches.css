@@ -1,0 +1,816 @@
+.matches-container {
+  width: 100%;
+  text-align: center;
+}
+
+.matches-title {
+  text-align: left;
+  font-weight: bold;
+  padding-top: 1em;
+  padding-left: 1em;
+}
+
+.matches {
+  display: flex;
+  align-items: flex-start;
+  margin: auto;
+  flex-wrap: wrap;
+  padding: 1em;
+}
+.matches .match {
+  padding: 10px 5px;
+}
+@media (max-width: 600px) {
+  .matches .match {
+    padding: 5px 0;
+  }
+}
+.matches .match .match-card-container {
+  margin: 5px;
+  width: auto;
+  border-radius: 5px;
+  box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+  padding: 0.75em;
+}
+.matches .match .match-card-container.theme-default, .theme-default .matches .match .match-card-container {
+  background-color: white;
+}
+.matches .match .match-card-container.theme-dark, .theme-dark .matches .match .match-card-container {
+  background-color: black;
+}
+.matches .match .match-card-container.theme-mono, .theme-mono .matches .match .match-card-container {
+  background-color: white;
+}
+.matches .match .match-card-container.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container {
+  background-color: black;
+}
+.matches .match .match-card-container .card-wrapper {
+  height: 87.5px;
+  width: 50px;
+}
+.matches .match .match-card-container .card-wrapper .shape-wrapper {
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.matches .match .match-card-container .card-wrapper .shape-0,
+.matches .match .match-card-container .card-wrapper .shape-1 {
+  margin: 3px 0;
+}
+.matches .match .match-card-container .card-wrapper .shape-0 {
+  width: 0;
+  height: 0;
+  border: 12.5px solid transparent;
+  position: relative;
+  left: 18.75px;
+}
+.matches .match .match-card-container .card-wrapper .shape-0:after {
+  content: "";
+  position: absolute;
+  right: 25px;
+  top: -12.5px;
+  width: 0;
+  height: 0;
+  border: 12.5px solid transparent;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-0 {
+  border-left: 25px solid #2a9d8f;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-default:after, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-0:after {
+  border-right: 25px solid #2a9d8f;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-0 {
+  border-left: 25px solid #4b1a49;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-dark:after, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-0:after {
+  border-right: 25px solid #4b1a49;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-0 {
+  border-left: 25px solid #191919;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-mono:after, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-0:after {
+  border-right: 25px solid #191919;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-0 {
+  border-left: 25px solid #e6e6e6;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-mono-dark:after, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-0:after {
+  border-right: 25px solid #e6e6e6;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-1 {
+  border-left: 25px solid #e76f51;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-default:after, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-1:after {
+  border-right: 25px solid #e76f51;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-1 {
+  border-left: 25px solid #8b1e3f;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-dark:after, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-1:after {
+  border-right: 25px solid #8b1e3f;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-1 {
+  border-left: 25px solid #4c4c4c;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-mono:after, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-1:after {
+  border-right: 25px solid #4c4c4c;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-1 {
+  border-left: 25px solid #6a6c6e;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-mono-dark:after, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-1:after {
+  border-right: 25px solid #6a6c6e;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-2 {
+  border-left: 25px solid #e9c46a;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-default:after, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-2:after {
+  border-right: 25px solid #e9c46a;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-2 {
+  border-left: 25px solid #89bd9e;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-dark:after, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-2:after {
+  border-right: 25px solid #89bd9e;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-2 {
+  border-left: 25px solid #b2b2b2;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-mono:after, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-2:after {
+  border-right: 25px solid #b2b2b2;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-2 {
+  border-left: 25px solid #2d2d2d;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-mono-dark:after, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-2:after {
+  border-right: 25px solid #2d2d2d;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner {
+  z-index: 10;
+  width: 0;
+  height: 0;
+  position: relative;
+  border: 10.5px solid transparent;
+  top: -10.5px;
+  left: -25px;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner:after {
+  content: "";
+  z-index: 11;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 10.5px solid transparent;
+  right: 21px;
+  top: -10.5px;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner {
+  border-left: 21px solid white;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-default:after, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner:after {
+  border-right: 21px solid white;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner {
+  border-left: 21px solid black;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-dark:after, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner:after {
+  border-right: 21px solid black;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner {
+  border-left: 21px solid white;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-mono:after, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner:after {
+  border-right: 21px solid white;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner {
+  border-left: 21px solid black;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark:after, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner:after {
+  border-right: 21px solid black;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner {
+  z-index: 10;
+  width: 0;
+  height: 0;
+  position: relative;
+  border: 10.5px solid transparent;
+  top: -10.5px;
+  left: -25px;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner:after {
+  content: "";
+  z-index: 11;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 10.5px solid transparent;
+  right: 21px;
+  top: -10.5px;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner {
+  border-left: 21px solid white;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner {
+  border-left: 21px solid black;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner {
+  border-left: 21px solid white;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner {
+  border-left: 21px solid black;
+}
+.matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner:after {
+  border-right: 21px solid transparent;
+}
+.matches .match .match-card-container .card-wrapper .shape-1 {
+  width: 50px;
+  height: 25px;
+  border-radius: 30%/50%;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-0.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-0 {
+  border: 2px solid #2a9d8f;
+  background: #2a9d8f;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-0.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-0 {
+  border: 2px solid #4b1a49;
+  background: #4b1a49;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-0.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-0 {
+  border: 2px solid #191919;
+  background: #191919;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-0.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-0 {
+  border: 2px solid #e6e6e6;
+  background: #e6e6e6;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(90deg, #2a9d8f 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(90deg, #4b1a49 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(90deg, #191919 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(90deg, #e6e6e6 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-1 {
+  border: 2px solid #e76f51;
+  background: #e76f51;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-1 {
+  border: 2px solid #8b1e3f;
+  background: #8b1e3f;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-1 {
+  border: 2px solid #4c4c4c;
+  background: #4c4c4c;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-1 {
+  border: 2px solid #6a6c6e;
+  background: #6a6c6e;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(90deg, #e76f51 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(90deg, #8b1e3f 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(90deg, #4c4c4c 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(90deg, #6a6c6e 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-2.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-2 {
+  border: 2px solid #e9c46a;
+  background: #e9c46a;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-2.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-2 {
+  border: 2px solid #89bd9e;
+  background: #89bd9e;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-2.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-2 {
+  border: 2px solid #b2b2b2;
+  background: #b2b2b2;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-2.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-2 {
+  border: 2px solid #2d2d2d;
+  background: #2d2d2d;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(90deg, #e9c46a 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(90deg, #89bd9e 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(90deg, #b2b2b2 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(90deg, #2d2d2d 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-1.shading-2.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.shading-2 {
+  background: white;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.shading-2.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.shading-2 {
+  background: black;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.shading-2.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.shading-2 {
+  background: white;
+}
+.matches .match .match-card-container .card-wrapper .shape-1.shading-2.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.shading-2 {
+  background: black;
+}
+.matches .match .match-card-container .card-wrapper .shape-2 {
+  margin: 1.5px 0;
+  width: 50px;
+  height: 25px;
+  border-radius: 90% 0;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-0.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-0 {
+  border: 2px solid #2a9d8f;
+  background: #2a9d8f;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-0.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-0 {
+  border: 2px solid #4b1a49;
+  background: #4b1a49;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-0.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-0 {
+  border: 2px solid #191919;
+  background: #191919;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-0.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-0 {
+  border: 2px solid #e6e6e6;
+  background: #e6e6e6;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(90deg, #2a9d8f 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(90deg, #4b1a49 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(90deg, #191919 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(90deg, #e6e6e6 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-1 {
+  border: 2px solid #e76f51;
+  background: #e76f51;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-1 {
+  border: 2px solid #8b1e3f;
+  background: #8b1e3f;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-1 {
+  border: 2px solid #4c4c4c;
+  background: #4c4c4c;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-1 {
+  border: 2px solid #6a6c6e;
+  background: #6a6c6e;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(90deg, #e76f51 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(90deg, #8b1e3f 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(90deg, #4c4c4c 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(90deg, #6a6c6e 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-2.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-2 {
+  border: 2px solid #e9c46a;
+  background: #e9c46a;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-2.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-2 {
+  border: 2px solid #89bd9e;
+  background: #89bd9e;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-2.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-2 {
+  border: 2px solid #b2b2b2;
+  background: #b2b2b2;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-2.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-2 {
+  border: 2px solid #2d2d2d;
+  background: #2d2d2d;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(90deg, #e9c46a 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(90deg, #89bd9e 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(90deg, #b2b2b2 50%, white 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(90deg, #2d2d2d 50%, black 50%);
+}
+.matches .match .match-card-container .card-wrapper .shape-2.shading-2.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.shading-2 {
+  background: white;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.shading-2.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.shading-2 {
+  background: black;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.shading-2.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.shading-2 {
+  background: white;
+}
+.matches .match .match-card-container .card-wrapper .shape-2.shading-2.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.shading-2 {
+  background: black;
+}
+@media (max-width: 800px) {
+  .matches .match .match-card-container .card-wrapper {
+    height: 52.5px;
+    width: 30px;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-wrapper {
+    min-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0,
+  .matches .match .match-card-container .card-wrapper .shape-1 {
+    margin: 1px 0;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0 {
+    width: 0;
+    height: 0;
+    border: 7.5px solid transparent;
+    position: relative;
+    left: 11.25px;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0:after {
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: -7.5px;
+    width: 0;
+    height: 0;
+    border: 7.5px solid transparent;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-0 {
+    border-left: 15px solid #2a9d8f;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-default:after, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-0:after {
+    border-right: 15px solid #2a9d8f;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-0 {
+    border-left: 15px solid #4b1a49;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-dark:after, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-0:after {
+    border-right: 15px solid #4b1a49;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-0 {
+    border-left: 15px solid #191919;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-mono:after, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-0:after {
+    border-right: 15px solid #191919;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-0 {
+    border-left: 15px solid #e6e6e6;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-0.theme-mono-dark:after, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-0:after {
+    border-right: 15px solid #e6e6e6;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-1 {
+    border-left: 15px solid #e76f51;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-default:after, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-1:after {
+    border-right: 15px solid #e76f51;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-1 {
+    border-left: 15px solid #8b1e3f;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-dark:after, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-1:after {
+    border-right: 15px solid #8b1e3f;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-1 {
+    border-left: 15px solid #4c4c4c;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-mono:after, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-1:after {
+    border-right: 15px solid #4c4c4c;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-1 {
+    border-left: 15px solid #6a6c6e;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-1.theme-mono-dark:after, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-1:after {
+    border-right: 15px solid #6a6c6e;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-2 {
+    border-left: 15px solid #e9c46a;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-default:after, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.color-2:after {
+    border-right: 15px solid #e9c46a;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-2 {
+    border-left: 15px solid #89bd9e;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-dark:after, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.color-2:after {
+    border-right: 15px solid #89bd9e;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-2 {
+    border-left: 15px solid #b2b2b2;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-mono:after, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.color-2:after {
+    border-right: 15px solid #b2b2b2;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-2 {
+    border-left: 15px solid #2d2d2d;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.color-2.theme-mono-dark:after, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.color-2:after {
+    border-right: 15px solid #2d2d2d;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner {
+    z-index: 10;
+    width: 0;
+    height: 0;
+    position: relative;
+    border: 5.5px solid transparent;
+    top: -5.5px;
+    left: -15px;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner:after {
+    content: "";
+    z-index: 11;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5.5px solid transparent;
+    right: 11px;
+    top: -5.5px;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner {
+    border-left: 11px solid white;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-default:after, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner:after {
+    border-right: 11px solid white;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner {
+    border-left: 11px solid black;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-dark:after, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner:after {
+    border-right: 11px solid black;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner {
+    border-left: 11px solid white;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-mono:after, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner:after {
+    border-right: 11px solid white;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner {
+    border-left: 11px solid black;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark:after, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-2 .inner:after {
+    border-right: 11px solid black;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner {
+    z-index: 10;
+    width: 0;
+    height: 0;
+    position: relative;
+    border: 5.5px solid transparent;
+    top: -5.5px;
+    left: -15px;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner:after {
+    content: "";
+    z-index: 11;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5.5px solid transparent;
+    right: 11px;
+    top: -5.5px;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner {
+    border-left: 11px solid white;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner {
+    border-left: 11px solid black;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner {
+    border-left: 11px solid white;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner {
+    border-left: 11px solid black;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-0.shading-1 .inner:after {
+    border-right: 11px solid transparent;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1 {
+    width: 30px;
+    height: 15px;
+    border-radius: 30%/50%;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-0.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-0 {
+    border: 2px solid #2a9d8f;
+    background: #2a9d8f;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-0.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-0 {
+    border: 2px solid #4b1a49;
+    background: #4b1a49;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-0.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-0 {
+    border: 2px solid #191919;
+    background: #191919;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-0.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-0 {
+    border: 2px solid #e6e6e6;
+    background: #e6e6e6;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(90deg, #2a9d8f 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(90deg, #4b1a49 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(90deg, #191919 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(90deg, #e6e6e6 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-1 {
+    border: 2px solid #e76f51;
+    background: #e76f51;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-1 {
+    border: 2px solid #8b1e3f;
+    background: #8b1e3f;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-1 {
+    border: 2px solid #4c4c4c;
+    background: #4c4c4c;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-1 {
+    border: 2px solid #6a6c6e;
+    background: #6a6c6e;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(90deg, #e76f51 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(90deg, #8b1e3f 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(90deg, #4c4c4c 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(90deg, #6a6c6e 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-2.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-2 {
+    border: 2px solid #e9c46a;
+    background: #e9c46a;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-2.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-2 {
+    border: 2px solid #89bd9e;
+    background: #89bd9e;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-2.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-2 {
+    border: 2px solid #b2b2b2;
+    background: #b2b2b2;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-2.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-2 {
+    border: 2px solid #2d2d2d;
+    background: #2d2d2d;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(90deg, #e9c46a 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(90deg, #89bd9e 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(90deg, #b2b2b2 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(90deg, #2d2d2d 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.shading-2.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-1.shading-2 {
+    background: white;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.shading-2.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-1.shading-2 {
+    background: black;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.shading-2.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-1.shading-2 {
+    background: white;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-1.shading-2.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-1.shading-2 {
+    background: black;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2 {
+    margin: 0.5px 0;
+    width: 30px;
+    height: 15px;
+    border-radius: 90% 0;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-0.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-0 {
+    border: 2px solid #2a9d8f;
+    background: #2a9d8f;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-0.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-0 {
+    border: 2px solid #4b1a49;
+    background: #4b1a49;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-0.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-0 {
+    border: 2px solid #191919;
+    background: #191919;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-0.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-0 {
+    border: 2px solid #e6e6e6;
+    background: #e6e6e6;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(90deg, #2a9d8f 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(90deg, #4b1a49 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(90deg, #191919 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(90deg, #e6e6e6 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-1 {
+    border: 2px solid #e76f51;
+    background: #e76f51;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-1 {
+    border: 2px solid #8b1e3f;
+    background: #8b1e3f;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-1 {
+    border: 2px solid #4c4c4c;
+    background: #4c4c4c;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-1 {
+    border: 2px solid #6a6c6e;
+    background: #6a6c6e;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(90deg, #e76f51 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(90deg, #8b1e3f 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(90deg, #4c4c4c 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(90deg, #6a6c6e 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-2.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-2 {
+    border: 2px solid #e9c46a;
+    background: #e9c46a;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-2.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-2 {
+    border: 2px solid #89bd9e;
+    background: #89bd9e;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-2.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-2 {
+    border: 2px solid #b2b2b2;
+    background: #b2b2b2;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-2.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-2 {
+    border: 2px solid #2d2d2d;
+    background: #2d2d2d;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(90deg, #e9c46a 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(90deg, #89bd9e 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(90deg, #b2b2b2 50%, white 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(90deg, #2d2d2d 50%, black 50%);
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.shading-2.theme-default, .theme-default .matches .match .match-card-container .card-wrapper .shape-2.shading-2 {
+    background: white;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.shading-2.theme-dark, .theme-dark .matches .match .match-card-container .card-wrapper .shape-2.shading-2 {
+    background: black;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.shading-2.theme-mono, .theme-mono .matches .match .match-card-container .card-wrapper .shape-2.shading-2 {
+    background: white;
+  }
+  .matches .match .match-card-container .card-wrapper .shape-2.shading-2.theme-mono-dark, .theme-mono-dark .matches .match .match-card-container .card-wrapper .shape-2.shading-2 {
+    background: black;
+  }
+}
+
+/*# sourceMappingURL=matches.css.map */

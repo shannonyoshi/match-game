@@ -2,7 +2,7 @@ import React from "react";
 
 import { CardInter } from "../types"
 
-import "../styling/card.scss"
+import "../styling/card.css"
 
 type cardProps = {
   card: CardInter,
@@ -18,6 +18,8 @@ const Card = ({ card, rotate = false, shrink = false }: cardProps): JSX.Element 
   const classString = `shape-${card.shape} shading-${card.shading} color-${card.color}`
 
   return (
+  
+ // Testing
     <div className={`card-wrapper ${rotate ? "rotate" : "no-rotate"} ${shrink ? "shrink" : ""}`}>
       <div className={`shape-wrapper`} >
 

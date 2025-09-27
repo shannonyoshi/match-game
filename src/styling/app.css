@@ -1,0 +1,188 @@
+.theme-default.theme-default, .theme-default .theme-default,
+.theme-mono.theme-default,
+.theme-default .theme-mono,
+.theme-mono-dark.theme-default,
+.theme-default .theme-mono-dark {
+  color: #2a9d8f;
+}
+.theme-default.theme-dark, .theme-dark .theme-default,
+.theme-mono.theme-dark,
+.theme-dark .theme-mono,
+.theme-mono-dark.theme-dark,
+.theme-dark .theme-mono-dark {
+  color: #4b1a49;
+}
+.theme-default.theme-mono, .theme-mono .theme-default,
+.theme-mono.theme-mono,
+.theme-mono .theme-mono,
+.theme-mono-dark.theme-mono,
+.theme-mono .theme-mono-dark {
+  color: #191919;
+}
+.theme-default.theme-mono-dark, .theme-mono-dark .theme-default,
+.theme-mono.theme-mono-dark,
+.theme-mono-dark .theme-mono,
+.theme-mono-dark.theme-mono-dark,
+.theme-mono-dark .theme-mono-dark {
+  color: #e6e6e6;
+}
+
+.theme-dark.theme-default, .theme-default .theme-dark {
+  color: #e9c46a;
+}
+.theme-dark.theme-dark, .theme-dark .theme-dark {
+  color: #89bd9e;
+}
+.theme-dark.theme-mono, .theme-mono .theme-dark {
+  color: #b2b2b2;
+}
+.theme-dark.theme-mono-dark, .theme-mono-dark .theme-dark {
+  color: #2d2d2d;
+}
+
+.app-container {
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  transition-property: color, background, background-color;
+  min-height: 100vh;
+  position: relative;
+}
+.app-container.theme-default, .theme-default .app-container {
+  background-color: #fcf9f0;
+}
+.app-container.theme-dark, .theme-dark .app-container {
+  background-color: #333333;
+}
+.app-container.theme-mono, .theme-mono .app-container {
+  background-color: #ffffff;
+}
+.app-container.theme-mono-dark, .theme-mono-dark .app-container {
+  background-color: #333333;
+}
+.app-container .header {
+  height: 100px;
+}
+.app-container .header.theme-default, .theme-default .app-container .header {
+  background: linear-gradient(#1d6d64, #2a9d8f);
+  color: #efd596;
+}
+.app-container .header.theme-dark, .theme-dark .app-container .header {
+  background: linear-gradient(#2a0e29, #4b1a49);
+  color: #acd0bb;
+}
+.app-container .header.theme-mono, .theme-mono .app-container .header {
+  background: linear-gradient(#0c0c0c, #191919);
+  color: #b9b9b9;
+}
+.app-container .header.theme-mono-dark, .theme-mono-dark .app-container .header {
+  background: linear-gradient(#cccccc, #e6e6e6);
+  color: #323232;
+}
+.app-container .header {
+  font-size: 2em;
+  padding: 1em;
+  font-weight: bold;
+}
+.app-container .theme-setter {
+  padding: 0.25em;
+  font-size: 1em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.app-container .theme-setter.light.theme-default, .theme-default .app-container .theme-setter.light {
+  border-bottom: 1px solid #e9c46a;
+  background: linear-gradient(#fcf9f0, #efd596);
+}
+.app-container .theme-setter.light.theme-dark, .theme-dark .app-container .theme-setter.light {
+  border-bottom: 1px solid #89bd9e;
+  background: linear-gradient(#333333, #acd0bb);
+}
+.app-container .theme-setter.light.theme-mono, .theme-mono .app-container .theme-setter.light {
+  border-bottom: 1px solid #b2b2b2;
+  background: linear-gradient(#ffffff, #b9b9b9);
+}
+.app-container .theme-setter.light.theme-mono-dark, .theme-mono-dark .app-container .theme-setter.light {
+  border-bottom: 1px solid #2d2d2d;
+  background: linear-gradient(#333333, #323232);
+}
+.app-container .theme-setter.dark.theme-default, .theme-default .app-container .theme-setter.dark {
+  color: #2a9d8f;
+  border-bottom: 1px solid white;
+  background: linear-gradient(#efd596 50%, #fcf9f0);
+}
+.app-container .theme-setter.dark.theme-dark, .theme-dark .app-container .theme-setter.dark {
+  color: #4b1a49;
+  border-bottom: 1px solid black;
+  background: linear-gradient(#acd0bb 50%, #333333);
+}
+.app-container .theme-setter.dark.theme-mono, .theme-mono .app-container .theme-setter.dark {
+  color: #191919;
+  border-bottom: 1px solid white;
+  background: linear-gradient(#b9b9b9 50%, #ffffff);
+}
+.app-container .theme-setter.dark.theme-mono-dark, .theme-mono-dark .app-container .theme-setter.dark {
+  color: #e6e6e6;
+  border-bottom: 1px solid black;
+  background: linear-gradient(#323232 50%, #333333);
+}
+.app-container .theme-setter .title {
+  border: 1px solid transparent;
+  padding-right: 0.5em;
+  font-weight: bolder;
+}
+@media (max-width: 400px) {
+  .app-container .theme-setter .title {
+    display: none;
+  }
+}
+.app-container .theme-setter .theme-btn {
+  border: 1px solid transparent;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+.app-container .theme-setter .selected.theme-default, .theme-default .app-container .theme-setter .selected {
+  border: 1px solid #2a9d8f;
+}
+.app-container .theme-setter .selected.theme-dark, .theme-dark .app-container .theme-setter .selected {
+  border: 1px solid #4b1a49;
+}
+.app-container .theme-setter .selected.theme-mono, .theme-mono .app-container .theme-setter .selected {
+  border: 1px solid #191919;
+}
+.app-container .theme-setter .selected.theme-mono-dark, .theme-mono-dark .app-container .theme-setter .selected {
+  border: 1px solid #e6e6e6;
+}
+.app-container footer {
+  height: 150px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding-top: 43px;
+}
+.app-container footer.theme-default, .theme-default .app-container footer {
+  background: linear-gradient(#1d6d64, #2a9d8f);
+  color: #efd596;
+}
+.app-container footer.theme-dark, .theme-dark .app-container footer {
+  background: linear-gradient(#2a0e29, #4b1a49);
+  color: #acd0bb;
+}
+.app-container footer.theme-mono, .theme-mono .app-container footer {
+  background: linear-gradient(#0c0c0c, #191919);
+  color: #b9b9b9;
+}
+.app-container footer.theme-mono-dark, .theme-mono-dark .app-container footer {
+  background: linear-gradient(#cccccc, #e6e6e6);
+  color: #323232;
+}
+.app-container footer h3 {
+  font-size: 1.5em;
+  padding-bottom: 3px;
+}
+
+/*# sourceMappingURL=app.css.map */

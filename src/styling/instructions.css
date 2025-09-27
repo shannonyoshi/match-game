@@ -1,0 +1,858 @@
+.instructions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 70ch;
+  font-size: 1.25em;
+  line-height: 1.5em;
+  margin: auto;
+  max-width: 95%;
+}
+@media (max-width: 800px) {
+  .instructions {
+    text-align: justify;
+  }
+}
+.instructions .title {
+  font-size: 1.5em;
+  padding: 0.5em;
+}
+.instructions .title, .instructions .example, .instructions .label {
+  font-weight: bold;
+}
+.instructions .example {
+  text-align: left;
+  margin: auto;
+}
+
+.examples {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 0.5em;
+}
+@media (max-width: 800px) {
+  .examples {
+    grid-gap: 0.25em;
+  }
+}
+.examples .card.theme-default, .theme-default .examples .card {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+.examples .card.theme-dark, .theme-dark .examples .card {
+  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.9);
+}
+.examples .card.theme-mono, .theme-mono .examples .card {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+.examples .card.theme-mono-dark, .theme-mono-dark .examples .card {
+  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.9);
+}
+.examples .card {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0.5em;
+  height: auto;
+  width: auto;
+}
+@media (max-width: 1024px) {
+  .examples .card {
+    padding: 1.25em;
+  }
+}
+@media (max-width: 800px) {
+  .examples .card {
+    padding: 1em;
+  }
+}
+@media (max-width: 600px) {
+  .examples .card {
+    padding: 0.5em;
+  }
+}
+.examples .card.theme-default, .theme-default .examples .card {
+  background-color: white;
+}
+.examples .card.theme-dark, .theme-dark .examples .card {
+  background-color: black;
+}
+.examples .card.theme-mono, .theme-mono .examples .card {
+  background-color: white;
+}
+.examples .card.theme-mono-dark, .theme-mono-dark .examples .card {
+  background-color: black;
+}
+.examples .card .card-wrapper {
+  width: 87.5px;
+  height: 50px;
+}
+.examples .card .card-wrapper .shape-wrapper {
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.examples .card .card-wrapper .shape-0,
+.examples .card .card-wrapper .shape-1 {
+  margin: 0 3px;
+}
+.examples .card .card-wrapper .shape-0 {
+  align-self: flex-end;
+  width: 0;
+  height: 0;
+  border: 12.5px solid transparent;
+  position: relative;
+  top: -25px;
+}
+.examples .card .card-wrapper .shape-0:after {
+  content: "";
+  position: absolute;
+  left: -12.5px;
+  top: 25px;
+  width: 0;
+  height: 0;
+  border: 12.5px solid transparent;
+}
+.examples .card .card-wrapper .shape-0.color-0.theme-default, .theme-default .examples .card .card-wrapper .shape-0.color-0 {
+  border-bottom: 25px solid #2a9d8f;
+}
+.examples .card .card-wrapper .shape-0.color-0.theme-default:after, .theme-default .examples .card .card-wrapper .shape-0.color-0:after {
+  border-top: 25px solid #2a9d8f;
+}
+.examples .card .card-wrapper .shape-0.color-0.theme-dark, .theme-dark .examples .card .card-wrapper .shape-0.color-0 {
+  border-bottom: 25px solid #4b1a49;
+}
+.examples .card .card-wrapper .shape-0.color-0.theme-dark:after, .theme-dark .examples .card .card-wrapper .shape-0.color-0:after {
+  border-top: 25px solid #4b1a49;
+}
+.examples .card .card-wrapper .shape-0.color-0.theme-mono, .theme-mono .examples .card .card-wrapper .shape-0.color-0 {
+  border-bottom: 25px solid #191919;
+}
+.examples .card .card-wrapper .shape-0.color-0.theme-mono:after, .theme-mono .examples .card .card-wrapper .shape-0.color-0:after {
+  border-top: 25px solid #191919;
+}
+.examples .card .card-wrapper .shape-0.color-0.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-0 {
+  border-bottom: 25px solid #e6e6e6;
+}
+.examples .card .card-wrapper .shape-0.color-0.theme-mono-dark:after, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-0:after {
+  border-top: 25px solid #e6e6e6;
+}
+.examples .card .card-wrapper .shape-0.color-1.theme-default, .theme-default .examples .card .card-wrapper .shape-0.color-1 {
+  border-bottom: 25px solid #e76f51;
+}
+.examples .card .card-wrapper .shape-0.color-1.theme-default:after, .theme-default .examples .card .card-wrapper .shape-0.color-1:after {
+  border-top: 25px solid #e76f51;
+}
+.examples .card .card-wrapper .shape-0.color-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-0.color-1 {
+  border-bottom: 25px solid #8b1e3f;
+}
+.examples .card .card-wrapper .shape-0.color-1.theme-dark:after, .theme-dark .examples .card .card-wrapper .shape-0.color-1:after {
+  border-top: 25px solid #8b1e3f;
+}
+.examples .card .card-wrapper .shape-0.color-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-0.color-1 {
+  border-bottom: 25px solid #4c4c4c;
+}
+.examples .card .card-wrapper .shape-0.color-1.theme-mono:after, .theme-mono .examples .card .card-wrapper .shape-0.color-1:after {
+  border-top: 25px solid #4c4c4c;
+}
+.examples .card .card-wrapper .shape-0.color-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-1 {
+  border-bottom: 25px solid #6a6c6e;
+}
+.examples .card .card-wrapper .shape-0.color-1.theme-mono-dark:after, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-1:after {
+  border-top: 25px solid #6a6c6e;
+}
+.examples .card .card-wrapper .shape-0.color-2.theme-default, .theme-default .examples .card .card-wrapper .shape-0.color-2 {
+  border-bottom: 25px solid #e9c46a;
+}
+.examples .card .card-wrapper .shape-0.color-2.theme-default:after, .theme-default .examples .card .card-wrapper .shape-0.color-2:after {
+  border-top: 25px solid #e9c46a;
+}
+.examples .card .card-wrapper .shape-0.color-2.theme-dark, .theme-dark .examples .card .card-wrapper .shape-0.color-2 {
+  border-bottom: 25px solid #89bd9e;
+}
+.examples .card .card-wrapper .shape-0.color-2.theme-dark:after, .theme-dark .examples .card .card-wrapper .shape-0.color-2:after {
+  border-top: 25px solid #89bd9e;
+}
+.examples .card .card-wrapper .shape-0.color-2.theme-mono, .theme-mono .examples .card .card-wrapper .shape-0.color-2 {
+  border-bottom: 25px solid #b2b2b2;
+}
+.examples .card .card-wrapper .shape-0.color-2.theme-mono:after, .theme-mono .examples .card .card-wrapper .shape-0.color-2:after {
+  border-top: 25px solid #b2b2b2;
+}
+.examples .card .card-wrapper .shape-0.color-2.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-2 {
+  border-bottom: 25px solid #2d2d2d;
+}
+.examples .card .card-wrapper .shape-0.color-2.theme-mono-dark:after, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-2:after {
+  border-top: 25px solid #2d2d2d;
+}
+.examples .card .card-wrapper .shape-0.shading-2 .inner {
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: 10.5px solid transparent;
+  position: relative;
+  top: -6.5px;
+  left: -10.5px;
+}
+.examples .card .card-wrapper .shape-0.shading-2 .inner:after {
+  content: "";
+  z-index: 11;
+  position: absolute;
+  left: -10.5px;
+  top: 21px;
+  width: 0;
+  height: 0;
+  border: 10.5px solid transparent;
+}
+.examples .card .card-wrapper .shape-0.shading-2 .inner.theme-default, .theme-default .examples .card .card-wrapper .shape-0.shading-2 .inner {
+  border-bottom: 21px solid white;
+}
+.examples .card .card-wrapper .shape-0.shading-2 .inner.theme-default:after, .theme-default .examples .card .card-wrapper .shape-0.shading-2 .inner:after {
+  border-top: 21px solid white;
+}
+.examples .card .card-wrapper .shape-0.shading-2 .inner.theme-dark, .theme-dark .examples .card .card-wrapper .shape-0.shading-2 .inner {
+  border-bottom: 21px solid black;
+}
+.examples .card .card-wrapper .shape-0.shading-2 .inner.theme-dark:after, .theme-dark .examples .card .card-wrapper .shape-0.shading-2 .inner:after {
+  border-top: 21px solid black;
+}
+.examples .card .card-wrapper .shape-0.shading-2 .inner.theme-mono, .theme-mono .examples .card .card-wrapper .shape-0.shading-2 .inner {
+  border-bottom: 21px solid white;
+}
+.examples .card .card-wrapper .shape-0.shading-2 .inner.theme-mono:after, .theme-mono .examples .card .card-wrapper .shape-0.shading-2 .inner:after {
+  border-top: 21px solid white;
+}
+.examples .card .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-0.shading-2 .inner {
+  border-bottom: 21px solid black;
+}
+.examples .card .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark:after, .theme-mono-dark .examples .card .card-wrapper .shape-0.shading-2 .inner:after {
+  border-top: 21px solid black;
+}
+.examples .card .card-wrapper .shape-0.shading-1 .inner {
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: 10.5px solid transparent;
+  position: relative;
+  top: -6.5px;
+  left: -10.5px;
+}
+.examples .card .card-wrapper .shape-0.shading-1 .inner:after {
+  content: "";
+  z-index: 11;
+  position: absolute;
+  left: -10.5px;
+  top: 21px;
+  width: 0;
+  height: 0;
+  border: 10.5px solid transparent;
+}
+.examples .card .card-wrapper .shape-0.shading-1 .inner.theme-default, .theme-default .examples .card .card-wrapper .shape-0.shading-1 .inner {
+  border-bottom: 21px solid white;
+}
+.examples .card .card-wrapper .shape-0.shading-1 .inner.theme-dark, .theme-dark .examples .card .card-wrapper .shape-0.shading-1 .inner {
+  border-bottom: 21px solid black;
+}
+.examples .card .card-wrapper .shape-0.shading-1 .inner.theme-mono, .theme-mono .examples .card .card-wrapper .shape-0.shading-1 .inner {
+  border-bottom: 21px solid white;
+}
+.examples .card .card-wrapper .shape-0.shading-1 .inner.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-0.shading-1 .inner {
+  border-bottom: 21px solid black;
+}
+.examples .card .card-wrapper .shape-0.shading-1 .inner:after {
+  border-top: 21px solid transparent;
+}
+.examples .card .card-wrapper .shape-1 {
+  width: 25px;
+  height: 50px;
+  border-radius: 50%/30%;
+}
+.examples .card .card-wrapper .shape-1.color-0.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-0 {
+  border: 2px solid #2a9d8f;
+  background: #2a9d8f;
+}
+.examples .card .card-wrapper .shape-1.color-0.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-0 {
+  border: 2px solid #4b1a49;
+  background: #4b1a49;
+}
+.examples .card .card-wrapper .shape-1.color-0.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-0 {
+  border: 2px solid #191919;
+  background: #191919;
+}
+.examples .card .card-wrapper .shape-1.color-0.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-0 {
+  border: 2px solid #e6e6e6;
+  background: #e6e6e6;
+}
+.examples .card .card-wrapper .shape-1.color-0.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #2a9d8f 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-1.color-0.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #4b1a49 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-1.color-0.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #191919 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-1.color-0.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #e6e6e6 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-1.color-1.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-1 {
+  border: 2px solid #e76f51;
+  background: #e76f51;
+}
+.examples .card .card-wrapper .shape-1.color-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-1 {
+  border: 2px solid #8b1e3f;
+  background: #8b1e3f;
+}
+.examples .card .card-wrapper .shape-1.color-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-1 {
+  border: 2px solid #4c4c4c;
+  background: #4c4c4c;
+}
+.examples .card .card-wrapper .shape-1.color-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-1 {
+  border: 2px solid #6a6c6e;
+  background: #6a6c6e;
+}
+.examples .card .card-wrapper .shape-1.color-1.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #e76f51 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-1.color-1.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #8b1e3f 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-1.color-1.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #4c4c4c 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-1.color-1.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #6a6c6e 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-1.color-2.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-2 {
+  border: 2px solid #e9c46a;
+  background: #e9c46a;
+}
+.examples .card .card-wrapper .shape-1.color-2.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-2 {
+  border: 2px solid #89bd9e;
+  background: #89bd9e;
+}
+.examples .card .card-wrapper .shape-1.color-2.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-2 {
+  border: 2px solid #b2b2b2;
+  background: #b2b2b2;
+}
+.examples .card .card-wrapper .shape-1.color-2.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-2 {
+  border: 2px solid #2d2d2d;
+  background: #2d2d2d;
+}
+.examples .card .card-wrapper .shape-1.color-2.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #e9c46a 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-1.color-2.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #89bd9e 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-1.color-2.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #b2b2b2 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-1.color-2.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #2d2d2d 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-1.shading-2.theme-default, .theme-default .examples .card .card-wrapper .shape-1.shading-2 {
+  background: white;
+}
+.examples .card .card-wrapper .shape-1.shading-2.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.shading-2 {
+  background: black;
+}
+.examples .card .card-wrapper .shape-1.shading-2.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.shading-2 {
+  background: white;
+}
+.examples .card .card-wrapper .shape-1.shading-2.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.shading-2 {
+  background: black;
+}
+.examples .card .card-wrapper .shape-2 {
+  margin: 0 1.5px;
+  width: 25px;
+  height: 50px;
+  border-radius: 0 90%;
+}
+.examples .card .card-wrapper .shape-2.color-0.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-0 {
+  border: 2px solid #2a9d8f;
+  background: #2a9d8f;
+}
+.examples .card .card-wrapper .shape-2.color-0.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-0 {
+  border: 2px solid #4b1a49;
+  background: #4b1a49;
+}
+.examples .card .card-wrapper .shape-2.color-0.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-0 {
+  border: 2px solid #191919;
+  background: #191919;
+}
+.examples .card .card-wrapper .shape-2.color-0.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-0 {
+  border: 2px solid #e6e6e6;
+  background: #e6e6e6;
+}
+.examples .card .card-wrapper .shape-2.color-0.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #2a9d8f 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-2.color-0.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #4b1a49 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-2.color-0.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #191919 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-2.color-0.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #e6e6e6 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-2.color-1.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-1 {
+  border: 2px solid #e76f51;
+  background: #e76f51;
+}
+.examples .card .card-wrapper .shape-2.color-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-1 {
+  border: 2px solid #8b1e3f;
+  background: #8b1e3f;
+}
+.examples .card .card-wrapper .shape-2.color-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-1 {
+  border: 2px solid #4c4c4c;
+  background: #4c4c4c;
+}
+.examples .card .card-wrapper .shape-2.color-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-1 {
+  border: 2px solid #6a6c6e;
+  background: #6a6c6e;
+}
+.examples .card .card-wrapper .shape-2.color-1.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #e76f51 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-2.color-1.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #8b1e3f 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-2.color-1.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #4c4c4c 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-2.color-1.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #6a6c6e 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-2.color-2.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-2 {
+  border: 2px solid #e9c46a;
+  background: #e9c46a;
+}
+.examples .card .card-wrapper .shape-2.color-2.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-2 {
+  border: 2px solid #89bd9e;
+  background: #89bd9e;
+}
+.examples .card .card-wrapper .shape-2.color-2.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-2 {
+  border: 2px solid #b2b2b2;
+  background: #b2b2b2;
+}
+.examples .card .card-wrapper .shape-2.color-2.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-2 {
+  border: 2px solid #2d2d2d;
+  background: #2d2d2d;
+}
+.examples .card .card-wrapper .shape-2.color-2.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #e9c46a 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-2.color-2.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #89bd9e 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-2.color-2.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #b2b2b2 50%, white 50%);
+}
+.examples .card .card-wrapper .shape-2.color-2.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #2d2d2d 50%, black 50%);
+}
+.examples .card .card-wrapper .shape-2.shading-2.theme-default, .theme-default .examples .card .card-wrapper .shape-2.shading-2 {
+  background: white;
+}
+.examples .card .card-wrapper .shape-2.shading-2.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.shading-2 {
+  background: black;
+}
+.examples .card .card-wrapper .shape-2.shading-2.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.shading-2 {
+  background: white;
+}
+.examples .card .card-wrapper .shape-2.shading-2.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.shading-2 {
+  background: black;
+}
+@media (max-width: 600px) {
+  .examples .card .card-wrapper {
+    width: 52.5px;
+    height: 30px;
+  }
+  .examples .card .card-wrapper .shape-wrapper {
+    min-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  .examples .card .card-wrapper .shape-0,
+  .examples .card .card-wrapper .shape-1 {
+    margin: 0 1px;
+  }
+  .examples .card .card-wrapper .shape-0 {
+    align-self: flex-end;
+    width: 0;
+    height: 0;
+    border: 7.5px solid transparent;
+    position: relative;
+    top: -15px;
+  }
+  .examples .card .card-wrapper .shape-0:after {
+    content: "";
+    position: absolute;
+    left: -7.5px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border: 7.5px solid transparent;
+  }
+  .examples .card .card-wrapper .shape-0.color-0.theme-default, .theme-default .examples .card .card-wrapper .shape-0.color-0 {
+    border-bottom: 15px solid #2a9d8f;
+  }
+  .examples .card .card-wrapper .shape-0.color-0.theme-default:after, .theme-default .examples .card .card-wrapper .shape-0.color-0:after {
+    border-top: 15px solid #2a9d8f;
+  }
+  .examples .card .card-wrapper .shape-0.color-0.theme-dark, .theme-dark .examples .card .card-wrapper .shape-0.color-0 {
+    border-bottom: 15px solid #4b1a49;
+  }
+  .examples .card .card-wrapper .shape-0.color-0.theme-dark:after, .theme-dark .examples .card .card-wrapper .shape-0.color-0:after {
+    border-top: 15px solid #4b1a49;
+  }
+  .examples .card .card-wrapper .shape-0.color-0.theme-mono, .theme-mono .examples .card .card-wrapper .shape-0.color-0 {
+    border-bottom: 15px solid #191919;
+  }
+  .examples .card .card-wrapper .shape-0.color-0.theme-mono:after, .theme-mono .examples .card .card-wrapper .shape-0.color-0:after {
+    border-top: 15px solid #191919;
+  }
+  .examples .card .card-wrapper .shape-0.color-0.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-0 {
+    border-bottom: 15px solid #e6e6e6;
+  }
+  .examples .card .card-wrapper .shape-0.color-0.theme-mono-dark:after, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-0:after {
+    border-top: 15px solid #e6e6e6;
+  }
+  .examples .card .card-wrapper .shape-0.color-1.theme-default, .theme-default .examples .card .card-wrapper .shape-0.color-1 {
+    border-bottom: 15px solid #e76f51;
+  }
+  .examples .card .card-wrapper .shape-0.color-1.theme-default:after, .theme-default .examples .card .card-wrapper .shape-0.color-1:after {
+    border-top: 15px solid #e76f51;
+  }
+  .examples .card .card-wrapper .shape-0.color-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-0.color-1 {
+    border-bottom: 15px solid #8b1e3f;
+  }
+  .examples .card .card-wrapper .shape-0.color-1.theme-dark:after, .theme-dark .examples .card .card-wrapper .shape-0.color-1:after {
+    border-top: 15px solid #8b1e3f;
+  }
+  .examples .card .card-wrapper .shape-0.color-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-0.color-1 {
+    border-bottom: 15px solid #4c4c4c;
+  }
+  .examples .card .card-wrapper .shape-0.color-1.theme-mono:after, .theme-mono .examples .card .card-wrapper .shape-0.color-1:after {
+    border-top: 15px solid #4c4c4c;
+  }
+  .examples .card .card-wrapper .shape-0.color-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-1 {
+    border-bottom: 15px solid #6a6c6e;
+  }
+  .examples .card .card-wrapper .shape-0.color-1.theme-mono-dark:after, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-1:after {
+    border-top: 15px solid #6a6c6e;
+  }
+  .examples .card .card-wrapper .shape-0.color-2.theme-default, .theme-default .examples .card .card-wrapper .shape-0.color-2 {
+    border-bottom: 15px solid #e9c46a;
+  }
+  .examples .card .card-wrapper .shape-0.color-2.theme-default:after, .theme-default .examples .card .card-wrapper .shape-0.color-2:after {
+    border-top: 15px solid #e9c46a;
+  }
+  .examples .card .card-wrapper .shape-0.color-2.theme-dark, .theme-dark .examples .card .card-wrapper .shape-0.color-2 {
+    border-bottom: 15px solid #89bd9e;
+  }
+  .examples .card .card-wrapper .shape-0.color-2.theme-dark:after, .theme-dark .examples .card .card-wrapper .shape-0.color-2:after {
+    border-top: 15px solid #89bd9e;
+  }
+  .examples .card .card-wrapper .shape-0.color-2.theme-mono, .theme-mono .examples .card .card-wrapper .shape-0.color-2 {
+    border-bottom: 15px solid #b2b2b2;
+  }
+  .examples .card .card-wrapper .shape-0.color-2.theme-mono:after, .theme-mono .examples .card .card-wrapper .shape-0.color-2:after {
+    border-top: 15px solid #b2b2b2;
+  }
+  .examples .card .card-wrapper .shape-0.color-2.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-2 {
+    border-bottom: 15px solid #2d2d2d;
+  }
+  .examples .card .card-wrapper .shape-0.color-2.theme-mono-dark:after, .theme-mono-dark .examples .card .card-wrapper .shape-0.color-2:after {
+    border-top: 15px solid #2d2d2d;
+  }
+  .examples .card .card-wrapper .shape-0.shading-2 .inner {
+    z-index: 10;
+    width: 0;
+    height: 0;
+    border: 5.5px solid transparent;
+    position: relative;
+    top: -1.5px;
+    left: -5.5px;
+  }
+  .examples .card .card-wrapper .shape-0.shading-2 .inner:after {
+    content: "";
+    z-index: 11;
+    position: absolute;
+    left: -5.5px;
+    top: 11px;
+    width: 0;
+    height: 0;
+    border: 5.5px solid transparent;
+  }
+  .examples .card .card-wrapper .shape-0.shading-2 .inner.theme-default, .theme-default .examples .card .card-wrapper .shape-0.shading-2 .inner {
+    border-bottom: 11px solid white;
+  }
+  .examples .card .card-wrapper .shape-0.shading-2 .inner.theme-default:after, .theme-default .examples .card .card-wrapper .shape-0.shading-2 .inner:after {
+    border-top: 11px solid white;
+  }
+  .examples .card .card-wrapper .shape-0.shading-2 .inner.theme-dark, .theme-dark .examples .card .card-wrapper .shape-0.shading-2 .inner {
+    border-bottom: 11px solid black;
+  }
+  .examples .card .card-wrapper .shape-0.shading-2 .inner.theme-dark:after, .theme-dark .examples .card .card-wrapper .shape-0.shading-2 .inner:after {
+    border-top: 11px solid black;
+  }
+  .examples .card .card-wrapper .shape-0.shading-2 .inner.theme-mono, .theme-mono .examples .card .card-wrapper .shape-0.shading-2 .inner {
+    border-bottom: 11px solid white;
+  }
+  .examples .card .card-wrapper .shape-0.shading-2 .inner.theme-mono:after, .theme-mono .examples .card .card-wrapper .shape-0.shading-2 .inner:after {
+    border-top: 11px solid white;
+  }
+  .examples .card .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-0.shading-2 .inner {
+    border-bottom: 11px solid black;
+  }
+  .examples .card .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark:after, .theme-mono-dark .examples .card .card-wrapper .shape-0.shading-2 .inner:after {
+    border-top: 11px solid black;
+  }
+  .examples .card .card-wrapper .shape-0.shading-1 .inner {
+    z-index: 10;
+    width: 0;
+    height: 0;
+    border: 5.5px solid transparent;
+    position: relative;
+    top: -1.5px;
+    left: -5.5px;
+  }
+  .examples .card .card-wrapper .shape-0.shading-1 .inner:after {
+    content: "";
+    z-index: 11;
+    position: absolute;
+    left: -5.5px;
+    top: 11px;
+    width: 0;
+    height: 0;
+    border: 5.5px solid transparent;
+  }
+  .examples .card .card-wrapper .shape-0.shading-1 .inner.theme-default, .theme-default .examples .card .card-wrapper .shape-0.shading-1 .inner {
+    border-bottom: 11px solid white;
+  }
+  .examples .card .card-wrapper .shape-0.shading-1 .inner.theme-dark, .theme-dark .examples .card .card-wrapper .shape-0.shading-1 .inner {
+    border-bottom: 11px solid black;
+  }
+  .examples .card .card-wrapper .shape-0.shading-1 .inner.theme-mono, .theme-mono .examples .card .card-wrapper .shape-0.shading-1 .inner {
+    border-bottom: 11px solid white;
+  }
+  .examples .card .card-wrapper .shape-0.shading-1 .inner.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-0.shading-1 .inner {
+    border-bottom: 11px solid black;
+  }
+  .examples .card .card-wrapper .shape-0.shading-1 .inner:after {
+    border-top: 11px solid transparent;
+  }
+  .examples .card .card-wrapper .shape-1 {
+    width: 15px;
+    height: 30px;
+    border-radius: 50%/30%;
+  }
+  .examples .card .card-wrapper .shape-1.color-0.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-0 {
+    border: 2px solid #2a9d8f;
+    background: #2a9d8f;
+  }
+  .examples .card .card-wrapper .shape-1.color-0.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-0 {
+    border: 2px solid #4b1a49;
+    background: #4b1a49;
+  }
+  .examples .card .card-wrapper .shape-1.color-0.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-0 {
+    border: 2px solid #191919;
+    background: #191919;
+  }
+  .examples .card .card-wrapper .shape-1.color-0.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-0 {
+    border: 2px solid #e6e6e6;
+    background: #e6e6e6;
+  }
+  .examples .card .card-wrapper .shape-1.color-0.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #2a9d8f 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-0.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #4b1a49 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-0.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #191919 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-0.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #e6e6e6 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-1.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-1 {
+    border: 2px solid #e76f51;
+    background: #e76f51;
+  }
+  .examples .card .card-wrapper .shape-1.color-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-1 {
+    border: 2px solid #8b1e3f;
+    background: #8b1e3f;
+  }
+  .examples .card .card-wrapper .shape-1.color-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-1 {
+    border: 2px solid #4c4c4c;
+    background: #4c4c4c;
+  }
+  .examples .card .card-wrapper .shape-1.color-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-1 {
+    border: 2px solid #6a6c6e;
+    background: #6a6c6e;
+  }
+  .examples .card .card-wrapper .shape-1.color-1.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #e76f51 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-1.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #8b1e3f 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-1.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #4c4c4c 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-1.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #6a6c6e 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-2.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-2 {
+    border: 2px solid #e9c46a;
+    background: #e9c46a;
+  }
+  .examples .card .card-wrapper .shape-1.color-2.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-2 {
+    border: 2px solid #89bd9e;
+    background: #89bd9e;
+  }
+  .examples .card .card-wrapper .shape-1.color-2.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-2 {
+    border: 2px solid #b2b2b2;
+    background: #b2b2b2;
+  }
+  .examples .card .card-wrapper .shape-1.color-2.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-2 {
+    border: 2px solid #2d2d2d;
+    background: #2d2d2d;
+  }
+  .examples .card .card-wrapper .shape-1.color-2.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #e9c46a 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-2.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #89bd9e 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-2.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #b2b2b2 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-1.color-2.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #2d2d2d 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-1.shading-2.theme-default, .theme-default .examples .card .card-wrapper .shape-1.shading-2 {
+    background: white;
+  }
+  .examples .card .card-wrapper .shape-1.shading-2.theme-dark, .theme-dark .examples .card .card-wrapper .shape-1.shading-2 {
+    background: black;
+  }
+  .examples .card .card-wrapper .shape-1.shading-2.theme-mono, .theme-mono .examples .card .card-wrapper .shape-1.shading-2 {
+    background: white;
+  }
+  .examples .card .card-wrapper .shape-1.shading-2.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-1.shading-2 {
+    background: black;
+  }
+  .examples .card .card-wrapper .shape-2 {
+    margin: 0 0.5px;
+    width: 15px;
+    height: 30px;
+    border-radius: 0 90%;
+  }
+  .examples .card .card-wrapper .shape-2.color-0.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-0 {
+    border: 2px solid #2a9d8f;
+    background: #2a9d8f;
+  }
+  .examples .card .card-wrapper .shape-2.color-0.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-0 {
+    border: 2px solid #4b1a49;
+    background: #4b1a49;
+  }
+  .examples .card .card-wrapper .shape-2.color-0.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-0 {
+    border: 2px solid #191919;
+    background: #191919;
+  }
+  .examples .card .card-wrapper .shape-2.color-0.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-0 {
+    border: 2px solid #e6e6e6;
+    background: #e6e6e6;
+  }
+  .examples .card .card-wrapper .shape-2.color-0.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #2a9d8f 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-0.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #4b1a49 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-0.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #191919 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-0.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #e6e6e6 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-1.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-1 {
+    border: 2px solid #e76f51;
+    background: #e76f51;
+  }
+  .examples .card .card-wrapper .shape-2.color-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-1 {
+    border: 2px solid #8b1e3f;
+    background: #8b1e3f;
+  }
+  .examples .card .card-wrapper .shape-2.color-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-1 {
+    border: 2px solid #4c4c4c;
+    background: #4c4c4c;
+  }
+  .examples .card .card-wrapper .shape-2.color-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-1 {
+    border: 2px solid #6a6c6e;
+    background: #6a6c6e;
+  }
+  .examples .card .card-wrapper .shape-2.color-1.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #e76f51 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-1.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #8b1e3f 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-1.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #4c4c4c 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-1.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #6a6c6e 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-2.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-2 {
+    border: 2px solid #e9c46a;
+    background: #e9c46a;
+  }
+  .examples .card .card-wrapper .shape-2.color-2.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-2 {
+    border: 2px solid #89bd9e;
+    background: #89bd9e;
+  }
+  .examples .card .card-wrapper .shape-2.color-2.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-2 {
+    border: 2px solid #b2b2b2;
+    background: #b2b2b2;
+  }
+  .examples .card .card-wrapper .shape-2.color-2.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-2 {
+    border: 2px solid #2d2d2d;
+    background: #2d2d2d;
+  }
+  .examples .card .card-wrapper .shape-2.color-2.shading-1.theme-default, .theme-default .examples .card .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #e9c46a 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-2.shading-1.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #89bd9e 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-2.shading-1.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #b2b2b2 50%, white 50%);
+  }
+  .examples .card .card-wrapper .shape-2.color-2.shading-1.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #2d2d2d 50%, black 50%);
+  }
+  .examples .card .card-wrapper .shape-2.shading-2.theme-default, .theme-default .examples .card .card-wrapper .shape-2.shading-2 {
+    background: white;
+  }
+  .examples .card .card-wrapper .shape-2.shading-2.theme-dark, .theme-dark .examples .card .card-wrapper .shape-2.shading-2 {
+    background: black;
+  }
+  .examples .card .card-wrapper .shape-2.shading-2.theme-mono, .theme-mono .examples .card .card-wrapper .shape-2.shading-2 {
+    background: white;
+  }
+  .examples .card .card-wrapper .shape-2.shading-2.theme-mono-dark, .theme-mono-dark .examples .card .card-wrapper .shape-2.shading-2 {
+    background: black;
+  }
+}
+
+/*# sourceMappingURL=instructions.css.map */

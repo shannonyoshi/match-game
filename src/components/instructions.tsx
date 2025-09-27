@@ -4,7 +4,7 @@ import Card from "./card";
 
 import { CardInter } from "../types";
 
-import "../styling/instructions.scss"
+import "../styling/instructions.css"
 
 type BoardProps = {
   deck: CardInter[],

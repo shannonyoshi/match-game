@@ -7,7 +7,7 @@ import Card from "./card"
 
 import { CardInter, Match } from "../types";
 
-import "../styling/game.scss"
+import "../styling/game.css"
 
 type GameProps = {
   deck: CardInter[],
@@ -61,10 +61,20 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps): JSX.Eleme
 
   // once all cards are used, checks if matches are still present, if not, WIN the game
   useEffect((): void => {
-    if (hint !== null) {
+    // If hint was showing and board changed, update the hint
+    if (showHint && hint === null) {
+      // Re-check for matches after board change
+      const hintMatch = findMatch()
+      if (hintMatch) {
+        setHint(hintMatch[Math.floor(Math.random() * 3)])
+      } else {
+        setMessage("No matches found. Add 3 cards.")
+      }
+    } else if (hint !== null) {
       setHint(null)
       setShowHint(false)
     }
+
     // 81=number of cards in deck
     if (used.length === 81) {
       const matchOnBoard = findMatch()
@@ -184,6 +194,9 @@ const Game = ({ deck, updateGCount, gameCount, winCount }: GameProps): JSX.Eleme
         newOnBoard.splice(addAtIndex, 0, newCards[i])
       }
       setOnBoard([...newOnBoard])
+      setMessage("")
+      setHint(null)
+      setShowHint(false)
     } else {
       setMessage("You can't add cards while there is still a match on the board!")
     }

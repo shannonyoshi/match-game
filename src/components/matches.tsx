@@ -4,7 +4,7 @@ import Card from "./card";
 
 import { Match } from "../types";
 
-import "../styling/matches.scss"
+import "../styling/matches.css"
 
 type MatchesProps = {
   matches: Match[]

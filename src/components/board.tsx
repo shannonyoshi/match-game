@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 
-import "../styling/board.scss";
+import "../styling/board.css";
 
 import Card from "./card";
 
