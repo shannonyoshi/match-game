@@ -1,4 +1,3 @@
-/* Game CSS with button styles compiled from SCSS */
 .game-wrapper {
   padding-bottom: 150px;
 }
@@ -7,7 +6,6 @@
   display: flex;
   align-items: center;
 }
-
 @media (max-width: 500px) {
   .info-wrapper {
     flex-direction: column;
@@ -15,14 +13,12 @@
     min-height: 115px;
   }
 }
-
 .info-wrapper .game-stats,
 .info-wrapper .message,
 .info-wrapper .hint-text {
   font-size: 1.25em;
   padding: 1em;
 }
-
 @media (max-width: 800px) {
   .info-wrapper .game-stats,
   .info-wrapper .message,
@@ -30,7 +26,6 @@
     font-size: 1em;
   }
 }
-
 @media (max-width: 500px) {
   .info-wrapper .game-stats,
   .info-wrapper .message,
@@ -38,14 +33,27 @@
     padding: 0.1em;
   }
 }
-
+.info-wrapper .game-stats .label,
+.info-wrapper .message .label,
+.info-wrapper .hint-text .label {
+  font-weight: bold;
+  white-space: nowrap;
+}
 .info-wrapper .message,
 .info-wrapper .hint-text {
   font-weight: bold;
 }
-
-.info-wrapper .message {
+.info-wrapper .message.theme-default, .theme-default .info-wrapper .message {
   color: #e76f51;
+}
+.info-wrapper .message.theme-dark, .theme-dark .info-wrapper .message {
+  color: #8b1e3f;
+}
+.info-wrapper .message.theme-mono, .theme-mono .info-wrapper .message {
+  color: #4c4c4c;
+}
+.info-wrapper .message.theme-mono-dark, .theme-mono-dark .info-wrapper .message {
+  color: #6a6c6e;
 }
 
 .action-buttons,
@@ -57,7 +65,6 @@
   justify-content: space-evenly;
   width: 50%;
 }
-
 @media (max-width: 800px) {
   .action-buttons,
   .info-buttons {
@@ -65,7 +72,6 @@
     margin-left: 17%;
   }
 }
-
 @media (max-width: 600px) {
   .action-buttons,
   .info-buttons {
@@ -73,7 +79,6 @@
     margin-left: 10%;
   }
 }
-
 @media (max-width: 500px) {
   .action-buttons,
   .info-buttons {
@@ -81,102 +86,318 @@
     margin-left: 0;
   }
 }
-
-/* Button base styles */
-.add-cards,
-.hint-btn,
-.instr-btn,
-.matches-btn,
-.end-game,
-.start-button {
+.action-buttons .add-cards,
+.action-buttons .hint-btn,
+.info-buttons .add-cards,
+.info-buttons .hint-btn {
+  margin-top: 0.5em;
   transition: transform 0.2s ease-in;
+}
+@media (hover: hover) {
+  .action-buttons .add-cards:hover,
+  .action-buttons .hint-btn:hover,
+  .info-buttons .add-cards:hover,
+  .info-buttons .hint-btn:hover {
+    transform: translateY(-5px);
+  }
+}
+.action-buttons .add-cards,
+.action-buttons .hint-btn,
+.info-buttons .add-cards,
+.info-buttons .hint-btn {
   border: none;
   outline: none;
   font-weight: bold;
   cursor: pointer;
   border-radius: 0.5em;
   padding: 0.4em;
+}
+.action-buttons .add-cards.theme-default, .theme-default .action-buttons .add-cards,
+.action-buttons .hint-btn.theme-default,
+.theme-default .action-buttons .hint-btn,
+.info-buttons .add-cards.theme-default,
+.theme-default .info-buttons .add-cards,
+.info-buttons .hint-btn.theme-default,
+.theme-default .info-buttons .hint-btn {
   box-shadow: inset 0 0 3px #2a9d8f;
   color: #2a9d8f;
   background-color: #f2deac;
   border: 2px solid #2a9d8f;
 }
-
+.action-buttons .add-cards.theme-dark, .theme-dark .action-buttons .add-cards,
+.action-buttons .hint-btn.theme-dark,
+.theme-dark .action-buttons .hint-btn,
+.info-buttons .add-cards.theme-dark,
+.theme-dark .info-buttons .add-cards,
+.info-buttons .hint-btn.theme-dark,
+.theme-dark .info-buttons .hint-btn {
+  box-shadow: inset 0 0 3px #4b1a49;
+  color: #4b1a49;
+  background-color: #bcd9c8;
+  border: 2px solid #4b1a49;
+}
+.action-buttons .add-cards.theme-mono, .theme-mono .action-buttons .add-cards,
+.action-buttons .hint-btn.theme-mono,
+.theme-mono .action-buttons .hint-btn,
+.info-buttons .add-cards.theme-mono,
+.theme-mono .info-buttons .add-cards,
+.info-buttons .hint-btn.theme-mono,
+.theme-mono .info-buttons .hint-btn {
+  box-shadow: inset 0 0 3px #191919;
+  color: #191919;
+  background-color: #c6c6c6;
+  border: 2px solid #191919;
+}
+.action-buttons .add-cards.theme-mono-dark, .theme-mono-dark .action-buttons .add-cards,
+.action-buttons .hint-btn.theme-mono-dark,
+.theme-mono-dark .action-buttons .hint-btn,
+.info-buttons .add-cards.theme-mono-dark,
+.theme-mono-dark .info-buttons .add-cards,
+.info-buttons .hint-btn.theme-mono-dark,
+.theme-mono-dark .info-buttons .hint-btn {
+  box-shadow: inset 0 0 3px #e6e6e6;
+  color: #e6e6e6;
+  background-color: #656565;
+  border: 2px solid #e6e6e6;
+}
+.action-buttons .add-cards,
+.action-buttons .hint-btn,
+.info-buttons .add-cards,
+.info-buttons .hint-btn {
+  transition: transform 0.2s ease-in;
+}
 @media (hover: hover) {
-  .add-cards:hover,
-  .hint-btn:hover,
-  .instr-btn:hover,
-  .matches-btn:hover,
-  .end-game:hover,
-  .start-button:hover {
+  .action-buttons .add-cards:hover,
+  .action-buttons .hint-btn:hover,
+  .info-buttons .add-cards:hover,
+  .info-buttons .hint-btn:hover {
     transform: translateY(-5px);
   }
 }
-
-/* Two button style */
-.add-cards,
-.hint-btn {
-  margin-top: 0.5em;
+.action-buttons .add-cards,
+.action-buttons .hint-btn,
+.info-buttons .add-cards,
+.info-buttons .hint-btn {
+  font-size: 1.5em;
+}
+@media (max-width: 1500px) {
+  .action-buttons .add-cards,
+  .action-buttons .hint-btn,
+  .info-buttons .add-cards,
+  .info-buttons .hint-btn {
+    font-size: 1.4em;
+  }
+}
+.action-buttons .add-cards,
+.action-buttons .hint-btn,
+.info-buttons .add-cards,
+.info-buttons .hint-btn {
   min-width: 150px;
   width: 40%;
 }
-
 @media (max-width: 800px) {
-  .add-cards,
-  .hint-btn {
+  .action-buttons .add-cards,
+  .action-buttons .hint-btn,
+  .info-buttons .add-cards,
+  .info-buttons .hint-btn {
     font-size: 1.25em;
   }
 }
-
 @media (max-width: 500px) {
-  .add-cards,
-  .hint-btn {
+  .action-buttons .add-cards,
+  .action-buttons .hint-btn,
+  .info-buttons .add-cards,
+  .info-buttons .hint-btn {
     width: 45%;
   }
 }
-
-/* Small button style */
-.instr-btn,
-.matches-btn,
-.end-game {
+.action-buttons .instr-btn,
+.action-buttons .matches-btn,
+.action-buttons .end-game,
+.info-buttons .instr-btn,
+.info-buttons .matches-btn,
+.info-buttons .end-game {
   margin-top: 0.5em;
+  transition: transform 0.2s ease-in;
+}
+@media (hover: hover) {
+  .action-buttons .instr-btn:hover,
+  .action-buttons .matches-btn:hover,
+  .action-buttons .end-game:hover,
+  .info-buttons .instr-btn:hover,
+  .info-buttons .matches-btn:hover,
+  .info-buttons .end-game:hover {
+    transform: translateY(-5px);
+  }
+}
+.action-buttons .instr-btn,
+.action-buttons .matches-btn,
+.action-buttons .end-game,
+.info-buttons .instr-btn,
+.info-buttons .matches-btn,
+.info-buttons .end-game {
+  border: none;
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0.5em;
+  padding: 0.4em;
+}
+.action-buttons .instr-btn.theme-default, .theme-default .action-buttons .instr-btn,
+.action-buttons .matches-btn.theme-default,
+.theme-default .action-buttons .matches-btn,
+.action-buttons .end-game.theme-default,
+.theme-default .action-buttons .end-game,
+.info-buttons .instr-btn.theme-default,
+.theme-default .info-buttons .instr-btn,
+.info-buttons .matches-btn.theme-default,
+.theme-default .info-buttons .matches-btn,
+.info-buttons .end-game.theme-default,
+.theme-default .info-buttons .end-game {
+  box-shadow: inset 0 0 3px #2a9d8f;
+  color: #2a9d8f;
+  background-color: #f2deac;
+  border: 2px solid #2a9d8f;
+}
+.action-buttons .instr-btn.theme-dark, .theme-dark .action-buttons .instr-btn,
+.action-buttons .matches-btn.theme-dark,
+.theme-dark .action-buttons .matches-btn,
+.action-buttons .end-game.theme-dark,
+.theme-dark .action-buttons .end-game,
+.info-buttons .instr-btn.theme-dark,
+.theme-dark .info-buttons .instr-btn,
+.info-buttons .matches-btn.theme-dark,
+.theme-dark .info-buttons .matches-btn,
+.info-buttons .end-game.theme-dark,
+.theme-dark .info-buttons .end-game {
+  box-shadow: inset 0 0 3px #4b1a49;
+  color: #4b1a49;
+  background-color: #bcd9c8;
+  border: 2px solid #4b1a49;
+}
+.action-buttons .instr-btn.theme-mono, .theme-mono .action-buttons .instr-btn,
+.action-buttons .matches-btn.theme-mono,
+.theme-mono .action-buttons .matches-btn,
+.action-buttons .end-game.theme-mono,
+.theme-mono .action-buttons .end-game,
+.info-buttons .instr-btn.theme-mono,
+.theme-mono .info-buttons .instr-btn,
+.info-buttons .matches-btn.theme-mono,
+.theme-mono .info-buttons .matches-btn,
+.info-buttons .end-game.theme-mono,
+.theme-mono .info-buttons .end-game {
+  box-shadow: inset 0 0 3px #191919;
+  color: #191919;
+  background-color: #c6c6c6;
+  border: 2px solid #191919;
+}
+.action-buttons .instr-btn.theme-mono-dark, .theme-mono-dark .action-buttons .instr-btn,
+.action-buttons .matches-btn.theme-mono-dark,
+.theme-mono-dark .action-buttons .matches-btn,
+.action-buttons .end-game.theme-mono-dark,
+.theme-mono-dark .action-buttons .end-game,
+.info-buttons .instr-btn.theme-mono-dark,
+.theme-mono-dark .info-buttons .instr-btn,
+.info-buttons .matches-btn.theme-mono-dark,
+.theme-mono-dark .info-buttons .matches-btn,
+.info-buttons .end-game.theme-mono-dark,
+.theme-mono-dark .info-buttons .end-game {
+  box-shadow: inset 0 0 3px #e6e6e6;
+  color: #e6e6e6;
+  background-color: #656565;
+  border: 2px solid #e6e6e6;
+}
+.action-buttons .instr-btn,
+.action-buttons .matches-btn,
+.action-buttons .end-game,
+.info-buttons .instr-btn,
+.info-buttons .matches-btn,
+.info-buttons .end-game {
   font-size: 1em;
   width: 30%;
   min-width: 155px;
 }
-
-.instr-btn {
+.action-buttons .instr-btn,
+.info-buttons .instr-btn {
   min-width: 155px;
 }
 
-/* Large button style */
-.start-button {
-  font-size: 1.5em;
-  width: 40%;
-  display: block;
-  margin: 1em auto;
+.info-buttons {
+  flex-wrap: wrap;
 }
 
+.start-button {
+  transition: transform 0.2s ease-in;
+}
+@media (hover: hover) {
+  .start-button:hover {
+    transform: translateY(-5px);
+  }
+}
+.start-button {
+  border: none;
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0.5em;
+  padding: 0.4em;
+}
+.start-button.theme-default, .theme-default .start-button {
+  box-shadow: inset 0 0 3px #2a9d8f;
+  color: #2a9d8f;
+  background-color: #f2deac;
+  border: 2px solid #2a9d8f;
+}
+.start-button.theme-dark, .theme-dark .start-button {
+  box-shadow: inset 0 0 3px #4b1a49;
+  color: #4b1a49;
+  background-color: #bcd9c8;
+  border: 2px solid #4b1a49;
+}
+.start-button.theme-mono, .theme-mono .start-button {
+  box-shadow: inset 0 0 3px #191919;
+  color: #191919;
+  background-color: #c6c6c6;
+  border: 2px solid #191919;
+}
+.start-button.theme-mono-dark, .theme-mono-dark .start-button {
+  box-shadow: inset 0 0 3px #e6e6e6;
+  color: #e6e6e6;
+  background-color: #656565;
+  border: 2px solid #e6e6e6;
+}
+.start-button {
+  transition: transform 0.2s ease-in;
+}
+@media (hover: hover) {
+  .start-button:hover {
+    transform: translateY(-5px);
+  }
+}
+.start-button {
+  font-size: 1.5em;
+}
 @media (max-width: 1500px) {
   .start-button {
     font-size: 1.4em;
   }
 }
-
+.start-button {
+  width: 40%;
+}
 @media (max-width: 800px) {
   .start-button {
     width: 60%;
   }
 }
-
 @media (max-width: 600px) {
   .start-button {
     width: 75%;
   }
 }
-
-.info-buttons {
-  flex-wrap: wrap;
+.start-button {
+  display: block;
+  margin: 1em auto;
 }
 
 .win-wrapper {
@@ -185,7 +406,6 @@
   font-size: 3em;
   line-height: 1.5em;
 }
-
 @media (max-width: 600px) {
   .win-wrapper {
     font-size: 2em;
@@ -196,12 +416,805 @@
   display: flex;
   align-items: center;
 }
-
-.hint-wrapper .hint-card {
+.hint-wrapper .hint-card.theme-default, .theme-default .hint-wrapper .hint-card {
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+.hint-wrapper .hint-card.theme-dark, .theme-dark .hint-wrapper .hint-card {
+  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.9);
+}
+.hint-wrapper .hint-card.theme-mono, .theme-mono .hint-wrapper .hint-card {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+.hint-wrapper .hint-card.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card {
+  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.9);
+}
+.hint-wrapper .hint-card {
   margin: 5px;
   width: auto;
   border-radius: 5px;
   padding: 0.5em;
+}
+.hint-wrapper .hint-card.theme-default, .theme-default .hint-wrapper .hint-card {
   background-color: white;
 }
+.hint-wrapper .hint-card.theme-dark, .theme-dark .hint-wrapper .hint-card {
+  background-color: black;
+}
+.hint-wrapper .hint-card.theme-mono, .theme-mono .hint-wrapper .hint-card {
+  background-color: white;
+}
+.hint-wrapper .hint-card.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card {
+  background-color: black;
+}
+.hint-wrapper .hint-card .card-wrapper {
+  width: 87.5px;
+  height: 50px;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-wrapper {
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0,
+.hint-wrapper .hint-card .card-wrapper .shape-1 {
+  margin: 0 3px;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0 {
+  align-self: flex-end;
+  width: 0;
+  height: 0;
+  border: 12.5px solid transparent;
+  position: relative;
+  top: -25px;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0:after {
+  content: "";
+  position: absolute;
+  left: -12.5px;
+  top: 25px;
+  width: 0;
+  height: 0;
+  border: 12.5px solid transparent;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-0 {
+  border-bottom: 25px solid #2a9d8f;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-default:after, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-0:after {
+  border-top: 25px solid #2a9d8f;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-0 {
+  border-bottom: 25px solid #4b1a49;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-dark:after, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-0:after {
+  border-top: 25px solid #4b1a49;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-0 {
+  border-bottom: 25px solid #191919;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-mono:after, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-0:after {
+  border-top: 25px solid #191919;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-0 {
+  border-bottom: 25px solid #e6e6e6;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-mono-dark:after, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-0:after {
+  border-top: 25px solid #e6e6e6;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-1 {
+  border-bottom: 25px solid #e76f51;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-default:after, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-1:after {
+  border-top: 25px solid #e76f51;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-1 {
+  border-bottom: 25px solid #8b1e3f;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-dark:after, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-1:after {
+  border-top: 25px solid #8b1e3f;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-1 {
+  border-bottom: 25px solid #4c4c4c;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-mono:after, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-1:after {
+  border-top: 25px solid #4c4c4c;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-1 {
+  border-bottom: 25px solid #6a6c6e;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-mono-dark:after, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-1:after {
+  border-top: 25px solid #6a6c6e;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-2 {
+  border-bottom: 25px solid #e9c46a;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-default:after, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-2:after {
+  border-top: 25px solid #e9c46a;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-2 {
+  border-bottom: 25px solid #89bd9e;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-dark:after, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-2:after {
+  border-top: 25px solid #89bd9e;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-2 {
+  border-bottom: 25px solid #b2b2b2;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-mono:after, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-2:after {
+  border-top: 25px solid #b2b2b2;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-2 {
+  border-bottom: 25px solid #2d2d2d;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-mono-dark:after, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-2:after {
+  border-top: 25px solid #2d2d2d;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner {
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: 10.5px solid transparent;
+  position: relative;
+  top: -6.5px;
+  left: -10.5px;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner:after {
+  content: "";
+  z-index: 11;
+  position: absolute;
+  left: -10.5px;
+  top: 21px;
+  width: 0;
+  height: 0;
+  border: 10.5px solid transparent;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner {
+  border-bottom: 21px solid white;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-default:after, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner:after {
+  border-top: 21px solid white;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner {
+  border-bottom: 21px solid black;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-dark:after, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner:after {
+  border-top: 21px solid black;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner {
+  border-bottom: 21px solid white;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-mono:after, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner:after {
+  border-top: 21px solid white;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner {
+  border-bottom: 21px solid black;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark:after, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner:after {
+  border-top: 21px solid black;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner {
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: 10.5px solid transparent;
+  position: relative;
+  top: -6.5px;
+  left: -10.5px;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner:after {
+  content: "";
+  z-index: 11;
+  position: absolute;
+  left: -10.5px;
+  top: 21px;
+  width: 0;
+  height: 0;
+  border: 10.5px solid transparent;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner {
+  border-bottom: 21px solid white;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner {
+  border-bottom: 21px solid black;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner {
+  border-bottom: 21px solid white;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner {
+  border-bottom: 21px solid black;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner:after {
+  border-top: 21px solid transparent;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1 {
+  width: 25px;
+  height: 50px;
+  border-radius: 50%/30%;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-0.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-0 {
+  border: 2px solid #2a9d8f;
+  background: #2a9d8f;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-0.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-0 {
+  border: 2px solid #4b1a49;
+  background: #4b1a49;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-0.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-0 {
+  border: 2px solid #191919;
+  background: #191919;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-0.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-0 {
+  border: 2px solid #e6e6e6;
+  background: #e6e6e6;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #2a9d8f 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #4b1a49 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #191919 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #e6e6e6 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-1 {
+  border: 2px solid #e76f51;
+  background: #e76f51;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-1 {
+  border: 2px solid #8b1e3f;
+  background: #8b1e3f;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-1 {
+  border: 2px solid #4c4c4c;
+  background: #4c4c4c;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-1 {
+  border: 2px solid #6a6c6e;
+  background: #6a6c6e;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #e76f51 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #8b1e3f 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #4c4c4c 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #6a6c6e 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-2.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-2 {
+  border: 2px solid #e9c46a;
+  background: #e9c46a;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-2.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-2 {
+  border: 2px solid #89bd9e;
+  background: #89bd9e;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-2.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-2 {
+  border: 2px solid #b2b2b2;
+  background: #b2b2b2;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-2.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-2 {
+  border: 2px solid #2d2d2d;
+  background: #2d2d2d;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #e9c46a 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #89bd9e 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #b2b2b2 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #2d2d2d 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.shading-2.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2 {
+  background: white;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.shading-2.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2 {
+  background: black;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.shading-2.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2 {
+  background: white;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-1.shading-2.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2 {
+  background: black;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2 {
+  margin: 0 1.5px;
+  width: 25px;
+  height: 50px;
+  border-radius: 0 90%;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-0.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-0 {
+  border: 2px solid #2a9d8f;
+  background: #2a9d8f;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-0.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-0 {
+  border: 2px solid #4b1a49;
+  background: #4b1a49;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-0.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-0 {
+  border: 2px solid #191919;
+  background: #191919;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-0.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-0 {
+  border: 2px solid #e6e6e6;
+  background: #e6e6e6;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #2a9d8f 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #4b1a49 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #191919 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1 {
+  background-image: linear-gradient(0deg, #e6e6e6 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-1 {
+  border: 2px solid #e76f51;
+  background: #e76f51;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-1 {
+  border: 2px solid #8b1e3f;
+  background: #8b1e3f;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-1 {
+  border: 2px solid #4c4c4c;
+  background: #4c4c4c;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-1 {
+  border: 2px solid #6a6c6e;
+  background: #6a6c6e;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #e76f51 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #8b1e3f 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #4c4c4c 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1 {
+  background-image: linear-gradient(0deg, #6a6c6e 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-2.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-2 {
+  border: 2px solid #e9c46a;
+  background: #e9c46a;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-2.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-2 {
+  border: 2px solid #89bd9e;
+  background: #89bd9e;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-2.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-2 {
+  border: 2px solid #b2b2b2;
+  background: #b2b2b2;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-2.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-2 {
+  border: 2px solid #2d2d2d;
+  background: #2d2d2d;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #e9c46a 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #89bd9e 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #b2b2b2 50%, white 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1 {
+  background-image: linear-gradient(0deg, #2d2d2d 50%, black 50%);
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.shading-2.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2 {
+  background: white;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.shading-2.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2 {
+  background: black;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.shading-2.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2 {
+  background: white;
+}
+.hint-wrapper .hint-card .card-wrapper .shape-2.shading-2.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2 {
+  background: black;
+}
+@media (max-width: 800px) {
+  .hint-wrapper .hint-card .card-wrapper {
+    width: 52.5px;
+    height: 30px;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-wrapper {
+    min-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0,
+  .hint-wrapper .hint-card .card-wrapper .shape-1 {
+    margin: 0 1px;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0 {
+    align-self: flex-end;
+    width: 0;
+    height: 0;
+    border: 7.5px solid transparent;
+    position: relative;
+    top: -15px;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0:after {
+    content: "";
+    position: absolute;
+    left: -7.5px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border: 7.5px solid transparent;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-0 {
+    border-bottom: 15px solid #2a9d8f;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-default:after, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-0:after {
+    border-top: 15px solid #2a9d8f;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-0 {
+    border-bottom: 15px solid #4b1a49;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-dark:after, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-0:after {
+    border-top: 15px solid #4b1a49;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-0 {
+    border-bottom: 15px solid #191919;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-mono:after, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-0:after {
+    border-top: 15px solid #191919;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-0 {
+    border-bottom: 15px solid #e6e6e6;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-0.theme-mono-dark:after, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-0:after {
+    border-top: 15px solid #e6e6e6;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-1 {
+    border-bottom: 15px solid #e76f51;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-default:after, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-1:after {
+    border-top: 15px solid #e76f51;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-1 {
+    border-bottom: 15px solid #8b1e3f;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-dark:after, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-1:after {
+    border-top: 15px solid #8b1e3f;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-1 {
+    border-bottom: 15px solid #4c4c4c;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-mono:after, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-1:after {
+    border-top: 15px solid #4c4c4c;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-1 {
+    border-bottom: 15px solid #6a6c6e;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-1.theme-mono-dark:after, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-1:after {
+    border-top: 15px solid #6a6c6e;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-2 {
+    border-bottom: 15px solid #e9c46a;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-default:after, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.color-2:after {
+    border-top: 15px solid #e9c46a;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-2 {
+    border-bottom: 15px solid #89bd9e;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-dark:after, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-2:after {
+    border-top: 15px solid #89bd9e;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-2 {
+    border-bottom: 15px solid #b2b2b2;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-mono:after, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.color-2:after {
+    border-top: 15px solid #b2b2b2;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-2 {
+    border-bottom: 15px solid #2d2d2d;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.color-2.theme-mono-dark:after, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.color-2:after {
+    border-top: 15px solid #2d2d2d;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner {
+    z-index: 10;
+    width: 0;
+    height: 0;
+    border: 5.5px solid transparent;
+    position: relative;
+    top: -1.5px;
+    left: -5.5px;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner:after {
+    content: "";
+    z-index: 11;
+    position: absolute;
+    left: -5.5px;
+    top: 11px;
+    width: 0;
+    height: 0;
+    border: 5.5px solid transparent;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner {
+    border-bottom: 11px solid white;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-default:after, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner:after {
+    border-top: 11px solid white;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner {
+    border-bottom: 11px solid black;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-dark:after, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner:after {
+    border-top: 11px solid black;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner {
+    border-bottom: 11px solid white;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-mono:after, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner:after {
+    border-top: 11px solid white;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner {
+    border-bottom: 11px solid black;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner.theme-mono-dark:after, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-2 .inner:after {
+    border-top: 11px solid black;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner {
+    z-index: 10;
+    width: 0;
+    height: 0;
+    border: 5.5px solid transparent;
+    position: relative;
+    top: -1.5px;
+    left: -5.5px;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner:after {
+    content: "";
+    z-index: 11;
+    position: absolute;
+    left: -5.5px;
+    top: 11px;
+    width: 0;
+    height: 0;
+    border: 5.5px solid transparent;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner {
+    border-bottom: 11px solid white;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner {
+    border-bottom: 11px solid black;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner {
+    border-bottom: 11px solid white;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner {
+    border-bottom: 11px solid black;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-0.shading-1 .inner:after {
+    border-top: 11px solid transparent;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1 {
+    width: 15px;
+    height: 30px;
+    border-radius: 50%/30%;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-0 {
+    border: 2px solid #2a9d8f;
+    background: #2a9d8f;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-0 {
+    border: 2px solid #4b1a49;
+    background: #4b1a49;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-0 {
+    border: 2px solid #191919;
+    background: #191919;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-0 {
+    border: 2px solid #e6e6e6;
+    background: #e6e6e6;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #2a9d8f 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #4b1a49 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #191919 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #e6e6e6 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-1 {
+    border: 2px solid #e76f51;
+    background: #e76f51;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-1 {
+    border: 2px solid #8b1e3f;
+    background: #8b1e3f;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-1 {
+    border: 2px solid #4c4c4c;
+    background: #4c4c4c;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-1 {
+    border: 2px solid #6a6c6e;
+    background: #6a6c6e;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #e76f51 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #8b1e3f 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #4c4c4c 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #6a6c6e 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-2 {
+    border: 2px solid #e9c46a;
+    background: #e9c46a;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-2 {
+    border: 2px solid #89bd9e;
+    background: #89bd9e;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-2 {
+    border: 2px solid #b2b2b2;
+    background: #b2b2b2;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-2 {
+    border: 2px solid #2d2d2d;
+    background: #2d2d2d;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #e9c46a 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #89bd9e 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #b2b2b2 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #2d2d2d 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2 {
+    background: white;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2 {
+    background: black;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2 {
+    background: white;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-1.shading-2 {
+    background: black;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2 {
+    margin: 0 0.5px;
+    width: 15px;
+    height: 30px;
+    border-radius: 0 90%;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-0 {
+    border: 2px solid #2a9d8f;
+    background: #2a9d8f;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-0 {
+    border: 2px solid #4b1a49;
+    background: #4b1a49;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-0 {
+    border: 2px solid #191919;
+    background: #191919;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-0 {
+    border: 2px solid #e6e6e6;
+    background: #e6e6e6;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #2a9d8f 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #4b1a49 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #191919 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-0.shading-1 {
+    background-image: linear-gradient(0deg, #e6e6e6 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-1 {
+    border: 2px solid #e76f51;
+    background: #e76f51;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-1 {
+    border: 2px solid #8b1e3f;
+    background: #8b1e3f;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-1 {
+    border: 2px solid #4c4c4c;
+    background: #4c4c4c;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-1 {
+    border: 2px solid #6a6c6e;
+    background: #6a6c6e;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #e76f51 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #8b1e3f 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #4c4c4c 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-1.shading-1 {
+    background-image: linear-gradient(0deg, #6a6c6e 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-2 {
+    border: 2px solid #e9c46a;
+    background: #e9c46a;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-2 {
+    border: 2px solid #89bd9e;
+    background: #89bd9e;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-2 {
+    border: 2px solid #b2b2b2;
+    background: #b2b2b2;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-2 {
+    border: 2px solid #2d2d2d;
+    background: #2d2d2d;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #e9c46a 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #89bd9e 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #b2b2b2 50%, white 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.color-2.shading-1 {
+    background-image: linear-gradient(0deg, #2d2d2d 50%, black 50%);
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2.theme-default, .theme-default .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2 {
+    background: white;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2.theme-dark, .theme-dark .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2 {
+    background: black;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2.theme-mono, .theme-mono .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2 {
+    background: white;
+  }
+  .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2.theme-mono-dark, .theme-mono-dark .hint-wrapper .hint-card .card-wrapper .shape-2.shading-2 {
+    background: black;
+  }
+}
+
+/*# sourceMappingURL=game.css.map */
